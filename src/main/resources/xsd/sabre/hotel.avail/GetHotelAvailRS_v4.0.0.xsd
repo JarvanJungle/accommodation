@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:stlp="http://services.sabre.com/STL_Payload/v02_02" xmlns="http://services.sabre.com/hotel/avail/v4_0_0" targetNamespace="http://services.sabre.com/hotel/avail/v4_0_0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:import namespace="http://services.sabre.com/STL_Payload/v02_02" schemaLocation="../STL2_Payload_v02_02.xsd" />
+    <xs:include schemaLocation="HotelAvailCommons_v4.0.0.xsd" />
+    <xs:element name="GetHotelAvailRS">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Hotel Availability Response
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="stlp:STL_Response_Payload">
+                    <xs:sequence>
+                        <xs:element name="HotelAvailInfos" type="HotelAvailInfos" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">
+                                    List of HotelAvailInfo
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="HotelAvailInfos">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                List of HotelAvailInfo
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="HotelAvailInfo" type="HotelAvailInfo">
+                <xs:annotation>
+                    <xs:documentation>Describes Hotel List basic information and Rate information including images for a hotel.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="OffSet" type="xs:positiveInteger" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">
+                    Indicates Page number.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="MaxSearchResults" type="xs:nonNegativeInteger">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">
+                    Maximum number of hotels information
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ShopKey" type="StringLength0to240" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">
+                    ShopKey to fetch rates for properties on the next page. When ShopKey is given, only Offset is relevant. Other attributes are ignored.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="SearchLatitude" type="xs:decimal">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Latitude</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="SearchLongitude" type="xs:decimal">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Longitude</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="HotelAvailInfo">
+        <xs:annotation>
+            <xs:documentation>Describes Rate information including images for a hotel.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="HotelInfo" type="HotelInfo">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Details for the Hotel Property.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:sequence minOccurs="0" maxOccurs="1">
+                <xs:sequence>
+                    <xs:element name="HotelRateInfo" type="HotelRateInfo" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>Rates information for requested hotel properties</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+                <xs:element name="HotelImageInfo" type="HotelImageInfo" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Describes image information for a hotel.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

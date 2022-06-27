@@ -1,0 +1,9 @@
+DetailSimpleResponse:
+  properties:
+    operationId:
+      type: string
+      default: ''
+    auditData:
+      $ref: '#/components/schemas/AuditData'
+    activity:
+      $ref: '#/components/schemas/Activity'

@@ -1,0 +1,1893 @@
+openapi: 3.0.0
+info:
+  title: Activity Available API
+  description: custom by eroam from https://developer.hotelbeds.com
+  termsOfService: 'https://developer.hotelbeds.com/API_Terms_of_Use'
+  contact:
+    name: BTB Support
+    url: 'https://developer.hotelbeds.com'
+    email: integrations.btb@hotelbeds.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  version: '1.0'
+externalDocs:
+  description: Find out more about APItude
+  url: https://developer.hotelbeds.com
+servers:
+  - url: 'https://api.test.hotelbeds.com/activity-booking-api/1.0'
+    variables: {}
+tags:
+  - name: Activities
+    description: Rest Frontend Service Implementation
+paths:
+  /activities/availability:
+    post:
+      tags:
+      - Activities
+      summary: Availability by hotel code
+      operationId: Availabilitybyhotelcode
+      parameters:
+      - name: Api-key
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: '{{Api-key}}'
+      - name: X-Signature
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: '{{X-Signature}}'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: application/json
+      - name: Accept-Encoding
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: gzip
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AvailabilitybyhotelcodeRequest'
+            example:
+              filters:
+              - searchFilterItems:
+                - type: hotel
+                  value: 8011
+              from: 2020-06-15
+              to: 2020-06-16
+              language: en
+              pagination:
+                itemsPerPage: 10
+                page: 1
+              order: DEFAULT
+        required: true
+      responses:
+        200:
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+#                type: object
+                $ref: '#/components/schemas/AvailabilityByHotelResponse'
+      deprecated: false
+  /bookings:
+    put:
+      tags:
+        - Activities
+      summary: Booking Confirm
+      operationId: BookingConfirm
+      parameters:
+        - name: Api-key
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{Api-key}}'
+        - name: X-Signature
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{X-Signature}}'
+        - name: Accept
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Accept-Encoding
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: gzip
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookingConfirmRequest'
+            example:
+              language: en
+              clientReference: TestAgenciaXisco
+              holder:
+                name: TESTXisco
+                title: Mr
+                email: x.bibiloni@hotelbeds.com
+                address: Avenida de Cid
+                zipCode: 07198
+                mailing: true
+                mailUpdDate: 2014-06-06
+                country: ES
+                surname: BibiloniTest
+                telephones:
+                  - 123456789
+                  - 123456798
+              activities:
+                - preferedLanguage: en
+                  serviceLanguage: en
+                  rateKey: qceel3tq3nujin53vosiqpeaij
+                  from: 2016-07-01
+                  to: 2016-07-01
+                  paxes:
+                    - age: 30
+                      name: XiscoTEst
+                      type: ADULT
+                      surname: TestBibiloni
+                    - age: 10
+                      name: TestAitor
+                      type: CHILD
+                      surname: TestBibiloni
+        required: true
+      responses:
+        200:
+          description: ''
+          headers: { }
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingResponse'
+        400:
+          description: 'Bad request: Data validation error'
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        401:
+          description: 'Unauthorized: invalid or expired token'
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        404:
+          description: Not found
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+      deprecated: false
+  /bookings/{actLang}/{actModConfirmed}:
+    delete:
+      tags:
+        - Activities
+      summary: Booking Cancel
+      operationId: BookingCancel
+      parameters:
+#        - in: path
+#          name: actLang
+#          schema:
+#            type: string
+#          required: true
+#        - in: path
+#          name: actModConfirmed
+#          schema:
+#            type: string
+#          required: true
+#        - name: cancellationFlag
+#          in: query
+#          description: ''
+#          required: true
+#          style: form
+#          explode: true
+#          schema:
+#            type: string
+#            example: SIMULATION
+        - name: Api-key
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{Api-key}}'
+        - name: X-Signature
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{X-Signature}}'
+        - name: Accept
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Accept-Encoding
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: gzip
+        - in: path
+          name: actLang
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: actModConfirmed
+          schema:
+            type: string
+          required: true
+        - name: cancellationFlag
+          in: query
+          description: ''
+          required: true
+          style: form
+          explode: true
+          schema:
+            type: string
+            example: SIMULATION
+      responses:
+        200:
+          description: ''
+          headers: { }
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingResponse'
+
+  /activities/details:
+    post:
+      tags:
+        - Activities
+      summary: Detail Simple
+      operationId: DetailSimple
+      parameters:
+        - name: Api-key
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{Api-key}}'
+        - name: X-Signature
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: '{{X-Signature}}'
+        - name: Accept
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+        - name: Accept-Encoding
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: gzip
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DetailSimpleRequest'
+            example:
+              code: E-E10-HIGHARTIST
+              from: 2016-07-01
+              to: 2016-07-15
+              language: en
+              paxes:
+                - age: 30
+                - age: 10
+        required: true
+      responses:
+        200:
+          description: ''
+          headers: { }
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetailSimpleResponse'
+      deprecated: false
+
+components:
+  schemas:
+    ErrorDTO:
+      title: ErrorDTO
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        dateTime:
+          type: string
+          description: Time and date the error was thrown
+        description:
+          type: string
+          description: Error description
+        fieldErrors:
+          type: array
+          description: List of errors caused by field validations
+          items:
+            $ref: '#/components/schemas/FieldErrorDTO'
+        isBadRequest:
+          type: boolean
+          description: The error is caused by a bad request from client, it's not
+            due to an internal service
+        message:
+          type: string
+          description: Error message
+        nestedError:
+          $ref: '#/components/schemas/ErrorDTO'
+        serviceName:
+          type: string
+          description: The name of the service that threw this error
+        traceId:
+          type: string
+          description: The trace ID
+    FieldErrorDTO:
+      title: FieldErrorDTO
+      type: object
+      properties:
+        code:
+          type: string
+          description: The field error code
+        field:
+          type: string
+          description: The name of the field with the error
+        message:
+          type: string
+          description: The field error message
+    AvailabilitybyhotelcodeRequest:
+      title: AvailabilitybyhotelcodeRequest
+      required:
+      - filters
+      - from
+      - to
+      - language
+      - pagination
+      - order
+      - paxes
+      type: object
+      properties:
+        filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+          description: ''
+        from:
+          type: string
+        to:
+          type: string
+        language:
+          type: string
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        order:
+          type: string
+        paxes:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/Pax'
+    Pax:
+      title: Pax
+      required:
+        - age
+      type: object
+      properties:
+        age:
+          type: integer
+      example:
+        filters:
+        - searchFilterItems:
+          - type: hotel
+            value: 8011
+        from: 2020-06-15
+        to: 2020-06-16
+        language: en
+        pagination:
+          itemsPerPage: 10
+          page: 1
+        order: DEFAULT
+    Filter:
+      title: Filter
+      required:
+      - searchFilterItems
+      type: object
+      properties:
+        searchFilterItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/SearchFilterItem'
+          description: ''
+    SearchFilterItem:
+      title: SearchFilterItem
+      required:
+        - type
+        - latitude
+        - longitude
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+        latitude:
+          type: string
+        longitude:
+          type: string
+    Pagination:
+      title: Pagination
+      required:
+      - itemsPerPage
+      - page
+      type: object
+      properties:
+        itemsPerPage:
+          type: integer
+          format: int32
+        page:
+          type: integer
+          format: int32
+      example:
+        itemsPerPage: 10
+        page: 1
+#-------------------------------------------------#
+    ModalityCancellationPolicy:
+      title: ModalityCancellationPolicy
+      type: object
+      properties:
+        dateFrom:
+          type: string
+        amount:
+          type: number
+    ContentFeature:
+      title: ContentFeature
+      type: object
+      properties:
+        featureType:
+          type: string
+        description:
+          type: string
+    #-----------------------------------------------#
+    Route:
+      title: Route
+      type: object
+      properties:
+        duration:
+          type: object
+          properties:
+            value:
+              type: integer
+              default: 0
+            metric:
+              type: string
+              default: ''
+        description:
+          type: string
+          default: ''
+        points:
+          type: array
+          default: [ ]
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                default: ''
+              order:
+                type: integer
+                default: 0
+              stop:
+                type: boolean
+                default: true
+              pointOfInterest:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    default: ''
+                  geolocation:
+                    type: object
+                    properties:
+                      latitude:
+                        type: number
+                        default: 0
+                      longitude:
+                        type: number
+                        default: 0
+                  address:
+                    type: string
+                    default: ''
+                  country:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        default: ''
+                  city:
+                    type: string
+                    default: ''
+                  zip:
+                    type: string
+                    default: ''
+                  description:
+                    type: string
+                    default: ''
+    PaxAmount:
+      title: PaxAmount
+      type: object
+      properties:
+        paxType:
+          type: string
+          default: ''
+        ageFrom:
+          type: integer
+          default: 0
+        ageTo:
+          type: integer
+          default: 0
+        amount:
+          type: number
+          default: 0
+        boxOfficeAmount:
+          type: number
+          default: 0
+        mandatoryApplyAmount:
+          type: boolean
+          default: true
+    Language:
+      title: Language
+      type: object
+      properties:
+        code:
+          type: string
+        description:
+          type: string
+    Session:
+      title: Session
+      type: object
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+
+    Content:
+      title: Content
+      properties:
+        name:
+          type: string
+          default: ''
+        featureGroups:
+          type: array
+          default: [ ]
+          items:
+            type: object
+            properties:
+              groupCode:
+                type: string
+                default: ''
+              included:
+                type: array
+                default: [ ]
+                items:
+                  $ref: '#/components/schemas/ContentFeature'
+              excluded:
+                type: array
+                default: [ ]
+                items:
+                  $ref: '#/components/schemas/ContentFeature'
+        location:
+          type: object
+          properties:
+            endPoints:
+              type: array
+              default: [ ]
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    default: ''
+                  description:
+                    type: string
+                    default: ''
+            startingPoints:
+              type: array
+              default: [ ]
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    default: ''
+                  meetingPoint:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        default: ''
+                      geolocation:
+                        type: object
+                        properties:
+                          latitude:
+                            type: number
+                            default: 0
+                          longitude:
+                            type: number
+                            default: 0
+                      address:
+                        type: string
+                        default: ''
+                      country:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            default: ''
+                          name:
+                            type: string
+                            default: ''
+                          destinations:
+                            type: array
+                            default: [ ]
+                            items:
+                              type: object
+                              properties:
+                                code:
+                                  type: string
+                                  default: ''
+                                name:
+                                  type: string
+                                  default: ''
+                      city:
+                        type: string
+                        default: ''
+                      zip:
+                        type: string
+                        default: ''
+                      description:
+                        type: string
+                        default: ''
+        media:
+          type: object
+          properties:
+            images:
+              type: array
+              default: [ ]
+              items:
+                type: object
+                properties:
+                  visualizationOrder:
+                    type: integer
+                    default: 0
+                  mimeType:
+                    type: string
+                    default: ''
+                  language:
+                    type: string
+                    default: ''
+                  urls:
+                    type: array
+                    default: [ ]
+                    items:
+                      type: object
+                      properties:
+                        dpi:
+                          type: integer
+                          default: 0
+                        height:
+                          type: integer
+                          default: 0
+                        width:
+                          type: integer
+                          default: 0
+                        resource:
+                          type: string
+                          default: ''
+                        sizeType:
+                          type: string
+                          default: ''
+        notes:
+          type: array
+          default: [ ]
+          items:
+            type: object
+            properties:
+              dateFrom:
+                type: string
+                default: ''
+              dateTo:
+                type: string
+                default: ''
+              visibleFrom:
+                type: string
+                default: ''
+              visibleTo:
+                type: string
+                default: ''
+              descriptions:
+                type: array
+                default: [ ]
+                items:
+                  type: object
+                  properties:
+                    description:
+                      type: string
+                      default: ''
+        redeemInfo:
+          type: object
+          properties:
+            type:
+              type: string
+              default: ''
+            directEntrance:
+              type: boolean
+              default: true
+            comments:
+              type: array
+              default: [ ]
+              items:
+                type: object
+                properties:
+                  description:
+                    type: string
+                    default: ''
+        routes:
+          type: array
+          default: [ ]
+          items:
+            $ref: '#/components/schemas/Route'
+        scheduling:
+          type: object
+          properties:
+            opened:
+              type: array
+              default: [ ]
+              items:
+                type: object
+                properties:
+                  from:
+                    type: string
+                    default: ''
+                  to:
+                    type: string
+                    default: ''
+                  openingTime:
+                    type: string
+                    default: ''
+                  closeTime:
+                    type: string
+                    default: ''
+                  weekDays:
+                    type: array
+                    default: [ ]
+                    items:
+                      type: string
+        segmentationGroups:
+          type: array
+          default: [ ]
+          items:
+            type: object
+            properties:
+              code:
+                type: integer
+                default: 0
+              name:
+                type: string
+                default: ''
+              segments:
+                type: array
+                default: [ ]
+                items:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      default: 0
+                    name:
+                      type: string
+                      default: ''
+        activityFactsheetType:
+          type: string
+          default: ''
+        activityCode:
+          type: string
+          default: ''
+        modalityCode:
+          type: string
+          default: ''
+        modalityName:
+          type: string
+          default: ''
+        contentId:
+          type: string
+          default: ''
+        description:
+          type: string
+          default: ''
+        lastUpdate:
+          type: string
+          default: ''
+        summary:
+          type: string
+          default: ''
+        # advancedTips:
+        #   type: array
+        #   default: []
+        countries:
+          type: array
+          default: [ ]
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+                default: ''
+              name:
+                type: string
+                default: ''
+              destinations:
+                type: array
+                default: [ ]
+                items:
+                  type: object
+                  properties:
+                    code:
+                      type: string
+                      default: ''
+                    name:
+                      type: string
+                      default: ''
+        highligths:
+          type: array
+          default: [ ]
+          items:
+            type: string
+            default: ''
+
+#---Response
+    PaginationRS:
+      title: PaginationRS
+      type: object
+      properties:
+        itemsPerPage:
+          type: integer
+          default: 0
+        page:
+          type: integer
+          default: 0
+        totalItems:
+          type: integer
+          default: 0
+    AuditData:
+      title: AuditData
+      type: object
+      properties:
+        processTime:
+          type: integer
+        time:
+          type: string
+          default: ''
+        serverId:
+          type: string
+          default: ''
+        environment:
+          type: string
+          default: ''
+    Activity:
+      title: Activity
+      type: object
+      properties:
+        activityCode:
+          type: string
+          default: ''
+        country:
+          type: object
+          properties:
+            code:
+              type: string
+              default: ''
+            name:
+              type: string
+              default: ''
+            destinations:
+              type: array
+              default: [ ]
+              items:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    default: ''
+                  name:
+                    type: string
+                    default: ''
+        operationDays:
+          type: array
+          default: [ ]
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+                default: ''
+              name:
+                type: string
+                default: ''
+        modalities:
+          type: array
+          default: [ ]
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+                default: ''
+              name:
+                type: string
+                default: ''
+              duration:
+                type: object
+                properties:
+                  value:
+                    type: integer
+                    default: 0
+                  metric:
+                    type: string
+                    default: ''
+              questions:
+                type: array
+                default: [ ]
+                items:
+                  type: object
+                  properties:
+                    code:
+                      type: string
+                      default: ''
+                    text:
+                      type: string
+                      default: 0
+                    required:
+                      type: boolean
+                      default: true
+              destinationCode:
+                type: string
+                default: ''
+              contract:
+                type: object
+                properties:
+                  incomingOffice:
+                    type: integer
+                  code:
+                    type: integer
+                    default: 0
+                  name:
+                    type: string
+                    default: ''
+              amountsFrom:
+                type: array
+                default: [ ]
+                items:
+                  type: object
+                  properties:
+                    paxType:
+                      type: string
+                      default: ''
+                    ageFrom:
+                      type: integer
+                      default: 0
+                    ageTo:
+                      type: integer
+                      default: 0
+                    amount:
+                      type: number
+                      default: 0
+                    boxOfficeAmount:
+                      type: number
+                      default: 0
+                    mandatoryApplyAmount:
+                      type: boolean
+                      default: true
+              rates:
+                type: array
+                default: [ ]
+                items:
+                  type: object
+                  properties:
+                    rateCode:
+                      type: string
+                      default: ''
+                    rateClass:
+                      type: string
+                      default: ''
+                    name:
+                      type: string
+                      default: ''
+                    freeCancellation:
+                      type: boolean
+                      default: true
+                    rateDetails:
+                      type: array
+                      default: [ ]
+                      items:
+                        type: object
+                        properties:
+                          rateKey:
+                            type: string
+                            default: ''
+                          operationDates:
+                            type: array
+                            default: [ ]
+                            items:
+                              type: object
+                              properties:
+                                from:
+                                  type: string
+                                  default: ''
+                                to:
+                                  type: string
+                                  default: ''
+                                cancellationPolicies:
+                                  type: array
+                                  default: [ ]
+                                  items:
+                                    $ref: '#/components/schemas/ModalityCancellationPolicy'
+                          languages:
+                            type: array
+                            default: [ ]
+                            items:
+                              $ref: '#/components/schemas/Language'
+                          sessions:
+                            type: array
+                            default: [ ]
+                            items:
+                              $ref: '#/components/schemas/Session'
+                          minimumDuration:
+                            type: object
+                            properties:
+                              value:
+                                type: integer
+                                default: 0
+                              metric:
+                                type: string
+                                default: ''
+                          maximumDuration:
+                            type: object
+                            properties:
+                              value:
+                                type: integer
+                                default: 0
+                              metric:
+                                type: string
+                                default: ''
+                          totalAmount:
+                            type: object
+                            properties:
+                              amount:
+                                type: number
+                                default: 0
+                              boxOfficeAmount:
+                                type: number
+                                default: 0
+                              mandatoryApplyAmount:
+                                type: boolean
+                                default: true
+                          paxAmounts:
+                            type: array
+                            default: [ ]
+                            items:
+                              $ref: '#/components/schemas/PaxAmount'
+                          agencyCommission:
+                            type: object
+                            properties:
+                              percentage:
+                                type: integer
+                                default: 0
+                              amount:
+                                type: number
+                                default: 0
+                              vatPercentage:
+                                type: integer
+                                default: 0
+                              vatAmount:
+                                type: integer
+                                default: 0
+              amountUnitType:
+                type: string
+                default: ''
+              uniqueIdentifier:
+                type: string
+                default: ''
+        currencyName:
+          type: string
+          default: ''
+        amountsFrom:
+          type: array
+          default: [ ]
+          items:
+            type: object
+            properties:
+              paxType:
+                type: string
+                default: ''
+              ageFrom:
+                type: integer
+                default: 0
+              ageTo:
+                type: integer
+                default: 0
+              amount:
+                type: number
+                default: 0
+              boxOfficeAmount:
+                type: number
+                default: 0
+              mandatoryApplyAmount:
+                type: boolean
+                default: true
+        content:
+          title: Content
+          type: object
+          $ref: '#/components/schemas/Content'
+        order:
+          type: integer
+          default: 0
+        name:
+          type: string
+          default: ''
+        currency:
+          type: string
+          default: ''
+        code:
+          type: string
+          default: ''
+        type:
+          type: string
+          default: ''
+#-----------
+
+    AvailabilityByHotelResponse:
+      title: AvailabilityByHotelResponse
+      type: object
+      properties:
+        operationId:
+          type: string
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        auditData:
+          $ref: '#/components/schemas/AuditData'
+        activities:
+          type: array
+          default: [ ]
+          items:
+            $ref: '#/components/schemas/Activity'
+        summaryLog:
+          type: string
+          default: ''
+        errors:
+          type: array
+          default: [ ]
+          items:
+            $ref: '#/components/schemas/ResponseError'
+
+    #Booking
+    BookingConfirmRequest:
+      title: BookingConfirmRequest
+      required:
+        - language
+        - clientReference
+        - holder
+        - activities
+      type: object
+      properties:
+        language:
+          type: string
+        clientReference:
+          type: string
+        holder:
+          $ref: '#/components/schemas/BookingHolder'
+        activities:
+          type: array
+          items:
+            $ref: '#/components/schemas/BookingActivity'
+          description: ''
+    BookingHolder:
+      title: Holder
+      required:
+        - name
+        - title
+        - email
+        - address
+        - zipCode
+        - mailing
+        - mailUpdDate
+        - country
+        - surname
+        - telephones
+      type: object
+      properties:
+        name:
+          type: string
+        title:
+          type: string
+        email:
+          type: string
+        address:
+          type: string
+        zipCode:
+          type: string
+        mailing:
+          type: boolean
+        mailUpdDate:
+          type: string
+        country:
+          type: string
+        surname:
+          type: string
+        telephones:
+          type: array
+          items:
+            type: string
+          description: ''
+    BookingActivity:
+      title: Activity
+      required:
+        - preferedLanguage
+        - serviceLanguage
+        - rateKey
+        - from
+        - to
+        - paxes
+      type: object
+      properties:
+        preferedLanguage:
+          type: string
+        serviceLanguage:
+          type: string
+        rateKey:
+          type: string
+        from:
+          type: string
+        to:
+          type: string
+        paxes:
+          type: array
+          items:
+            $ref: '#/components/schemas/BookingPax'
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/BookingAnswer'
+    BookingPax:
+      title: BookingPax
+      required:
+        - age
+        - name
+        - type
+        - surname
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+          default: ''
+        mailing:
+          title: Mailing
+          type: boolean
+        surname:
+          title: Surname
+          type: string
+          default: ''
+        customerId:
+          title: Customerid
+          type: string
+          default: ''
+        age:
+          title: Age
+          type: integer
+          default: 0
+        type:
+          title: type
+          type: string
+          default: ''
+        passport:
+          title: Passport
+          type: string
+          default: ''
+    BookingAnswer:
+      title: BookingAnswer
+      required:
+        - question
+        - answer
+      type: object
+      properties:
+        question:
+          title: Question
+          $ref: '#/components/schemas/BookingQuestionHB'
+        answer:
+          title: Answer
+          type: string
+          default: ''
+    BookingQuestionHB:
+      title: BookingQuestion
+      required:
+        - code
+      type: object
+      properties:
+        code:
+          title: Code
+          type: string
+          default: ''
+    BookingResponse:
+      properties:
+        operationId:
+          type: string
+          default: ''
+        auditData:
+          $ref: '#/components/schemas/AuditData'
+#          title: Auditdata
+#          type: object
+#          properties:
+#            processTime:
+#              title: Processtime
+#              type: integer
+#              default: 0
+#            time:
+#              title: Time
+#              type: string
+#              default: ''
+#            serverId:
+#              title: Serverid
+#              type: string
+#              default: ''
+#            environment:
+#              title: Environment
+#              type: string
+#              default: ''
+        booking:
+          title: Booking
+          type: object
+          properties:
+            reference:
+              title: Reference
+              type: string
+              default: ''
+            status:
+              title: Status
+              type: string
+              default: ''
+            currency:
+              title: Currency
+              type: string
+              default: ''
+            pendingAmount:
+              title: Pendingamount
+              type: number
+              default: 0
+            agency:
+              title: Agency
+              type: object
+              properties:
+                code:
+                  title: Code
+                  type: integer
+                  default: 0
+                branch:
+                  title: Branch
+                  type: integer
+                  default: 0
+                comments:
+                  title: Comments
+                  type: string
+                  default: ''
+                sucursal:
+                  title: Sucursal
+                  type: object
+                  properties:
+                    name:
+                      title: Name
+                      type: string
+                      default: ''
+                    street:
+                      title: Street
+                      type: string
+                      default: ''
+                    zip:
+                      title: Zip
+                      type: string
+                      default: ''
+                    city:
+                      title: City
+                      type: string
+                      default: ''
+                    email:
+                      title: Email
+                      type: string
+                      default: ''
+                    region:
+                      title: Region
+                      type: string
+                      default: ''
+            creationDate:
+              title: Creationdate
+              type: string
+              default: ''
+            paymentData:
+              title: Paymentdata
+              type: object
+              properties:
+                paymentType:
+                  title: Paymenttype
+                  type: object
+                  properties:
+                    code:
+                      title: Code
+                      type: string
+                      default: ''
+                invoicingCompany:
+                  title: Invoicingcompany
+                  type: object
+                  properties:
+                    code:
+                      title: Code
+                      type: string
+                      default: ''
+                    name:
+                      title: Name
+                      type: string
+                      default: ''
+                    registrationNumber:
+                      title: Registrationnumber
+                      type: string
+                      default: ''
+                description:
+                  title: Description
+                  type: string
+                  default: ''
+            cancelValuationAmount:
+              title: CancelValuationAmount
+              type: number
+              default: 0
+            clientReference:
+              title: Clientreference
+              type: string
+              default: ''
+            holder:
+              title: Holder
+              type: object
+              properties:
+                name:
+                  title: Name
+                  type: string
+                  default: ''
+                title:
+                  title: Title
+                  type: string
+                  default: ''
+                email:
+                  title: Email
+                  type: string
+                  default: ''
+                mailing:
+                  title: Mailing
+                  type: boolean
+                  default: false
+                surname:
+                  title: Surname
+                  type: string
+                  default: ''
+                telephones:
+                  title: Telephone
+                  type: array
+                  default: [ ]
+                  items:
+                    title: Items
+                    type: string
+                    default: ''
+            total:
+              title: Total
+              type: number
+              default: 0
+            totalNet:
+              title: Totalnet
+              type: number
+              default: 0
+            activities:
+              title: BookingActivity
+              type: array
+              default: [ ]
+              items:
+                title: Items
+                type: object
+                properties:
+                  status:
+                    title: Status
+                    type: string
+                    default: ''
+                  supplier:
+                    title: Supplier
+                    type: object
+                    properties:
+                      name:
+                        title: Name
+                        type: string
+                        default: ''
+                      vatNumber:
+                        title: Vatnumber
+                        type: string
+                        default: ''
+                  comments:
+                    title: Comment
+                    type: array
+                    default: [ ]
+                    items:
+                      title: Items
+                      type: object
+                      properties:
+                        type:
+                          title: Type
+                          type: string
+                          default: ''
+                        text:
+                          title: Text
+                          type: string
+                          default: ''
+                  type:
+                    title: Type
+                    type: string
+                    default: ''
+                  externalSupplierReference:
+                    title: External Supplier Reference
+                    type: string
+                    default: ''
+                  vouchers:
+                    title: Voucher
+                    type: array
+                    default: [ ]
+                    items:
+                      title: Items
+                      type: object
+                      properties:
+                        code:
+                          title: Code
+                          type: string
+                          default: ''
+                        language:
+                          title: Language
+                          type: string
+                          default: ''
+                        url:
+                          title: url
+                          type: string
+                          default: ''
+                        mimeType:
+                          title: mimeType
+                          type: string
+                          default: ''
+                        dateFrom:
+                          title: Date From
+                          type: string
+                          default: ''
+                        dateTo:
+                          title: Date To
+                          type: string
+                          default: ''
+                  activityReference:
+                    title: Activityreference
+                    type: string
+                    default: ''
+                  code:
+                    title: Code
+                    type: string
+                    default: ''
+                  name:
+                    title: Name
+                    type: string
+                    default: ''
+                  modality:
+                    title: BookingModality
+                    type: object
+                    properties:
+                      code:
+                        title: Code
+                        type: string
+                        default: ''
+                      name:
+                        title: Name
+                        type: string
+                        default: ''
+                      rates:
+                        title: Rate
+                        type: array
+                        default: [ ]
+                        items:
+                          title: Items
+                          type: object
+                          properties:
+                            freeCancellation:
+                              type: boolean
+                              default: false
+                            #TODO
+                            # rateDetails:
+                            #   title: BookingRatedetail
+                            #   type: array
+                            #   default: []
+                            #   items:
+                            #     title: BookingRateDetailItems
+                            #     type: object
+                            #     properties:
+                            #       languages:
+                      amountUnitType:
+                        title: Amountunittype
+                        type: string
+                        default: ''
+                  dateFrom:
+                    type: string
+                    default: ''
+                  dateTo:
+                    type: string
+                    default: ''
+                  rateBreakdown:
+                    title: Ratebreakdown
+                    type: object
+                    properties:
+                      rateSupplements:
+                        title: Ratesupplement
+                        type: array
+                        default: [ ]
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              default: ''
+                            info:
+                              type: string
+                              default: ''
+                            amount:
+                              type: number
+                              default: 0
+                  cancellationPolicies:
+                    title: Cancellationpolicy
+                    type: array
+                    default: [ ]
+                    items:
+                      title: Items
+                      type: object
+                      properties:
+                        dateFrom:
+                          type: string
+                          default: ''
+                        amount:
+                          type: number
+                          default: 0
+                  paxes:
+                    title: Paxes
+                    type: array
+                    default: [ ]
+                    items:
+                      $ref: '#/components/schemas/BookingPax'
+                  questions:
+                    title: Question
+                    type: array
+                    default: [ ]
+                    items:
+                      title: Items
+                      type: object
+                      properties:
+                        question:
+                          type: object
+                          properties:
+                            code:
+                              type: string
+                              default: ''
+                            text:
+                              type: string
+                              default: ''
+                            required:
+                              type: boolean
+                              default: true
+                        answer:
+                          type: string
+                          default: ''
+                  id:
+                    type: string
+                    default: ''
+                  agencyCommission:
+                    type: object
+                    properties:
+                      percentage:
+                        type: integer
+                        default: 0
+                      amount:
+                        type: number
+                        default: 0
+                      vatAmount:
+                        type: integer
+                        default: 0
+                  contactInfo:
+                    type: object
+                    properties:
+                      country:
+                        type: object
+                        properties:
+                          destinations:
+                            title: Destination
+                            type: array
+                            default: [ ]
+                            items:
+                              type: object
+                              properties:
+                                code:
+                                  type: string
+                                  default: ''
+                                name:
+                                  type: string
+                                  default: ''
+                  amountDetail:
+                    title: BookingAmountdetail
+                    type: object
+                    properties:
+                      paxAmounts:
+                        title: Paxamounts
+                        type: array
+                        default: [ ]
+                        items:
+                          title: Items
+                          type: object
+                          properties:
+                            paxType:
+                              title: Paxtype
+                              type: string
+                              default: ''
+                            amount:
+                              type: number
+                              default: 0
+                      totalAmount:
+                        title: Totalamount
+                        type: object
+                        properties:
+                          amount:
+                            type: number
+                            default: 0
+                  extraData:
+                    title: Extradata
+                    type: array
+                    default: [ ]
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          default: ''
+                        value:
+                          type: string
+                          default: ''
+                  providerInformation:
+                    title: Providerinformation
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        default: ''
+                  content:
+                    $ref: '#/components/schemas/Content'
+        errors:
+          type: array
+          default: [ ]
+          items:
+            $ref: '#/components/schemas/ResponseError'
+#Activities detail
+    DetailSimpleRequest:
+      title: DetailSimpleRequest
+      required:
+        - code
+        - from
+        - to
+        - language
+        - paxes
+      type: object
+      properties:
+        code:
+          type: string
+        from:
+          type: string
+        to:
+          type: string
+        language:
+          type: string
+        paxes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pax'
+          description: ''
+      example:
+        code: E-E10-HIGHARTIST
+        from: 2016-07-01
+        to: 2016-07-15
+        language: en
+        paxes:
+          - age: 30
+          - age: 10
+    DetailSimpleResponse:
+      properties:
+        operationId:
+          type: string
+          default: ''
+        auditData:
+          $ref: '#/components/schemas/AuditData'
+        activity:
+          $ref: '#/components/schemas/Activity'
+        errors:
+          type: array
+          default: [ ]
+          items:
+            $ref: '#/components/schemas/ResponseError'
+    ResponseError:
+      title: ResponseError
+      type: object
+      properties:
+        code:
+          type: string
+        text:
+          type: string
+
+
+
+

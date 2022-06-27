@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:stlp="http://services.sabre.com/STL_Payload/v02_02"
+           xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+           jaxb:version="2.0"
+           xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+           jaxb:extensionBindingPrefixes="xjc"
+           xmlns="http://services.sabre.com/hotel/pricecheck/v4_0_0"
+           targetNamespace="http://services.sabre.com/hotel/pricecheck/v4_0_0"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+
+    <xs:annotation>
+        <xs:appinfo>
+            <jaxb:globalBindings>
+                <xjc:simple/>
+            </jaxb:globalBindings>
+        </xs:appinfo>
+    </xs:annotation>
+
+    <xs:import namespace="http://services.sabre.com/STL_Payload/v02_02"
+               schemaLocation="../STL2_Payload_v02_02.xsd"/>
+    <xs:include schemaLocation="HotelPriceCheckCommons_v4.0.0.xsd"/>
+
+    <xs:element name="HotelPriceCheckRQ">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Hotel Price Check Request - API is a step between Shopping and Booking that ensures the price returned in shopping for a chosen product is still applicable just prior to booking.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="stlp:STL_Request_Payload">
+                    <xs:sequence>
+                        <xs:element name="POS" type="POS" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>Point of sale</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="RateInfoRef" type="RateInfoRef">
+                            <xs:annotation>
+                                <xs:documentation>Hotel rates request message to get details of available rates hotels.</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

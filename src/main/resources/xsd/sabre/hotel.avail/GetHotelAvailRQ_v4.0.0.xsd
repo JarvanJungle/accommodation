@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:stlp="http://services.sabre.com/STL_Payload/v02_02" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" jaxb:extensionBindingPrefixes="xjc" xmlns="http://services.sabre.com/hotel/avail/v4_0_0" targetNamespace="http://services.sabre.com/hotel/avail/v4_0_0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:annotation>
+        <xs:appinfo>
+            <jaxb:globalBindings>
+                <xjc:simple />
+            </jaxb:globalBindings>
+        </xs:appinfo>
+    </xs:annotation>
+    <xs:import namespace="http://services.sabre.com/STL_Payload/v02_02" schemaLocation="../STL2_Payload_v02_02.xsd" />
+    <xs:include schemaLocation="HotelAvailCommons_v4.0.0.xsd" />
+    <xs:element name="GetHotelAvailRQ">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Hotel Availability Request.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="stlp:STL_Request_Payload">
+                    <xs:sequence>
+                        <xs:element name="POS" type="POS" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">
+                                    Point of sale
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="SearchCriteria" type="SearchCriteria">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">
+                                    Search Parameters  for Hotel Availability Request
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="SearchCriteria">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Search Parameters for Hotel Availability
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:choice>
+                <xs:element name="GeoSearch">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            Geo search Request Message requests hotels within the specifies radius.
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="GeoRef" type="GeoRef" minOccurs="1" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>GeoRef tag is used to search Hotel List information on basis of latitute ,longitude, address and ref point</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="GeoAttributes" type="GeoAttributes" minOccurs="0">
+                                <xs:annotation>
+                                    <xs:documentation>GeoAttributes is used to filter hotel list which are serach by GeoRef</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="HotelRefs" type="HotelRefs" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Describes the reference to a Hotel by its code. This includes an attribute for Hotel Code</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+            <xs:element name="RateInfoRef" type="RateInfoRef" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Rates information for the search request</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="HotelPref" type="HotelPref" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        HotelPref describes filtering criterias.  It is optional
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ImageRef" type="ImageRef" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Hotel Image Details</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="OffSet" type="xs:positiveInteger" use="optional" default="1">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">
+                    Optional. Defaults to 1. Indicates Page number.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="SortBy" type="SortByType" use="optional" default="TotalRate">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">
+                    Indicates the criteria to sort properties by DistanceFrom, TotalRate , SabreRating.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="SortOrder" type="SortOrderType" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">
+                    Indicates whether results should be sorted in ascending or descending order. This attribute takes a default value based on SortBy. TotalRate:ASC | DistanceFrom:ASC | SabreRating:DESC
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="PageSize" type="PageSize" use="optional" default="200">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">
+                    1 to 200. Optional. Defaults to 200. Indicates number of properties to be returned in each page of response.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ShopKey" type="StringLength0to240" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">
+                    ShopKey returned from previous AvailResponse. When ShopKey is given, only Offset is relevant. Other attributes are ignored.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="TierLabels" type="xs:boolean" use="optional" default="true">
+            <xs:annotation>
+                <xs:documentation> Defaults to True. If true, the TierLabel value is visible for preferenced properties in the response. </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="RateDetailsInd" type="xs:boolean" use="optional" default="true">
+            <xs:annotation>
+                <xs:documentation> Defaults to True. When True, only returns properties for which rates are available </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+</xs:schema>

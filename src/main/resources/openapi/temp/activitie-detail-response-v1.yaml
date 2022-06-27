@@ -1,0 +1,912 @@
+---
+definitions: {}
+"$schema": http://json-schema.org/draft-07/schema#
+"$id": https://example.com/object1624103962.json
+title: Root
+type: object
+properties:
+  operationId:
+    "$id": "#root/operationId"
+    title: Operationid
+    type: string
+    default: ''
+    pattern: "^.*$"
+  auditData:
+    "$id": "#root/auditData"
+    title: Auditdata
+    type: object
+    properties:
+      processTime:
+        "$id": "#root/auditData/processTime"
+        title: Processtime
+        type: integer
+        default: 0
+      time:
+        "$id": "#root/auditData/time"
+        title: Time
+        type: string
+        default: ''
+        pattern: "^.*$"
+      serverId:
+        "$id": "#root/auditData/serverId"
+        title: Serverid
+        type: string
+        default: ''
+        pattern: "^.*$"
+      environment:
+        "$id": "#root/auditData/environment"
+        title: Environment
+        type: string
+        default: ''
+        pattern: "^.*$"
+  activity:
+    "$id": "#root/activity"
+    title: Activity
+    type: object
+    properties:
+      activityCode:
+        "$id": "#root/activity/activityCode"
+        title: Activitycode
+        type: string
+        default: ''
+        pattern: "^.*$"
+      country:
+        "$id": "#root/activity/country"
+        title: Country
+        type: object
+        properties:
+          code:
+            "$id": "#root/activity/country/code"
+            title: Code
+            type: string
+            default: ''
+            pattern: "^.*$"
+          name:
+            "$id": "#root/activity/country/name"
+            title: Name
+            type: string
+            default: ''
+            pattern: "^.*$"
+          destinations:
+            "$id": "#root/activity/country/destinations"
+            title: Destinations
+            type: array
+            default: []
+            items:
+              "$id": "#root/activity/country/destinations/items"
+              title: Items
+              type: object
+              properties:
+                code:
+                  "$id": "#root/activity/country/destinations/items/code"
+                  title: Code
+                  type: string
+                  default: ''
+                  pattern: "^.*$"
+                name:
+                  "$id": "#root/activity/country/destinations/items/name"
+                  title: Name
+                  type: string
+                  default: ''
+                  pattern: "^.*$"
+      operationDays:
+        "$id": "#root/activity/operationDays"
+        title: Operationdays
+        type: array
+        default: []
+        items:
+          "$id": "#root/activity/operationDays/items"
+          title: Items
+          type: object
+          properties:
+            code:
+              "$id": "#root/activity/operationDays/items/code"
+              title: Code
+              type: string
+              default: ''
+              pattern: "^.*$"
+            name:
+              "$id": "#root/activity/operationDays/items/name"
+              title: Name
+              type: string
+              default: ''
+              pattern: "^.*$"
+      modalities:
+        "$id": "#root/activity/modalities"
+        title: Modalities
+        type: array
+        default: []
+        items:
+          "$id": "#root/activity/modalities/items"
+          title: Items
+          type: object
+          properties:
+            code:
+              "$id": "#root/activity/modalities/items/code"
+              title: Code
+              type: string
+              default: ''
+              pattern: "^.*$"
+            name:
+              "$id": "#root/activity/modalities/items/name"
+              title: Name
+              type: string
+              default: ''
+              pattern: "^.*$"
+            duration:
+              "$id": "#root/activity/modalities/items/duration"
+              title: Duration
+              type: object
+              properties:
+                value:
+                  "$id": "#root/activity/modalities/items/duration/value"
+                  title: Value
+                  type: integer
+                  default: 0
+                metric:
+                  "$id": "#root/activity/modalities/items/duration/metric"
+                  title: Metric
+                  type: string
+                  default: ''
+                  pattern: "^.*$"
+            questions:
+              "$id": "#root/activity/modalities/items/questions"
+              title: Questions
+              type: array
+              default: []
+              items:
+                "$id": "#root/activity/modalities/items/questions/items"
+                title: Items
+                type: object
+                properties:
+                  code:
+                    "$id": "#root/activity/modalities/items/questions/items/code"
+                    title: Code
+                    type: string
+                    default: ''
+                    pattern: "^.*$"
+                  text:
+                    "$id": "#root/activity/modalities/items/questions/items/text"
+                    title: Text
+                    type: string
+                    default: ''
+                    pattern: "^.*$"
+                  required:
+                    "$id": "#root/activity/modalities/items/questions/items/required"
+                    title: Required
+                    type: boolean
+                    default: true
+            comments:
+              "$id": "#root/activity/modalities/items/comments"
+              title: Comments
+              type: array
+              default: []
+              items:
+                "$id": "#root/activity/modalities/items/comments/items"
+                title: Items
+                type: object
+                properties:
+                  type:
+                    "$id": "#root/activity/modalities/items/comments/items/type"
+                    title: Type
+                    type: string
+                    default: ''
+                    pattern: "^.*$"
+                  text:
+                    "$id": "#root/activity/modalities/items/comments/items/text"
+                    title: Text
+                    type: string
+                    default: ''
+                    pattern: "^.*$"
+            supplierInformation:
+              "$id": "#root/activity/modalities/items/supplierInformation"
+              title: Supplierinformation
+              type: object
+              properties:
+                name:
+                  "$id": "#root/activity/modalities/items/supplierInformation/name"
+                  title: Name
+                  type: string
+                  default: ''
+                  pattern: "^.*$"
+                vatNumber:
+                  "$id": "#root/activity/modalities/items/supplierInformation/vatNumber"
+                  title: Vatnumber
+                  type: string
+                  default: ''
+                  pattern: "^.*$"
+            providerInformation:
+              "$id": "#root/activity/modalities/items/providerInformation"
+              title: Providerinformation
+              type: object
+              properties:
+                name:
+                  "$id": "#root/activity/modalities/items/providerInformation/name"
+                  title: Name
+                  type: string
+                  default: ''
+                  pattern: "^.*$"
+            destinationCode:
+              "$id": "#root/activity/modalities/items/destinationCode"
+              title: Destinationcode
+              type: string
+              default: ''
+              pattern: "^.*$"
+            contract:
+              "$id": "#root/activity/modalities/items/contract"
+              title: Contract
+              type: object
+              properties:
+                incomingOffice:
+                  "$id": "#root/activity/modalities/items/contract/incomingOffice"
+                  title: Incomingoffice
+                  type: integer
+                  default: 0
+                code:
+                  "$id": "#root/activity/modalities/items/contract/code"
+                  title: Code
+                  type: integer
+                  default: 0
+                name:
+                  "$id": "#root/activity/modalities/items/contract/name"
+                  title: Name
+                  type: string
+                  default: ''
+                  pattern: "^.*$"
+            languages:
+              "$id": "#root/activity/modalities/items/languages"
+              title: Languages
+              type: array
+              default: []
+            amountsFrom:
+              "$id": "#root/activity/modalities/items/amountsFrom"
+              title: Amountsfrom
+              type: array
+              default: []
+              items:
+                "$id": "#root/activity/modalities/items/amountsFrom/items"
+                title: Items
+                type: object
+                properties:
+                  paxType:
+                    "$id": "#root/activity/modalities/items/amountsFrom/items/paxType"
+                    title: Paxtype
+                    type: string
+                    default: ''
+                    pattern: "^.*$"
+                  ageFrom:
+                    "$id": "#root/activity/modalities/items/amountsFrom/items/ageFrom"
+                    title: Agefrom
+                    type: integer
+                    default: 0
+                  ageTo:
+                    "$id": "#root/activity/modalities/items/amountsFrom/items/ageTo"
+                    title: Ageto
+                    type: integer
+                    default: 0
+                  amount:
+                    "$id": "#root/activity/modalities/items/amountsFrom/items/amount"
+                    title: Amount
+                    type: number
+                    default: 0
+                  boxOfficeAmount:
+                    "$id": "#root/activity/modalities/items/amountsFrom/items/boxOfficeAmount"
+                    title: Boxofficeamount
+                    type: number
+                    default: 0
+                  mandatoryApplyAmount:
+                    "$id": "#root/activity/modalities/items/amountsFrom/items/mandatoryApplyAmount"
+                    title: Mandatoryapplyamount
+                    type: boolean
+                    default: true
+            rates:
+              "$id": "#root/activity/modalities/items/rates"
+              title: Rates
+              type: array
+              default: []
+              items:
+                "$id": "#root/activity/modalities/items/rates/items"
+                title: Items
+                type: object
+                properties:
+                  rateCode:
+                    "$id": "#root/activity/modalities/items/rates/items/rateCode"
+                    title: Ratecode
+                    type: string
+                    default: ''
+                    pattern: "^.*$"
+                  rateClass:
+                    "$id": "#root/activity/modalities/items/rates/items/rateClass"
+                    title: Rateclass
+                    type: string
+                    default: ''
+                    pattern: "^.*$"
+                  name:
+                    "$id": "#root/activity/modalities/items/rates/items/name"
+                    title: Name
+                    type: string
+                    default: ''
+                    pattern: "^.*$"
+                  freeCancellation:
+                    "$id": "#root/activity/modalities/items/rates/items/freeCancellation"
+                    title: Freecancellation
+                    type: boolean
+                    default: true
+                  rateDetails:
+                    "$id": "#root/activity/modalities/items/rates/items/rateDetails"
+                    title: Ratedetails
+                    type: array
+                    default: []
+                    items:
+                      "$id": "#root/activity/modalities/items/rates/items/rateDetails/items"
+                      title: Items
+                      type: object
+                      properties:
+                        rateKey:
+                          "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/rateKey"
+                          title: Ratekey
+                          type: string
+                          default: ''
+                          pattern: "^.*$"
+                        operationDates:
+                          "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/operationDates"
+                          title: Operationdates
+                          type: array
+                          default: []
+                          items:
+                            "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/operationDates/items"
+                            title: Items
+                            type: object
+                            properties:
+                              from:
+                                "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/operationDates/items/from"
+                                title: From
+                                type: string
+                                default: ''
+                                pattern: "^.*$"
+                              to:
+                                "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/operationDates/items/to"
+                                title: To
+                                type: string
+                                default: ''
+                                pattern: "^.*$"
+                              cancellationPolicies:
+                                "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/operationDates/items/cancellationPolicies"
+                                title: Cancellationpolicies
+                                type: array
+                                default: []
+                                items:
+                                  "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/operationDates/items/cancellationPolicies/items"
+                                  title: Items
+                                  type: object
+                                  properties:
+                                    dateFrom:
+                                      "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/operationDates/items/cancellationPolicies/items/dateFrom"
+                                      title: Datefrom
+                                      type: string
+                                      default: ''
+                                      pattern: "^.*$"
+                                    amount:
+                                      "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/operationDates/items/cancellationPolicies/items/amount"
+                                      title: Amount
+                                      type: integer
+                                      default: 0
+                        languages:
+                          "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/languages"
+                          title: Languages
+                          type: array
+                          default: []
+                        sessions:
+                          "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/sessions"
+                          title: Sessions
+                          type: array
+                          default: []
+                        minimumDuration:
+                          "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/minimumDuration"
+                          title: Minimumduration
+                          type: object
+                          properties:
+                            value:
+                              "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/minimumDuration/value"
+                              title: Value
+                              type: integer
+                              default: 0
+                            metric:
+                              "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/minimumDuration/metric"
+                              title: Metric
+                              type: string
+                              default: ''
+                              pattern: "^.*$"
+                        maximumDuration:
+                          "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/maximumDuration"
+                          title: Maximumduration
+                          type: object
+                          properties:
+                            value:
+                              "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/maximumDuration/value"
+                              title: Value
+                              type: integer
+                              default: 0
+                            metric:
+                              "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/maximumDuration/metric"
+                              title: Metric
+                              type: string
+                              default: ''
+                              pattern: "^.*$"
+                        totalAmount:
+                          "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/totalAmount"
+                          title: Totalamount
+                          type: object
+                          properties:
+                            amount:
+                              "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/totalAmount/amount"
+                              title: Amount
+                              type: integer
+                              default: 0
+                            boxOfficeAmount:
+                              "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/totalAmount/boxOfficeAmount"
+                              title: Boxofficeamount
+                              type: integer
+                              default: 0
+                            mandatoryApplyAmount:
+                              "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/totalAmount/mandatoryApplyAmount"
+                              title: Mandatoryapplyamount
+                              type: boolean
+                              default: true
+                        paxAmounts:
+                          "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/paxAmounts"
+                          title: Paxamounts
+                          type: array
+                          default: []
+                          items:
+                            "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/paxAmounts/items"
+                            title: Items
+                            type: object
+                            properties:
+                              paxType:
+                                "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/paxAmounts/items/paxType"
+                                title: Paxtype
+                                type: string
+                                default: ''
+                                pattern: "^.*$"
+                              ageFrom:
+                                "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/paxAmounts/items/ageFrom"
+                                title: Agefrom
+                                type: integer
+                                default: 0
+                              ageTo:
+                                "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/paxAmounts/items/ageTo"
+                                title: Ageto
+                                type: integer
+                                default: 0
+                              amount:
+                                "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/paxAmounts/items/amount"
+                                title: Amount
+                                type: number
+                                default: 0
+                              boxOfficeAmount:
+                                "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/paxAmounts/items/boxOfficeAmount"
+                                title: Boxofficeamount
+                                type: number
+                                default: 0
+                              mandatoryApplyAmount:
+                                "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/paxAmounts/items/mandatoryApplyAmount"
+                                title: Mandatoryapplyamount
+                                type: boolean
+                                default: true
+                        agencyCommission:
+                          "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/agencyCommission"
+                          title: Agencycommission
+                          type: object
+                          properties:
+                            percentage:
+                              "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/agencyCommission/percentage"
+                              title: Percentage
+                              type: integer
+                              default: 0
+                            amount:
+                              "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/agencyCommission/amount"
+                              title: Amount
+                              type: number
+                              default: 0
+                            vatPercentage:
+                              "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/agencyCommission/vatPercentage"
+                              title: Vatpercentage
+                              type: integer
+                              default: 0
+                            vatAmount:
+                              "$id": "#root/activity/modalities/items/rates/items/rateDetails/items/agencyCommission/vatAmount"
+                              title: Vatamount
+                              type: integer
+                              default: 0
+            amountUnitType:
+              "$id": "#root/activity/modalities/items/amountUnitType"
+              title: Amountunittype
+              type: string
+              default: ''
+              pattern: "^.*$"
+            uniqueIdentifier:
+              "$id": "#root/activity/modalities/items/uniqueIdentifier"
+              title: Uniqueidentifier
+              type: string
+              default: ''
+              pattern: "^.*$"
+      currencyName:
+        "$id": "#root/activity/currencyName"
+        title: Currencyname
+        type: string
+        default: ''
+        pattern: "^.*$"
+      amountsFrom:
+        "$id": "#root/activity/amountsFrom"
+        title: Amountsfrom
+        type: array
+        default: []
+        items:
+          "$id": "#root/activity/amountsFrom/items"
+          title: Items
+          type: object
+          properties:
+            paxType:
+              "$id": "#root/activity/amountsFrom/items/paxType"
+              title: Paxtype
+              type: string
+              default: ''
+              pattern: "^.*$"
+            ageFrom:
+              "$id": "#root/activity/amountsFrom/items/ageFrom"
+              title: Agefrom
+              type: integer
+              default: 0
+            ageTo:
+              "$id": "#root/activity/amountsFrom/items/ageTo"
+              title: Ageto
+              type: integer
+              default: 0
+            amount:
+              "$id": "#root/activity/amountsFrom/items/amount"
+              title: Amount
+              type: number
+              default: 0
+            boxOfficeAmount:
+              "$id": "#root/activity/amountsFrom/items/boxOfficeAmount"
+              title: Boxofficeamount
+              type: number
+              default: 0
+            mandatoryApplyAmount:
+              "$id": "#root/activity/amountsFrom/items/mandatoryApplyAmount"
+              title: Mandatoryapplyamount
+              type: boolean
+              default: true
+      content:
+        "$id": "#root/activity/content"
+        title: Content
+        type: object
+        properties:
+          name:
+            "$id": "#root/activity/content/name"
+            title: Name
+            type: string
+            default: ''
+            pattern: "^.*$"
+          featureGroups:
+            "$id": "#root/activity/content/featureGroups"
+            title: Featuregroups
+            type: array
+            default: []
+            items:
+              "$id": "#root/activity/content/featureGroups/items"
+              title: Items
+              type: object
+              properties:
+                groupCode:
+                  "$id": "#root/activity/content/featureGroups/items/groupCode"
+                  title: Groupcode
+                  type: string
+                  default: ''
+                  pattern: "^.*$"
+                included:
+                  "$id": "#root/activity/content/featureGroups/items/included"
+                  title: Included
+                  type: array
+                  default: []
+                  items:
+                    "$id": "#root/activity/content/featureGroups/items/included/items"
+                    title: Items
+                    type: object
+                    properties:
+                      featureType:
+                        "$id": "#root/activity/content/featureGroups/items/included/items/featureType"
+                        title: Featuretype
+                        type: string
+                        default: ''
+                        pattern: "^.*$"
+                      description:
+                        "$id": "#root/activity/content/featureGroups/items/included/items/description"
+                        title: Description
+                        type: string
+                        default: ''
+                        pattern: "^.*$"
+          guidingOptions:
+            "$id": "#root/activity/content/guidingOptions"
+            title: Guidingoptions
+            type: object
+            properties:
+              guideType:
+                "$id": "#root/activity/content/guidingOptions/guideType"
+                title: Guidetype
+                type: string
+                default: ''
+                pattern: "^.*$"
+              included:
+                "$id": "#root/activity/content/guidingOptions/included"
+                title: Included
+                type: boolean
+                default: true
+          location:
+            "$id": "#root/activity/content/location"
+            title: Location
+            type: object
+            properties:
+              endPoints:
+                "$id": "#root/activity/content/location/endPoints"
+                title: Endpoints
+                type: array
+                default: []
+                items:
+                  "$id": "#root/activity/content/location/endPoints/items"
+                  title: Items
+                  type: object
+                  properties:
+                    type:
+                      "$id": "#root/activity/content/location/endPoints/items/type"
+                      title: Type
+                      type: string
+                      default: ''
+                      pattern: "^.*$"
+                    description:
+                      "$id": "#root/activity/content/location/endPoints/items/description"
+                      title: Description
+                      type: string
+                      default: ''
+                      pattern: "^.*$"
+              startingPoints:
+                "$id": "#root/activity/content/location/startingPoints"
+                title: Startingpoints
+                type: array
+                default: []
+                items:
+                  "$id": "#root/activity/content/location/startingPoints/items"
+                  title: Items
+                  type: object
+                  properties:
+                    type:
+                      "$id": "#root/activity/content/location/startingPoints/items/type"
+                      title: Type
+                      type: string
+                      default: ''
+                      pattern: "^.*$"
+                    meetingPoint:
+                      "$id": "#root/activity/content/location/startingPoints/items/meetingPoint"
+                      title: Meetingpoint
+                      type: object
+                      properties:
+                        type:
+                          "$id": "#root/activity/content/location/startingPoints/items/meetingPoint/type"
+                          title: Type
+                          type: string
+                          default: ''
+                          pattern: "^.*$"
+                        country:
+                          "$id": "#root/activity/content/location/startingPoints/items/meetingPoint/country"
+                          title: Country
+                          type: object
+                          properties:
+                            code:
+                              "$id": "#root/activity/content/location/startingPoints/items/meetingPoint/country/code"
+                              title: Code
+                              type: string
+                              default: ''
+                              pattern: "^.*$"
+                            name:
+                              "$id": "#root/activity/content/location/startingPoints/items/meetingPoint/country/name"
+                              title: Name
+                              type: string
+                              default: ''
+                              pattern: "^.*$"
+                            destinations:
+                              "$id": "#root/activity/content/location/startingPoints/items/meetingPoint/country/destinations"
+                              title: Destinations
+                              type: array
+                              default: []
+                              items:
+                                "$id": "#root/activity/content/location/startingPoints/items/meetingPoint/country/destinations/items"
+                                title: Items
+                                type: object
+                                properties:
+                                  code:
+                                    "$id": "#root/activity/content/location/startingPoints/items/meetingPoint/country/destinations/items/code"
+                                    title: Code
+                                    type: string
+                                    default: ''
+                                    pattern: "^.*$"
+                                  name:
+                                    "$id": "#root/activity/content/location/startingPoints/items/meetingPoint/country/destinations/items/name"
+                                    title: Name
+                                    type: string
+                                    default: ''
+                                    pattern: "^.*$"
+                        description:
+                          "$id": "#root/activity/content/location/startingPoints/items/meetingPoint/description"
+                          title: Description
+                          type: string
+                          default: ''
+                          pattern: "^.*$"
+                    pickupInstructions:
+                      "$id": "#root/activity/content/location/startingPoints/items/pickupInstructions"
+                      title: Pickupinstructions
+                      type: array
+                      default: []
+                      items:
+                        "$id": "#root/activity/content/location/startingPoints/items/pickupInstructions/items"
+                        title: Items
+                        type: object
+                        properties:
+                          description:
+                            "$id": "#root/activity/content/location/startingPoints/items/pickupInstructions/items/description"
+                            title: Description
+                            type: string
+                            default: ''
+                            pattern: "^.*$"
+          media:
+            "$id": "#root/activity/content/media"
+            title: Media
+            type: object
+            properties:
+              images:
+                "$id": "#root/activity/content/media/images"
+                title: Images
+                type: array
+                default: []
+                items:
+                  "$id": "#root/activity/content/media/images/items"
+                  title: Items
+                  type: object
+                  properties:
+                    visualizationOrder:
+                      "$id": "#root/activity/content/media/images/items/visualizationOrder"
+                      title: Visualizationorder
+                      type: integer
+                      default: 0
+                    mimeType:
+                      "$id": "#root/activity/content/media/images/items/mimeType"
+                      title: Mimetype
+                      type: string
+                      default: ''
+                      pattern: "^.*$"
+                    language:
+                      "$id": "#root/activity/content/media/images/items/language"
+                      title: Language
+                      type: string
+                      default: ''
+                      pattern: "^.*$"
+                    urls:
+                      "$id": "#root/activity/content/media/images/items/urls"
+                      title: Urls
+                      type: array
+                      default: []
+                      items:
+                        "$id": "#root/activity/content/media/images/items/urls/items"
+                        title: Items
+                        type: object
+                        properties:
+                          dpi:
+                            "$id": "#root/activity/content/media/images/items/urls/items/dpi"
+                            title: Dpi
+                            type: integer
+                            default: 0
+                          height:
+                            "$id": "#root/activity/content/media/images/items/urls/items/height"
+                            title: Height
+                            type: integer
+                            default: 0
+                          width:
+                            "$id": "#root/activity/content/media/images/items/urls/items/width"
+                            title: Width
+                            type: integer
+                            default: 0
+                          resource:
+                            "$id": "#root/activity/content/media/images/items/urls/items/resource"
+                            title: Resource
+                            type: string
+                            default: ''
+                            pattern: "^.*$"
+                          sizeType:
+                            "$id": "#root/activity/content/media/images/items/urls/items/sizeType"
+                            title: Sizetype
+                            type: string
+                            default: ''
+                            pattern: "^.*$"
+          segmentationGroups:
+            "$id": "#root/activity/content/segmentationGroups"
+            title: Segmentationgroups
+            type: array
+            default: []
+            items:
+              "$id": "#root/activity/content/segmentationGroups/items"
+              title: Items
+              type: object
+              properties:
+                code:
+                  "$id": "#root/activity/content/segmentationGroups/items/code"
+                  title: Code
+                  type: integer
+                  default: 0
+                name:
+                  "$id": "#root/activity/content/segmentationGroups/items/name"
+                  title: Name
+                  type: string
+                  default: ''
+                  pattern: "^.*$"
+                segments:
+                  "$id": "#root/activity/content/segmentationGroups/items/segments"
+                  title: Segments
+                  type: array
+                  default: []
+                  items:
+                    "$id": "#root/activity/content/segmentationGroups/items/segments/items"
+                    title: Items
+                    type: object
+                    properties:
+                      code:
+                        "$id": "#root/activity/content/segmentationGroups/items/segments/items/code"
+                        title: Code
+                        type: integer
+                        default: 0
+                      name:
+                        "$id": "#root/activity/content/segmentationGroups/items/segments/items/name"
+                        title: Name
+                        type: string
+                        default: ''
+                        pattern: "^.*$"
+          contentId:
+            "$id": "#root/activity/content/contentId"
+            title: Contentid
+            type: string
+            default: ''
+            pattern: "^.*$"
+          description:
+            "$id": "#root/activity/content/description"
+            title: Description
+            type: string
+            default: ''
+            pattern: "^.*$"
+      order:
+        "$id": "#root/activity/order"
+        title: Order
+        type: integer
+        default: 0
+      name:
+        "$id": "#root/activity/name"
+        title: Name
+        type: string
+        default: ''
+        pattern: "^.*$"
+      currency:
+        "$id": "#root/activity/currency"
+        title: Currency
+        type: string
+        default: ''
+        pattern: "^.*$"
+      code:
+        "$id": "#root/activity/code"
+        title: Code
+        type: string
+        default: ''
+        pattern: "^.*$"
+      type:
+        "$id": "#root/activity/type"
+        title: Type
+        type: string
+        default: ''
+        pattern: "^.*$"

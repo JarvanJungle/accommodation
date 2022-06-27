@@ -1,0 +1,505 @@
+<?xml version="1.0"?>
+<xs:schema targetNamespace="http://www.traveltek.com/schemas/messages"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:s1="http://www.traveltek.com/schemas/messages">
+
+    <xs:element name="request">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="auth" type="s1:auth"/>
+                <xs:element name="method" type="s1:method"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="response">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="errors" type="s1:errors"/>
+                <xs:element name="results" type="s1:result"/>
+            </xs:sequence>
+            <xs:attribute name="method" type="xs:string"/>
+            <xs:attribute name="success" type="xs:string"/>
+            <xs:attribute name="sessionkey" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="result">
+        <xs:sequence>
+            <xs:element name="cruise" type="s1:cruise" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="line" type="s1:line" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="ship" type="s1:ship"/>
+            <xs:element name="region" type="s1:region" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="portinfo" type="s1:port" />
+            <xs:element name="search" type="s1:search"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="cruise">
+        <xs:sequence>
+            <xs:element name="cruisebalconyprices" type="s1:cruisebalconyprices"/>
+            <xs:element name="cruiseinsideprices" type="s1:cruiseinsideprices"/>
+            <xs:element name="cruiseoutsideprices" type="s1:cruiseoutsideprices"/>
+            <xs:element name="cruisesuiteprices" type="s1:cruisesuiteprices"/>
+            <xs:element name="flights" type="s1:flights"/>
+            <xs:element name="itinerary" type="s1:itinerary"/>
+            <xs:element name="prices" type="s1:prices"/>
+            <xs:element name="regions" type="s1:regions"/>
+            <xs:element name="sailings" type="s1:sailings"/>
+            <xs:element name="line" type="s1:line"/>
+            <xs:element name="ports" type="s1:ports"/>
+            <xs:element name="ship" type="s1:ship"/>
+            <xs:element name="uniqueportids" type="xs:integer" maxOccurs="unbounded"/>
+            <xs:element name="uniqueportnames" type="xs:string" maxOccurs="unbounded"/>
+            <xs:element name="images" type="s1:images" />
+        </xs:sequence>
+        <xs:attribute name="codetocruiseid" type="xs:integer" use="optional"/>
+        <xs:attribute name="airbalconypricecode" type="xs:string"/>
+        <xs:attribute name="airinside" type="xs:decimal" use="optional"/>
+        <xs:attribute name="airinsidepricecode" type="xs:string"/>
+        <xs:attribute name="airoutside" type="xs:decimal" use="optional"/>
+        <xs:attribute name="airoutsidepricecode" type="xs:string"/>
+        <xs:attribute name="airport" type="xs:string"/>
+        <xs:attribute name="airportname" type="xs:string"/>
+        <xs:attribute name="airsuite" type="xs:decimal" use="optional"/>
+        <xs:attribute name="airsuitepricecode" type="xs:string"/>
+        <xs:attribute name="altvoyagecode" type="xs:string"/>
+        <xs:attribute name="copyandmedia" type="xs:string"/>
+        <xs:attribute name="cruisebalcony" type="xs:decimal" use="optional"/>
+        <xs:attribute name="cruisebalconypricecode" type="xs:string"/>
+        <xs:attribute name="cruisebalconypricecodedescription" type="xs:string"/>
+        <xs:attribute name="cruisebalconypricecodeiconurl" type="xs:string"/>
+        <xs:attribute name="cruiseid" type="xs:integer" use="optional"/>
+        <xs:attribute name="cruiseinside" type="xs:decimal" use="optional"/>
+        <xs:attribute name="cruiseinsidepricecode" type="xs:string"/>
+        <xs:attribute name="cruiseinsidepricecodedescription" type="xs:string"/>
+        <xs:attribute name="cruiseinsidepricecodeiconurl" type="xs:string"/>
+        <xs:attribute name="cruiseoutside" type="xs:decimal" use="optional"/>
+        <xs:attribute name="cruiseoutsidepricecode" type="xs:string"/>
+        <xs:attribute name="cruiseoutsidepricecodedescription" type="xs:string"/>
+        <xs:attribute name="cruiseoutsidepricecodeiconurl" type="xs:string"/>
+        <xs:attribute name="cruisesuite" type="xs:decimal" use="optional"/>
+        <xs:attribute name="cruisesuitepricecode" type="xs:string"/>
+        <xs:attribute name="cruisesuitepricecodedescription" type="xs:string"/>
+        <xs:attribute name="cruisesuitepricecodeiconurl" type="xs:string"/>
+        <xs:attribute name="ctcownerid" type="xs:string"/>
+        <xs:attribute name="currency" type="xs:string"/>
+        <xs:attribute name="cruiseline" type="xs:string"/>
+        <xs:attribute name="departuk" type="xs:string"/>
+        <xs:attribute name="description" type="xs:string"/>
+        <xs:attribute name="displaycruiseonly" type="xs:integer" use="optional"/>
+        <xs:attribute name="domesticdeparture" type="xs:string"/>
+        <xs:attribute name="enddate" type="xs:string"/>
+        <xs:attribute name="engine" type="xs:string"/>
+        <xs:attribute name="enginesource" type="xs:string"/>
+        <xs:attribute name="groupids" type="xs:string"/>
+        <xs:attribute name="hascruiseonly" type="xs:string"/>
+        <xs:attribute name="hasflights" type="xs:string"/>
+        <xs:attribute name="hidden" type="xs:string"/>
+        <xs:attribute name="iata" type="xs:string"/>
+        <xs:attribute name="ncf" type="xs:decimal" use="optional"/>
+        <xs:attribute name="localpricing" type="xs:string"/>
+        <xs:attribute name="marketid" type="xs:integer" use="optional"/>
+        <xs:attribute name="lineid" type="xs:integer" use="optional"/>
+        <xs:attribute name="linelogo" type="xs:string"/>
+        <xs:attribute name="name" type="xs:string"/>
+        <xs:attribute name="nights" type="xs:integer" use="optional"/>
+        <xs:attribute name="nofly" type="xs:string"/>
+        <xs:attribute name="nofuelsupplement" type="xs:string"/>
+        <xs:attribute name="noncommissionable" type="xs:decimal" use="optional"/>
+        <xs:attribute name="ownerid" type="xs:string"/>
+        <xs:attribute name="price" type="xs:decimal" use="optional"/>
+        <xs:attribute name="priority" type="xs:integer" use="optional"/>
+        <xs:attribute name="privatenotes" type="xs:string"/>
+        <xs:attribute name="ratecode" type="xs:string"/>
+        <xs:attribute name="ratecodedescription" type="xs:string"/>
+        <xs:attribute name="ratecodeiconurl" type="xs:string"/>
+        <xs:attribute name="resultiscruiseonly" type="xs:string"/>
+        <xs:attribute name="resultkey" type="xs:string"/>
+        <xs:attribute name="resultno" type="xs:string"/>
+        <xs:attribute name="resultweight" type="xs:integer" use="optional"/>
+        <xs:attribute name="returndate" type="xs:string"/>
+        <xs:attribute name="returnuk" type="xs:string"/>
+        <xs:attribute name="roundtrip" type="xs:string"/>
+        <xs:attribute name="saildate" type="xs:string"/>
+        <xs:attribute name="sailnights" type="xs:integer" use="optional"/>
+        <xs:attribute name="scurrency" type="xs:string"/>
+        <xs:attribute name="seadays" type="xs:integer" use="optional"/>
+        <xs:attribute name="searchno" type="xs:integer" use="optional"/>
+        <xs:attribute name="senior" type="xs:integer" use="optional"/>
+        <xs:attribute name="soldout" type="xs:integer" use="optional"/>
+        <xs:attribute name="special" type="xs:string"/>
+        <xs:attribute name="specialsgroup" type="xs:string"/>
+        <xs:attribute name="sprice" type="xs:decimal" use="optional"/>
+        <xs:attribute name="shipid" type="xs:integer" use="optional"/>
+        <xs:attribute name="shipname" type="xs:string"/>
+        <xs:attribute name="specialinterests" type="xs:string"/>
+        <xs:attribute name="starrating" type="xs:integer" use="optional"/>
+        <xs:attribute name="startdate" type="xs:string"/>
+        <xs:attribute name="startprice" type="xs:decimal" use="optional"/>
+        <xs:attribute name="stoplive" type="xs:integer" use="optional"/>
+        <xs:attribute name="systemgroup" type="xs:string"/>
+        <xs:attribute name="taxes" type="xs:decimal" use="optional"/>
+        <xs:attribute name="type" type="xs:string"/>
+        <xs:attribute name="ukdeparture" type="xs:string"/>
+        <xs:attribute name="videos" type="xs:string"/>
+        <xs:attribute name="voyagecode" type="xs:string"/>
+        <xs:attribute name="whatsincluded" type="xs:string"/>
+        <xs:attribute name="zoneid" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="flight">
+        <xs:attribute name="iata" type="xs:string"/>
+        <xs:attribute name="name" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="flights">
+        <xs:sequence>
+            <xs:element name="flight" type="s1:flight" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="item">
+        <xs:attribute name="arrivedate" type="xs:string"/>
+        <xs:attribute name="arrivetime" type="xs:string"/>
+        <xs:attribute name="day" type="xs:integer" use="optional"/>
+        <xs:attribute name="departdate" type="xs:string"/>
+        <xs:attribute name="departtime" type="xs:string"/>
+        <xs:attribute name="description" type="xs:string"/>
+        <xs:attribute name="idlcrossed" type="xs:string"/>
+        <xs:attribute name="latitude" type="xs:decimal" use="optional"/>
+        <xs:attribute name="longitude" type="xs:decimal" use="optional"/>
+        <xs:attribute name="name" type="xs:string"/>
+        <xs:attribute name="orderid" type="xs:integer" use="optional"/>
+        <xs:attribute name="originalitineraryname" type="xs:string"/>
+        <xs:attribute name="ownerid" type="xs:string"/>
+        <xs:attribute name="portid" type="xs:string"/>
+        <xs:attribute name="shortdescription" type="xs:string"/>
+        <xs:attribute name="supered_id" type="xs:integer" use="optional"/>
+        <xs:attribute name="type" type="xs:string"/>
+        <xs:attribute name="categoryid" type="xs:string" use="optional"/>
+        <xs:attribute name="facilityid" type="xs:integer" use="optional"/>
+        <xs:attribute name="facilitytypeid" type="xs:string" use="optional"/>
+        <xs:attribute name="quantity" type="xs:string" use="optional"/>
+
+    </xs:complexType>
+
+    <xs:complexType name="region">
+        <xs:attribute name="name" type="xs:string"/>
+        <xs:attribute name="regionid" type="xs:integer" use="optional"/>
+        <xs:attribute name="id" type="xs:integer" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="regions">
+        <xs:sequence>
+            <xs:element name="region" type="s1:region" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="sailing">
+        <xs:attribute name="code" type="xs:string"/>
+        <xs:attribute name="enddate" type="xs:string"/>
+        <xs:attribute name="id" type="xs:integer" use="optional"/>
+        <xs:attribute name="ownerid" type="xs:string"/>
+        <xs:attribute name="saildate" type="xs:string"/>
+        <xs:attribute name="shipid" type="xs:integer" use="optional"/>
+        <xs:attribute name="shipname" type="xs:string"/>
+        <xs:attribute name="startdate" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="sailings">
+        <xs:sequence>
+            <xs:element name="sailing" type="s1:sailing" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="line">
+        <xs:sequence>
+            <xs:element name="ships" type="s1:ships"/>
+        </xs:sequence>
+        <xs:attribute name="code" type="xs:string"/>
+        <xs:attribute name="engine" type="xs:string"/>
+        <xs:attribute name="id" type="xs:integer" use="optional"/>
+        <xs:attribute name="logourl" type="xs:string"/>
+        <xs:attribute name="name" type="xs:string"/>
+        <xs:attribute name="niceurl" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="port">
+        <xs:attribute name="name" type="xs:string"/>
+        <xs:attribute name="id" type="xs:integer" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="ports">
+        <xs:sequence>
+            <xs:element name="port" type="s1:port" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="cabintype">
+        <xs:attribute name="id" type="xs:integer" use="optional"/>
+        <xs:attribute name="cabincode" type="xs:string" use="optional"/>
+        <xs:attribute name="cabincode2" type="xs:string" use="optional"/>
+        <xs:attribute name="cabintype" type="xs:string" use="optional"/>
+        <xs:attribute name="caption" type="xs:string" use="optional"/>
+        <xs:attribute name="colourcode" type="xs:string" use="optional"/>
+        <xs:attribute name="deckid" type="xs:integer" use="optional"/>
+        <xs:attribute name="description" type="xs:string" use="optional"/>
+        <xs:attribute name="imageurl" type="xs:string" use="optional"/>
+        <xs:attribute name="isdefault" type="xs:string" use="optional"/>
+        <xs:attribute name="name" type="xs:string" use="optional"/>
+        <xs:attribute name="originalimageurl" type="xs:string" use="optional"/>
+        <xs:attribute name="ownerid" type="xs:string" use="optional"/>
+        <xs:attribute name="smallimageurl" type="xs:string" use="optional"/>
+        <xs:attribute name="sortweight" type="xs:decimal" use="optional"/>
+        <xs:attribute name="supercedes" type="xs:string" use="optional"/>
+        <xs:attribute name="validfrom" type="xs:string" use="optional"/>
+        <xs:attribute name="validto" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="cabintypes">
+        <xs:sequence>
+            <xs:element name="cabintype" type="s1:cabintype" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="decklegend">
+        <xs:attribute name="attribute" type="xs:string"/>
+        <xs:attribute name="logo" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="decklegends">
+        <xs:sequence>
+            <xs:element name="decklegend" type="s1:decklegend" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="deck">
+        <xs:attribute name="id" type="xs:integer" use="optional"/>
+        <xs:attribute name="caption" type="xs:string"/>
+        <xs:attribute name="description" type="xs:string"/>
+        <xs:attribute name="imageid" type="xs:string"/>
+        <xs:attribute name="imageurl" type="xs:string"/>
+        <xs:attribute name="name" type="xs:string"/>
+        <xs:attribute name="sortorder" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="decks">
+        <xs:sequence>
+            <xs:element name="deck" type="s1:deck" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="facility">
+        <xs:sequence>
+            <xs:element name="item" type="s1:item" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="category" type="xs:string"/>
+        <xs:attribute name="categoryid" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="facilities">
+        <xs:sequence>
+            <xs:element name="facility" type="s1:facility" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="image">
+        <xs:attribute name="id" type="xs:integer"/>
+        <xs:attribute name="caption" type="xs:string"/>
+        <xs:attribute name="cruiseid" type="xs:integer"/>
+        <xs:attribute name="image" type="xs:string"/>
+        <xs:attribute name="imagename" type="xs:string"/>
+        <xs:attribute name="default" type="xs:string"/>
+        <xs:attribute name="imageurl" type="xs:string"/>
+        <xs:attribute name="originalimageurl" type="xs:string"/>
+        <xs:attribute name="ownerid" type="xs:string"/>
+        <xs:attribute name="smallimageurl" type="xs:string"/>
+        <xs:attribute name="nicename" type="xs:string"/>
+        <xs:attribute name="type" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="images">
+        <xs:sequence>
+            <xs:element name="image" type="s1:image" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ship">
+        <xs:sequence>
+            <xs:element name="cabintypes" type="s1:cabintypes"/>
+            <xs:element name="decklegends" type="s1:decklegends"/>
+            <xs:element name="decks" type="s1:decks"/>
+            <xs:element name="images" type="s1:images"/>
+            <xs:element name="facilities" type="s1:facilities"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:integer" use="optional"/>
+        <xs:attribute name="adultsonly" type="xs:string"/>
+        <xs:attribute name="apigradeorder" type="xs:string"/>
+        <xs:attribute name="atolnumber" type="xs:string"/>
+        <xs:attribute name="cruiseline" type="xs:string"/>
+        <xs:attribute name="description" type="xs:string"/>
+        <xs:attribute name="hidden" type="xs:string"/>
+        <xs:attribute name="highlights" type="xs:string"/>
+        <xs:attribute name="launched" type="xs:string"/>
+        <xs:attribute name="length" type="xs:string"/>
+        <xs:attribute name="lineid" type="xs:string"/>
+        <xs:attribute name="occupancy" type="xs:string"/>
+        <xs:attribute name="ownerid" type="xs:string"/>
+        <xs:attribute name="shipclass" type="xs:string"/>
+        <xs:attribute name="starrating" type="xs:integer" use="optional"/>
+        <xs:attribute name="supercedes" type="xs:string"/>
+        <xs:attribute name="tonnage" type="xs:decimal"/>
+        <xs:attribute name="totalcabins" type="xs:string" use="optional"/>
+        <xs:attribute name="totalcrew" type="xs:integer" use="optional"/>
+        <xs:attribute name="code" type="xs:string"/>
+        <xs:attribute name="imagecaption" type="xs:string"/>
+        <xs:attribute name="imageurl" type="xs:string"/>
+        <xs:attribute name="name" type="xs:string"/>
+        <xs:attribute name="niceurl" type="xs:string"/>
+        <xs:attribute name="rating" type="xs:integer" use="optional"/>
+        <xs:attribute name="smallimageurl" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="ships">
+        <xs:sequence>
+            <xs:element name="ship" type="s1:ship" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="price">
+        <xs:attribute name="appliesto" type="xs:string"/>
+        <xs:attribute name="marker" type="xs:string"/>
+        <xs:attribute name="name" type="xs:string"/>
+        <xs:attribute name="runorder" type="xs:integer" use="optional"/>
+        <xs:attribute name="type" type="xs:string"/>
+        <xs:attribute name="value" type="xs:decimal" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="prices">
+        <xs:sequence>
+            <xs:element name="price" type="s1:price" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="cruisebalconyprices">
+        <xs:sequence>
+            <xs:element name="price" type="s1:price" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="cruiseinsideprices">
+        <xs:sequence>
+            <xs:element name="price" type="s1:price" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="cruiseoutsideprices">
+        <xs:sequence>
+            <xs:element name="price" type="s1:price" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="cruisesuiteprices">
+        <xs:sequence>
+            <xs:element name="price" type="s1:price" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="itinerary">
+        <xs:sequence>
+            <xs:element name="item" type="s1:item" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="child">
+        <xs:attribute name="age" type="xs:integer"/>
+    </xs:complexType>
+
+    <xs:complexType name="search">
+        <xs:sequence>
+            <xs:element name="engine" type="s1:engine" />
+        </xs:sequence>
+        <xs:attribute name="resultkey" type="xs:string" use="optional"/>
+        <xs:attribute name="searchno" type="xs:string" use="optional"/>
+        <xs:attribute name="type" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="engine">
+        <xs:attribute name="name" type="xs:string"/>
+        <xs:attribute name="timetaken" type="xs:float"/>
+        <xs:attribute name="total" type="xs:integer"/>
+    </xs:complexType>
+
+    <xs:complexType name="searchdetail">
+        <xs:sequence>
+            <xs:element name="child" type="s1:child" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="adults" type="xs:integer" use="optional"/>
+        <xs:attribute name="children" type="xs:integer" use="optional"/>
+        <xs:attribute name="startdate" type="xs:string" use="optional"/>
+        <xs:attribute name="enddate" type="xs:string" use="optional"/>
+        <xs:attribute name="resultkey" type="xs:string" use="optional"/>
+        <xs:attribute name="sid" type="xs:integer" use="optional"/>
+        <xs:attribute name="type" type="xs:string" use="optional"/>
+        <xs:attribute name="nights" type="xs:integer" use="optional"/>
+        <xs:attribute name="lineid" type="xs:string" use="optional"/>
+        <xs:attribute name="shipid" type="xs:string" use="optional"/>
+        <xs:attribute name="regionid" type="xs:string" use="optional"/>
+        <xs:attribute name="voyagecode" type="xs:string" use="optional"/>
+        <xs:attribute name="port" type="xs:string" use="optional"/>
+        <xs:attribute name="startport" type="xs:string" use="optional"/>
+        <xs:attribute name="withpricesonly" type="xs:integer" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="auth">
+        <xs:attribute name="username" type="xs:string"/>
+        <xs:attribute name="password" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="method">
+        <xs:sequence>
+            <xs:element name="searchdetail" type="s1:searchdetail"/>
+        </xs:sequence>
+        <xs:attribute name="sitename" type="xs:string"/>
+        <xs:attribute name="action" type="xs:string"/>
+        <xs:attribute name="sessionkey" type="xs:string" use="optional"/>
+        <xs:attribute name="resultkey" type="xs:string" use="optional"/>
+        <xs:attribute name="status" type="s1:status" use="optional"/>
+        <xs:attribute name="language" type="xs:string" use="optional"/>
+        <xs:attribute name="shipid" type="xs:integer" use="optional"/>
+        <xs:attribute name="userid" type="xs:integer" use="optional"/>
+        <xs:attribute name="portid" type="xs:integer" use="optional"/>
+        <xs:attribute name="currency" type="xs:string" use="optional"/>
+        <xs:attribute name="referrer" type="xs:string" use="optional"/>
+        <xs:attribute name="subcode" type="xs:string" use="optional"/>
+        <xs:attribute name="covercode" type="xs:string" use="optional"/>
+        <xs:attribute name="loyaltyprogramid" type="xs:string" use="optional"/>
+        <xs:attribute name="type" type="xs:string" use="optional"/>
+        <xs:attribute name="append" type="xs:boolean" use="optional"/>
+        <xs:attribute name="autorooms" type="xs:boolean" use="optional"/>
+        <xs:attribute name="waittime" type="xs:integer" use="optional"/>
+        <xs:attribute name="maxresults" type="xs:integer" use="optional"/>
+        <xs:attribute name="codetocruiseid" type="xs:integer" use="optional"/>
+    </xs:complexType>
+
+    <xs:simpleType name="status" final="restriction">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Test"/>
+            <xs:enumeration value="Live"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="error">
+        <xs:attribute name="code" type="xs:string"/>
+        <xs:attribute name="text" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="errors">
+        <xs:sequence>
+            <xs:element name="error" type="s1:error" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+</xs:schema>

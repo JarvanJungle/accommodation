@@ -1,0 +1,1400 @@
+<?xml version="1.0"?>
+<xs:schema
+	targetNamespace="http://www.hotelbeds.com/schemas/messages"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:s1="http://www.hotelbeds.com/schemas/messages">
+
+	<xs:complexType name="auditData">
+		<xs:sequence>
+			<xs:element name="processTime" type="xs:string" />
+			<xs:element name="timestamp" type="xs:string" />
+			<xs:element name="requestHost" type="xs:string" />
+			<xs:element name="serverId" type="xs:string" />
+			<xs:element name="environment" type="xs:string" />
+			<xs:element name="release" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="countriesRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="from" type="xs:integer" />
+				<xs:element name="to" type="xs:integer" />
+				<xs:element name="total" type="xs:integer" />
+				<xs:element name="auditData" type="s1:auditData" />
+				<xs:element name="countries" type="s1:countries" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="countries">
+		<xs:annotation>
+			<xs:documentation>Customer information for the purchase, common
+				across all purchase itineraries
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="country" type="s1:country" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="country">
+		<xs:attribute name="code" type="xs:string" use="optional">
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:element name="destinationsRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="from" type="xs:integer" />
+				<xs:element name="to" type="xs:integer" />
+				<xs:element name="total" type="xs:integer" />
+				<xs:element name="auditData" type="s1:auditData" />
+				<xs:element name="destinations" type="s1:destinations" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="destinations">
+		<xs:sequence>
+			<xs:element name="destination" type="s1:destination"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="destination">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="zones" type="s1:zones" />
+			<xs:element name="groupZones" type="s1:groupZones" />
+		</xs:sequence>
+		<xs:attribute name="code" type="xs:string" use="optional" />
+		<xs:attribute name="countryCode" type="xs:string"
+			use="optional" />
+		<xs:attribute name="isoCode" type="xs:string"
+			use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="zones">
+		<xs:sequence>
+			<xs:element name="zone" type="s1:zone" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="zone">
+		<xs:attribute name="zoneCode" type="xs:string"
+			use="optional" />
+		<xs:attribute name="name" type="xs:string" use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="groupZones">
+		<xs:sequence>
+			<xs:element name="zone" type="s1:zone" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="accommodationsRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="from" type="xs:integer" />
+				<xs:element name="to" type="xs:integer" />
+				<xs:element name="total" type="xs:integer" />
+				<xs:element name="auditData" type="s1:auditData" />
+				<xs:element name="accommodations"
+					type="s1:accommodations" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="accommodations">
+		<xs:sequence>
+			<xs:element name="accommodation" type="s1:accommodation"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="accommodation">
+		<xs:sequence>
+			<xs:element name="typeMultiDescription" type="xs:string" />
+		</xs:sequence>
+		<xs:attribute name="code" type="xs:string" use="optional" />
+		<xs:attribute name="typeDescription" type="xs:string"
+			use="optional" />
+	</xs:complexType>
+
+	<xs:element name="boardsRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="from" type="xs:integer" />
+				<xs:element name="to" type="xs:integer" />
+				<xs:element name="total" type="xs:integer" />
+				<xs:element name="auditData" type="s1:auditData" />
+				<xs:element name="boards" type="s1:boards" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="boards">
+		<xs:sequence>
+			<xs:element name="board" type="s1:board" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="board">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" />
+			<xs:element name="multiLingualCode" type="xs:string" />
+		</xs:sequence>
+		<xs:attribute name="code" type="xs:string" use="optional" />
+	</xs:complexType>
+
+	<xs:element name="categoriesRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="from" type="xs:integer" />
+				<xs:element name="to" type="xs:integer" />
+				<xs:element name="total" type="xs:integer" />
+				<xs:element name="auditData" type="s1:auditData" />
+				<xs:element name="categories" type="s1:categories" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="categories">
+		<xs:sequence>
+			<xs:element name="category" type="s1:category"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="category">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" />
+			<xs:element name="multiLingualCode" type="xs:string" />
+		</xs:sequence>
+		<xs:attribute name="code" type="xs:string" use="optional" />
+		<xs:attribute name="simpleCode" type="xs:string"
+			use="optional" />
+		<xs:attribute name="accommodationType" type="xs:string"
+			use="optional" />
+		<xs:attribute name="group" type="xs:string"
+			use="optional" />
+	</xs:complexType>
+
+	<xs:element name="chainsRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="from" type="xs:integer" />
+				<xs:element name="to" type="xs:integer" />
+				<xs:element name="total" type="xs:integer" />
+				<xs:element name="auditData" type="s1:auditData" />
+				<xs:element name="chains" type="s1:chains" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="chains">
+		<xs:sequence>
+			<xs:element name="chain" type="s1:chain" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="chain">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" />
+		</xs:sequence>
+		<xs:attribute name="code" type="xs:string" use="optional" />
+	</xs:complexType>
+
+	<xs:element name="facilitiesRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="from" type="xs:integer" />
+				<xs:element name="to" type="xs:integer" />
+				<xs:element name="total" type="xs:integer" />
+				<xs:element name="auditData" type="s1:auditData" />
+				<xs:element name="facilities" type="s1:facilities" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="facilityGroupsRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="from" type="xs:integer" />
+				<xs:element name="to" type="xs:integer" />
+				<xs:element name="total" type="xs:integer" />
+				<xs:element name="auditData" type="s1:auditData" />
+				<xs:element name="facilityGroups"
+					type="s1:facilityGroups" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="facilityGroups">
+		<xs:sequence>
+			<xs:element name="group" type="s1:group" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="group">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" />
+		</xs:sequence>
+		<xs:attribute name="code" type="xs:string" use="optional" />
+	</xs:complexType>
+
+	<xs:element name="facilityTypologiesRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="from" type="xs:integer" />
+				<xs:element name="to" type="xs:integer" />
+				<xs:element name="total" type="xs:integer" />
+				<xs:element name="auditData" type="s1:auditData" />
+				<xs:element name="facilityTypologies"
+					type="s1:facilityTypologies" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="facilityTypologies">
+		<xs:sequence>
+			<xs:element name="facilityTypology"
+				type="s1:facilityTypology" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="facilityTypology">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="code" type="xs:string" use="optional" />
+		<xs:attribute name="textFlag" type="xs:string"
+			use="optional" />
+		<xs:attribute name="numberFlag" type="xs:string"
+			use="optional" />
+		<xs:attribute name="logicFlag" type="xs:string"
+			use="optional" />
+		<xs:attribute name="feeFlag" type="xs:string"
+			use="optional" />
+		<xs:attribute name="distanceFlag" type="xs:string"
+			use="optional" />
+		<xs:attribute name="ageFromFlag" type="xs:string"
+			use="optional" />
+		<xs:attribute name="ageToFlag" type="xs:string"
+			use="optional" />
+		<xs:attribute name="dateFromFlag" type="xs:string"
+			use="optional" />
+		<xs:attribute name="dateToFlag" type="xs:string"
+			use="optional" />
+		<xs:attribute name="timeFromFlag" type="xs:string"
+			use="optional" />
+		<xs:attribute name="timeToFlag" type="xs:string"
+			use="optional" />
+		<xs:attribute name="indYesOrNoFlag" type="xs:string"
+			use="optional" />
+		<xs:attribute name="amountFlag" type="xs:string"
+			use="optional" />
+		<xs:attribute name="currencyFlag" type="xs:string"
+			use="optional" />
+		<xs:attribute name="applicationTypeFlag" type="xs:string"
+			use="optional" />
+	</xs:complexType>
+
+	<xs:element name="issuesRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="from" type="xs:integer" />
+				<xs:element name="to" type="xs:integer" />
+				<xs:element name="total" type="xs:integer" />
+				<xs:element name="auditData" type="s1:auditData" />
+				<xs:element name="issues" type="s1:issues" minOccurs="0"
+					maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="issues">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" />
+			<xs:element name="name" type="xs:string" />
+		</xs:sequence>
+		<xs:attribute name="code" type="xs:string" use="optional" />
+		<xs:attribute name="type" type="xs:string" use="optional" />
+		<xs:attribute name="alternative" type="xs:boolean"
+			use="optional" />
+	</xs:complexType>
+
+	<xs:element name="promotionsRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="from" type="xs:integer" />
+				<xs:element name="to" type="xs:integer" />
+				<xs:element name="total" type="xs:integer" />
+				<xs:element name="auditData" type="s1:auditData" />
+				<xs:element name="promotions" type="s1:promotions" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="promotions">
+		<xs:sequence>
+			<xs:element name="promotion" type="s1:promotion"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="promotion">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" />
+			<xs:element name="name" type="xs:string" />
+		</xs:sequence>
+		<xs:attribute name="code" type="xs:string" use="optional" />
+	</xs:complexType>
+
+	<xs:element name="segmentsRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="from" type="xs:integer" />
+				<xs:element name="to" type="xs:integer" />
+				<xs:element name="total" type="xs:integer" />
+				<xs:element name="auditData" type="s1:auditData" />
+				<xs:element name="segments" type="s1:segments" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="segments">
+		<xs:sequence>
+			<xs:element name="segment" type="s1:segment" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="segment">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" />
+		</xs:sequence>
+		<xs:attribute name="code" type="xs:string" use="optional" />
+	</xs:complexType>
+
+	<xs:element name="terminalsRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="from" type="xs:integer" />
+				<xs:element name="to" type="xs:integer" />
+				<xs:element name="total" type="xs:integer" />
+				<xs:element name="auditData" type="s1:auditData" />
+				<xs:element name="terminals" type="s1:terminals" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="terminals">
+		<xs:sequence>
+			<xs:element name="terminal" type="s1:terminal"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="terminal">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="description" type="xs:string" />
+		</xs:sequence>
+		<xs:attribute name="code" type="xs:string" use="optional" />
+		<xs:attribute name="type" type="xs:string" use="optional" />
+		<xs:attribute name="country" type="xs:string"
+			use="optional" />
+		<xs:attribute name="terminalCode" type="xs:string"
+			use="optional" />
+		<xs:attribute name="distance" type="xs:decimal"
+			use="optional" />
+	</xs:complexType>
+
+	<xs:element name="imageTypesRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="from" type="xs:integer" />
+				<xs:element name="to" type="xs:integer" />
+				<xs:element name="total" type="xs:integer" />
+				<xs:element name="auditData" type="s1:auditData" />
+				<xs:element name="imageTypes" type="s1:imageTypes" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="imageTypes">
+		<xs:sequence>
+			<xs:element name="imageType" type="s1:imageType"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="imageType">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" />
+		</xs:sequence>
+		<xs:attribute name="code" type="xs:string" use="optional" />
+	</xs:complexType>
+
+	<xs:element name="groupCategoriesRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="from" type="xs:integer" />
+				<xs:element name="to" type="xs:integer" />
+				<xs:element name="total" type="xs:integer" />
+				<xs:element name="auditData" type="s1:auditData" />
+				<xs:element name="groupCategories"
+					type="s1:groupCategories" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="groupCategories">
+		<xs:sequence>
+			<xs:element name="groupCategory" type="s1:groupCategory"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="groupCategory">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="description" type="xs:string" />
+		</xs:sequence>
+		<xs:attribute name="code" type="xs:string" use="optional" />
+		<xs:attribute name="order" type="xs:string"
+			use="optional" />
+	</xs:complexType>
+
+	<xs:element name="rateCommentsRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="from" type="xs:integer" />
+				<xs:element name="to" type="xs:integer" />
+				<xs:element name="total" type="xs:integer" />
+				<xs:element name="auditData" type="s1:auditData" />
+				<xs:element name="rateComments" type="s1:rateComments" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="rateComments">
+		<xs:sequence>
+			<xs:element name="rateComment" type="s1:rateComment"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="rateComment">
+		<xs:sequence>
+			<xs:element name="commentsByRates"
+				type="s1:commentsByRates" />
+		</xs:sequence>
+		<xs:attribute name="incoming" type="xs:string"
+			use="optional" />
+		<xs:attribute name="hotel" type="xs:string"
+			use="optional" />
+		<xs:attribute name="code" type="xs:string" use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="commentsByRates">
+		<xs:sequence>
+			<xs:element name="commentByRates" type="s1:commentByRates"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="commentByRates">
+		<xs:sequence>
+			<xs:element name="comments" type="s1:comments"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="rateCodes" type="xs:string"
+			use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="comments">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" />
+		</xs:sequence>
+		<xs:attribute name="dateEnd" type="xs:string"
+			use="optional" />
+		<xs:attribute name="dateStart" type="xs:string"
+			use="optional" />
+	</xs:complexType>
+
+	<xs:element name="roomsRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="from" type="xs:integer" />
+				<xs:element name="to" type="xs:integer" />
+				<xs:element name="total" type="xs:integer" />
+				<xs:element name="auditData" type="s1:auditData" />
+				<xs:element name="rooms" type="s1:roomsStatic" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="roomsStatic">
+		<xs:sequence>
+			<xs:element name="room" type="s1:roomStatic" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="roomStatic">
+		<xs:sequence>
+			<xs:element name="typeDescription" type="xs:string" />
+			<xs:element name="characteristicDescription"
+				type="xs:string" />
+		</xs:sequence>
+		<xs:attribute name="code" type="xs:string" />
+		<xs:attribute name="type" type="xs:string" />
+		<xs:attribute name="characteristic" type="xs:string" />
+		<xs:attribute name="minPax" type="xs:integer"
+			use="optional" />
+		<xs:attribute name="maxPax" type="xs:integer"
+			use="optional" />
+		<xs:attribute name="maxAdults" type="xs:integer"
+			use="optional" />
+		<xs:attribute name="maxChildren" type="xs:integer"
+			use="optional" />
+		<xs:attribute name="minAdults" type="xs:integer"
+			use="optional" />
+		<xs:attribute name="description" type="xs:string" />
+	</xs:complexType>
+
+
+	<xs:element name="hotelsRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="from" type="xs:integer" />
+				<xs:element name="to" type="xs:integer" />
+				<xs:element name="total" type="xs:integer" />
+				<xs:element name="auditData" type="s1:auditData" />
+				<xs:element name="hotels" type="s1:hotels" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="hotels">
+		<xs:sequence>
+			<xs:element name="hotel" type="s1:hotel" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="hotel">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="description" type="xs:string" />
+			<xs:element name="zoneCode" type="xs:string" />
+			<xs:element name="coordinates" type="s1:coordinates" />
+			<xs:element name="boardCodes" type="s1:boardCodes" />
+			<xs:element name="segmentCodes" type="s1:segmentCodes" />
+			<xs:element name="interestPoints" type="s1:interestPoints" />
+			<xs:element name="address" type="xs:string" />
+			<xs:element name="postalCode" type="xs:string" />
+			<xs:element name="city" type="xs:string" />
+			<xs:element name="email" type="xs:string" />
+			<xs:element name="license" type="xs:string" />
+			<xs:element name="phones" type="s1:phones" />
+			<xs:element name="rooms" type="s1:rooms" />
+			<xs:element name="wildcards" type="s1:wildcards" />
+			<xs:element name="facilities" type="s1:facilities" />
+			<xs:element name="terminals" type="s1:terminals" />
+			<xs:element name="issues" type="s1:hotelIssues" />
+			<xs:element name="images" type="s1:images" />
+		</xs:sequence>
+		<xs:attribute name="code" type="xs:string" use="optional" />
+		<xs:attribute name="countryCode" type="xs:string"
+			use="optional" />
+		<xs:attribute name="destinationCode" type="xs:string"
+			use="optional" />
+		<xs:attribute name="categoryCode" type="xs:string"
+			use="optional" />
+		<xs:attribute name="categoryGroupCode" type="xs:string"
+			use="optional" />
+		<xs:attribute name="chainCode" type="xs:string"
+			use="optional" />
+		<xs:attribute name="accommodationTypeCode"
+			type="xs:string" use="optional" />
+		<xs:attribute name="web" type="xs:string" use="optional" />
+		<xs:attribute name="S2C" type="xs:string" use="optional" />
+		<xs:attribute name="ranking" type="xs:integer"
+			use="optional" />
+		<xs:attribute name="lastUpdate" type="xs:string"
+			use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="coordinates">
+		<xs:attribute name="longitude" type="xs:decimal" />
+		<xs:attribute name="latitude" type="xs:decimal" />
+	</xs:complexType>
+
+	<xs:complexType name="boardCodes">
+		<xs:sequence>
+			<xs:element name="boardCode" type="s1:boardCode"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="boardCode">
+		<xs:restriction base="xs:string" />
+	</xs:simpleType>
+
+	<xs:complexType name="segmentCodes">
+		<xs:sequence>
+			<xs:element name="segmentCode" type="s1:segmentCode"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="segmentCode">
+		<xs:restriction base="xs:string" />
+	</xs:simpleType>
+
+	<xs:complexType name="interestPoints">
+		<xs:sequence>
+			<xs:element name="interestPoint" type="s1:interestPoint"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="interestPoint">
+		<xs:attribute name="facilityCode" type="xs:string" />
+		<xs:attribute name="facilityGroupCode" type="xs:string" />
+		<xs:attribute name="order" type="xs:string" />
+		<xs:attribute name="poiName" type="xs:string" />
+		<xs:attribute name="indFee" type="xs:boolean" />
+		<xs:attribute name="distance" type="xs:integer" />
+	</xs:complexType>
+
+
+	<xs:complexType name="hotelIssues">
+		<xs:sequence>
+			<xs:element name="issue" type="s1:hotelIssue"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="hotelIssue">
+		<xs:attribute name="issueCode" type="xs:string" />
+		<xs:attribute name="issueType" type="xs:string" />
+		<xs:attribute name="dateFrom" type="xs:string" />
+		<xs:attribute name="dateTo" type="xs:string" />
+		<xs:attribute name="order" type="xs:integer" />
+		<xs:attribute name="alternative" type="xs:boolean" />
+	</xs:complexType>
+
+	<xs:complexType name="phones">
+		<xs:sequence>
+			<xs:element name="phone" type="s1:phone" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="phone">
+		<xs:sequence>
+			<xs:element name="phoneNumber" type="xs:string" />
+			<xs:element name="phoneType" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="wildcards">
+		<xs:sequence>
+			<xs:element name="wildcard" type="s1:wildcard"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="wildcard">
+		<xs:sequence>
+			<xs:element name="hotelRoomDescription" type="xs:string" />
+		</xs:sequence>
+		<xs:attribute name="roomCode" type="xs:string" />
+		<xs:attribute name="roomType" type="xs:string" />
+		<xs:attribute name="characteristicCode" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="rooms">
+		<xs:sequence>
+			<xs:element name="room" type="s1:room" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="room">
+		<xs:sequence>
+			<xs:element name="roomFacilities" type="s1:roomFacilities" />
+			<xs:element name="roomStays" type="s1:roomStays" />
+		</xs:sequence>
+		<xs:attribute name="roomCode" type="xs:string" />
+		<xs:attribute name="roomType" type="xs:string" />
+		<xs:attribute name="characteristicCode" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="roomFacilities">
+		<xs:sequence>
+			<xs:element name="roomFacility" type="s1:facility"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="roomStays">
+		<xs:sequence>
+			<xs:element name="roomStay" type="s1:roomStay"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="roomStay">
+		<xs:attribute name="stayType" type="xs:string" />
+		<xs:attribute name="order" type="xs:string" />
+		<xs:attribute name="description" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="facilities">
+		<xs:sequence>
+			<xs:element name="facility" type="s1:facility"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="facility">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string"
+				minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+		<xs:attribute name="facilityCode" type="xs:string"
+			use="optional" />
+		<xs:attribute name="facilityGroupCode" type="xs:string"
+			use="optional" />
+		<xs:attribute name="order" type="xs:string"
+			use="optional" />
+		<xs:attribute name="indFee" type="xs:string"
+			use="optional" />
+		<xs:attribute name="indYesOrNo" type="xs:string"
+			use="optional" />
+		<xs:attribute name="indLogic" type="xs:string"
+			use="optional" />
+		<xs:attribute name="number" type="xs:integer"
+			use="optional" />
+		<xs:attribute name="distance" type="xs:integer"
+			use="optional" />
+		<xs:attribute name="code" type="xs:string" use="optional" />
+		<xs:attribute name="ageFrom" type="xs:integer"
+			use="optional" />
+		<xs:attribute name="ageTo" type="xs:integer"
+			use="optional" />
+		<xs:attribute name="dateFrom" type="xs:string"
+			use="optional" />
+		<xs:attribute name="dateTo" type="xs:string"
+			use="optional" />
+		<xs:attribute name="timeFrom" type="xs:string"
+			use="optional" />
+		<xs:attribute name="timeTo" type="xs:string"
+			use="optional" />
+		<xs:attribute name="facilityTypologyCode"
+			type="xs:string" use="optional" />
+		<xs:attribute name="amount" type="xs:decimal"
+			use="optional" />
+		<xs:attribute name="currency" type="xs:string"
+			use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="images">
+		<xs:sequence>
+			<xs:element name="image" type="s1:image" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="image">
+		<xs:attribute name="imageTypeCode" type="xs:string"
+			use="optional" />
+		<xs:attribute name="path" type="xs:string" use="optional" />
+		<xs:attribute name="roomCode" type="xs:string"
+			use="optional" />
+		<xs:attribute name="roomType" type="xs:string"
+			use="optional" />
+		<xs:attribute name="characteristicCode" type="xs:string"
+			use="optional" />
+		<xs:attribute name="order" type="xs:string"
+			use="optional" />
+	</xs:complexType>
+
+	<xs:element name="availabilityRQ">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="stay" type="s1:staySelector" />
+				<xs:element name="occupancies"
+					type="s1:occupanciesSelector" />
+				<xs:element name="geolocation"
+					type="s1:geolocationSelector" />
+				<xs:element name="hotels" type="s1:hotelSelector"
+					minOccurs="0" />
+				<xs:element name="keywords" type="s1:keywordSelector"
+					minOccurs="0" />
+				<xs:element name="boards" type="s1:boardSelector"
+					minOccurs="0" />
+				<xs:element name="rooms" type="s1:roomSelector"
+					minOccurs="0" />
+				<xs:element name="accommodations" type="s1:countries"
+					minOccurs="0" />
+				<xs:element name="reviews" type="s1:reviewsSelector"
+					minOccurs="0" />
+				<xs:element name="filter" type="s1:countries"
+					minOccurs="0" maxOccurs="unbounded" />
+				<xs:element name="destination"
+					type="s1:destinationSelector" minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute name="sourceMarket" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="staySelector">
+		<xs:attribute name="checkIn" type="xs:string" />
+		<xs:attribute name="checkOut" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="occupanciesSelector">
+		<xs:sequence>
+			<xs:element name="occupancy" type="s1:occupancySelector"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="occupancySelector">
+		<xs:sequence>
+			<xs:element name="paxes" type="s1:paxesSelector" />
+		</xs:sequence>
+		<xs:attribute name="rooms" type="xs:integer" />
+		<xs:attribute name="adults" type="xs:integer" />
+		<xs:attribute name="children" type="xs:integer" />
+	</xs:complexType>
+
+	<xs:complexType name="paxesSelector">
+		<xs:sequence>
+			<xs:element name="pax" type="s1:paxSelector" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="paxSelector">
+		<xs:attribute name="type">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="AD" />
+					<xs:enumeration value="CH" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="age" type="xs:integer" use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="geolocationSelector">
+		<xs:attribute name="longitude" type="xs:float"
+			use="optional" />
+		<xs:attribute name="latitude" type="xs:float"
+			use="optional" />
+		<xs:attribute name="radius" type="xs:integer"
+			use="optional" />
+		<xs:attribute name="unit" type="xs:string" use="optional" />
+		<xs:attribute name="secondaryLongitude" type="xs:float"
+			use="optional" />
+		<xs:attribute name="secondaryLatitude" type="xs:float"
+			use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="hotelSelector">
+		<xs:sequence>
+			<xs:element name="hotel" type="xs:string" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="keywordSelector">
+		<xs:sequence>
+			<xs:element name="keyword" type="xs:string" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="boardSelector">
+		<xs:sequence>
+			<xs:element name="board" type="xs:string" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="included" type="xs:boolean"
+			use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="roomSelector">
+		<xs:sequence>
+			<xs:element name="room" type="xs:string" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="included" type="xs:boolean"
+			use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="reviewsSelector">
+		<xs:sequence>
+			<xs:element name="review" type="s1:reviewSelector"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="reviewSelector">
+		<xs:attribute name="type" type="xs:string" use="optional" />
+		<xs:attribute name="maxRate" type="xs:integer"
+			use="optional" />
+		<xs:attribute name="minReviewCount" type="xs:integer"
+			use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="filterSelector">
+		<xs:attribute name="minRate" type="xs:string"
+			use="optional" />
+		<xs:attribute name="maxRate" type="xs:string"
+			use="optional" />
+		<xs:attribute name="minCategory" type="xs:string"
+			use="optional" />
+		<xs:attribute name="maxCategory" type="xs:string"
+			use="optional" />
+		<xs:attribute name="paymentType" type="xs:string"
+			use="optional" />
+		<xs:attribute name="maxRatesPerRoom" type="xs:string"
+			use="optional" />
+		<xs:attribute name="packaging" type="xs:string"
+			use="optional" />
+		<xs:attribute name="hotelPackage" type="xs:string"
+			use="optional" />
+		<xs:attribute name="maxRooms" type="xs:string"
+			use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="destinationSelector">
+		<xs:attribute name="code" type="xs:string" />
+		<xs:attribute name="zone" type="xs:string" use="optional" />
+	</xs:complexType>
+
+	<xs:element name="availabilityRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="auditData" type="s1:auditData" />
+				<xs:element name="hotels" type="s1:hotelsResponse" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="hotelsResponse">
+		<xs:sequence>
+			<xs:element name="hotel" type="s1:hotelResponse"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="checkIn" type="xs:string"
+			use="optional" />
+		<xs:attribute name="checkOut" type="xs:string"
+			use="optional" />
+		<xs:attribute name="total" type="xs:integer"
+			use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="hotelResponse">
+		<xs:sequence>
+			<xs:element name="keywords" type="s1:keywordSelector" />
+			<xs:element name="rooms" type="s1:roomsHotelResponse" />
+		</xs:sequence>
+		<xs:attribute name="code" type="xs:string" use="optional" />
+		<xs:attribute name="name" type="xs:string" use="optional" />
+		<xs:attribute name="currency" type="xs:string" use="optional" />
+		<xs:attribute name="checkIn" type="xs:string"
+			use="optional" />
+		<xs:attribute name="checkOut" type="xs:string"
+			use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="roomsHotelResponse">
+		<xs:sequence>
+			<xs:element name="room" type="s1:roomHotelResponse"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="roomHotelResponse">
+		<xs:sequence>
+			<xs:element name="rates" type="s1:ratesHotelResponse" />
+		</xs:sequence>
+		<xs:attribute name="code" type="xs:string" use="optional" />
+		<xs:attribute name="name" type="xs:string" use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="ratesHotelResponse">
+		<xs:sequence>
+			<xs:element name="rate" type="s1:rateHotelResponse"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="rateHotelResponse">
+		<xs:sequence>
+			<xs:element name="cancellationPolicies"
+				type="s1:cancellationPolicies" />
+			<xs:element name="offers" type="s1:offers" />
+			<xs:element name="promotions" type="s1:ratePromotions" />
+		</xs:sequence>
+		<xs:attribute name="rateKey" type="xs:string"
+			use="optional" />
+		<xs:attribute name="rateClass" type="xs:string"
+			use="optional" />
+		<xs:attribute name="rateType" type="xs:string"
+			use="optional" />
+		<xs:attribute name="net" type="xs:decimal" use="optional" />
+		<xs:attribute name="sellingRate" type="xs:decimal"
+			use="optional" />
+		<xs:attribute name="hotelMandatory" type="xs:boolean"
+			use="optional" />
+		<xs:attribute name="allotment" type="xs:integer"
+			use="optional" />
+		<xs:attribute name="rateComments" type="xs:string"
+			use="optional" />
+		<xs:attribute name="rateCommentsId" type="xs:string"
+			use="optional" />
+		<xs:attribute name="paymentType" type="xs:string"
+			use="optional" />
+		<xs:attribute name="packaging" type="xs:boolean"
+			use="optional" />
+		<xs:attribute name="boardCode" type="xs:string"
+			use="optional" />
+		<xs:attribute name="boardName" type="xs:string"
+			use="optional" />
+		<xs:attribute name="rooms" type="xs:integer"
+			use="optional" />
+		<xs:attribute name="adults" type="xs:integer"
+			use="optional" />
+		<xs:attribute name="children" type="xs:integer"
+			use="optional" />
+		<xs:attribute name="childrenAges" type="xs:string"
+			use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="cancellationPolicies">
+		<xs:sequence>
+			<xs:element name="cancellationPolicy"
+				type="s1:cancellationPolicy" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="cancellationPolicy">
+		<xs:attribute name="amount" type="xs:decimal" />
+		<xs:attribute name="from" type="xs:date" />
+	</xs:complexType>
+
+	<xs:complexType name="offers">
+		<xs:sequence>
+			<xs:element name="offer" type="s1:offer" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ratePromotions">
+		<xs:sequence>
+			<xs:element name="promotion" type="s1:ratePromotion"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="offer">
+		<xs:attribute name="code" type="xs:string" />
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="amount" type="xs:decimal" />
+	</xs:complexType>
+
+	<xs:complexType name="ratePromotion">
+		<xs:attribute name="code" type="xs:string" />
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="remark" type="xs:string" />
+	</xs:complexType>
+
+	<xs:element name="checkRateRQ">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="rooms" type="s1:roomsCheckrateRequest" minOccurs="1" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="upselling" type="xs:boolean" />
+			<xs:attribute name="language" type="xs:string"
+				use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="roomsCheckrateRequest">
+		<xs:sequence>
+			<xs:element name="room" type="s1:roomCheckrateRequest" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="roomCheckrateRequest">
+		<xs:attribute name="rateKey" type="xs:string" />
+	</xs:complexType>
+
+	<xs:element name="checkRateRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="auditData" type="s1:auditData" />
+				<xs:element name="hotel" type="s1:hotelResponse" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="rateBreakDown">
+		<xs:sequence>
+			<xs:element name="rateSupplements"
+				type="s1:rateSupplements" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="rateSupplements">
+		<xs:sequence>
+			<xs:element name="rateSupplement" type="s1:rateSupplement" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="rateSupplement">
+		<xs:attribute name="code" type="xs:string" />
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="from" type="xs:string" />
+		<xs:attribute name="to" type="xs:string" />
+		<xs:attribute name="amount" type="xs:decimal" />
+		<xs:attribute name="nights" type="xs:integer" />
+		<xs:attribute name="paxNumber" type="xs:integer" />
+	</xs:complexType>
+
+	<xs:element name="bookingRQ">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="holder" type="s1:holder" />
+				<xs:element name="rooms" type="s1:roomsBookingRequest" />
+				<xs:element name="clientReference" type="xs:string"
+					minOccurs="0" />
+				<xs:element name="remark" type="xs:string" minOccurs="0" />
+				<xs:element name="tolerance" type="xs:decimal"
+					minOccurs="0" />
+				<xs:element name="paymentData" type="s1:paymentData"
+					minOccurs="0" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="holder">
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="surname" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="roomsBookingRequest">
+		<xs:sequence>
+			<xs:element name="room" type="s1:roomBookingRequest"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="roomBookingRequest">
+		<xs:sequence>
+			<xs:element name="paxes" type="s1:paxesBooking" />
+		</xs:sequence>
+		<xs:attribute name="rateKey" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="paxesBooking">
+		<xs:sequence>
+			<xs:element name="pax" type="s1:paxBooking" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="paxBooking">
+		<xs:attribute name="type" type="xs:string" />
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="surname" type="xs:string" />
+		<xs:attribute name="age" type="xs:integer" use="optional" />
+		<xs:attribute name="roomId" type="xs:integer" />
+	</xs:complexType>
+
+	<xs:complexType name="paymentData">
+		<xs:sequence>
+			<xs:element name="paymentCard" type="s1:paymentCard" />
+			<xs:element name="contactData" type="s1:contactData" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="paymentCard">
+		<xs:sequence>
+			<xs:element name="cardHolderName" type="xs:string" />
+			<xs:element name="cardType" type="xs:string" />
+			<xs:element name="cardNumber" type="xs:integer" />
+			<xs:element name="expiryDate" type="xs:integer" />
+			<xs:element name="cardCVC" type="xs:integer" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="contactData">
+		<xs:sequence>
+			<xs:element name="email" type="xs:string" />
+			<xs:element name="phoneNumber" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="bookingRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="auditData" type="s1:auditData" />
+				<xs:element name="booking" type="s1:bookingResponse"
+					minOccurs="0" maxOccurs="1" />
+				<xs:element name="error" type="s1:errorMessage"
+					minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="errorMessage">
+		<xs:sequence>
+			<xs:element name="code" type="xs:string" minOccurs="0"
+				maxOccurs="1" />
+			<xs:element name="message" type="xs:string" minOccurs="0"
+				maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="bookingResponse">
+		<xs:sequence>
+			<xs:element name="modificationPolicies"
+				type="s1:modificationPolicies" />
+			<xs:element name="holder" type="s1:holder" />
+			<xs:element name="hotel" type="s1:hotelBookingResponse" />
+			<xs:element name="remark" type="xs:string" />
+			<xs:element name="invoiceCompany" type="s1:invoiceCompany" />
+		</xs:sequence>
+		<xs:attribute name="reference" type="xs:string"
+			use="optional" />
+		<xs:attribute name="cancellationReference"
+			type="xs:string" use="optional" />
+		<xs:attribute name="clientReference" type="xs:string"
+			use="optional" />
+		<xs:attribute name="creationDate" type="xs:string"
+			use="optional" />
+		<xs:attribute name="status" type="xs:string"
+			use="optional" />
+		<xs:attribute name="totalNet" type="xs:decimal"
+			use="optional" />
+		<xs:attribute name="pendingAmount" type="xs:decimal"
+			use="optional" />
+		<xs:attribute name="currency" type="xs:string"
+			use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="modificationPolicies">
+		<xs:attribute name="cancellation" type="xs:boolean" />
+		<xs:attribute name="modification" type="xs:boolean" />
+	</xs:complexType>
+
+	<xs:complexType name="invoiceCompany">
+		<xs:attribute name="code" type="xs:string" use="optional" />
+		<xs:attribute name="name" type="xs:string" use="optional" />
+		<xs:attribute name="registrationNumber" type="xs:string"
+			use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="hotelBookingResponse">
+		<xs:sequence>
+			<xs:element name="rooms" type="s1:roomsBookingResponse" />
+			<xs:element name="supplier"
+				type="s1:supplierBookingResponse" />
+		</xs:sequence>
+		<xs:attribute name="code" type="xs:string" use="optional" />
+		<xs:attribute name="checkIn" type="xs:string"
+			use="optional" />
+		<xs:attribute name="checkOut" type="xs:string"
+			use="optional" />
+		<xs:attribute name="name" type="xs:string" use="optional" />
+		<xs:attribute name="countryCode" type="xs:string"
+			use="optional" />
+		<xs:attribute name="destinationCode" type="xs:string"
+			use="optional" />
+		<xs:attribute name="destinationName" type="xs:string"
+			use="optional" />
+		<xs:attribute name="zoneCode" type="xs:string"
+			use="optional" />
+		<xs:attribute name="zoneName" type="xs:string"
+			use="optional" />
+		<xs:attribute name="categoryCode" type="xs:string"
+			use="optional" />
+		<xs:attribute name="categoryName" type="xs:string"
+			use="optional" />
+		<xs:attribute name="latitude" type="xs:float"
+			use="optional" />
+		<xs:attribute name="longitude" type="xs:float"
+			use="optional" />
+		<xs:attribute name="totalNet" type="xs:decimal"
+			use="optional" />
+		<xs:attribute name="currency" type="xs:string"
+			use="optional" />
+		<xs:attribute name="cancellationAmount" type="xs:decimal"
+			use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="supplierBookingResponse">
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="vatNumber" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="roomsBookingResponse">
+		<xs:sequence>
+			<xs:element name="room" type="s1:roomBookingResponse"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="roomBookingResponse">
+		<xs:sequence>
+			<xs:element name="paxes" type="s1:paxesBooking" />
+			<xs:element name="rates" type="s1:ratesHotelResponse" />
+		</xs:sequence>
+		<xs:attribute name="status" type="xs:string" />
+		<xs:attribute name="id" type="xs:string" />
+		<xs:attribute name="code" type="xs:string" />
+		<xs:attribute name="name" type="xs:string" />
+	</xs:complexType>
+
+	<xs:element name="bookingCancellationRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="auditData" type="s1:auditData" />
+				<xs:element name="booking" type="s1:bookingResponse"
+					minOccurs="0" maxOccurs="1" />
+				<xs:element name="error" type="s1:errorMessage"
+					minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="bookingDetailRS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="auditData" type="s1:auditData" />
+				<xs:element name="booking" type="s1:bookingResponse"
+					minOccurs="0" maxOccurs="1" />
+				<xs:element name="error" type="s1:errorMessage"
+					minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

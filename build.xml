@@ -1,0 +1,52 @@
+<project name="prodesb" default="all" basedir="./">
+	<!-- set global properties for this build -->
+	<property environment="env" />
+	<property name="lib" location="lib" />
+	<property name="xsd-src" location="src/main/resources/xsd" />
+	<property name="generated-notrequired" location="src/main/java/generated" />
+	<property name="java-src" location="src/main/java" />
+
+	<path id="base.path">
+		<fileset dir="${lib}">
+			<include name="*.jar" />
+		</fileset>
+		<pathelement path="${classpath}" />
+	</path>
+
+	<path id="jaxws.classpath">
+		<pathelement location="${java.home}/../lib/tools.jar" />
+		<fileset dir="${lib}/jaxws">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<property name="classpath" refid="base.path" />
+
+	<taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
+		<classpath refid="jaxws.classpath" />
+	</taskdef>
+
+	<taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+		<classpath refid="jaxws.classpath" />
+	</taskdef>
+
+	<target name="init">
+		<tstamp />
+		<property name="version" value="Unknown" />
+		<filter token="build.time" value="${TSTAMP}" />
+		<filter token="build.date" value="${DSTAMP}" />
+		<filter token="build.version" value="${version}" />
+	</target>
+
+	<target name="hotelbeds" depends="init">
+		<xjc destdir="${java-src}">
+			<schema dir="${xsd-src}/hotelbeds" includes="**/*.xsd" excludes="**/debug.xsd" />
+			<binding dir="${xsd-src}/hotelbeds" includes="*.xjb" />
+		</xjc>
+	</target>
+
+	<target name="all" depends="hotelbeds" description="All">
+	</target>
+
+</project>
+

@@ -1,0 +1,681 @@
+openapi: 3.0.0
+info:
+title: Activity Booking API
+description: custom by eroam from https://developer.hotelbeds.com
+termsOfService: 'https://developer.hotelbeds.com/API_Terms_of_Use'
+  contact:
+    name: BTB Support
+    url: 'https://developer.hotelbeds.com'
+    email: integrations.btb@hotelbeds.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  version: '1.0'
+externalDocs:
+  description: Find out more about APItude
+  url: https://developer.hotelbeds.com
+servers:
+  - url: 'https://api.test.hotelbeds.com/activity-booking-api/1.0'
+    variables: {}
+tags:
+  - name: Bookings
+    description: Rest Frontend Service Implementation
+paths:
+  /bookings:
+    put:
+      tags:
+      - Bookings
+      summary: Booking Confirm
+      operationId: BookingConfirm
+      parameters:
+      - name: Api-key
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: '{{Api-key}}'
+      - name: X-Signature
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: '{{X-Signature}}'
+      - name: Accept
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: application/json
+      - name: Accept-Encoding
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: gzip
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookingConfirmRequest'
+            example:
+              language: en
+              clientReference: TestAgenciaXisco
+              holder:
+                name: TESTXisco
+                title: Mr
+                email: x.bibiloni@hotelbeds.com
+                address: Avenida de Cid
+                zipCode: 07198
+                mailing: true
+                mailUpdDate: 2014-06-06
+                country: ES
+                surname: BibiloniTest
+                telephones:
+                - 123456789
+                - 123456798
+              activities:
+              - preferedLanguage: en
+                serviceLanguage: en
+                rateKey: qceel3tq3nujin53vosiqpeaij
+                from: 2016-07-01
+                to: 2016-07-01
+                paxes:
+                - age: 30
+                  name: XiscoTEst
+                  type: ADULT
+                  surname: TestBibiloni
+                - age: 10
+                  name: TestAitor
+                  type: CHILD
+                  surname: TestBibiloni
+        required: true
+      responses:
+        200:
+          description: ''
+          headers: { }
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingConfirmResponse'
+      deprecated: false
+components:
+  schemas:
+    BookingConfirmRequest:
+      title: BookingConfirmRequest
+      required:
+      - language
+      - clientReference
+      - holder
+      - activities
+      type: object
+      properties:
+        language:
+          type: string
+        clientReference:
+          type: string
+        holder:
+          $ref: '#/components/schemas/BookingHolder'
+        activities:
+          type: array
+          items:
+            $ref: '#/components/schemas/BookingActivity'
+          description: ''
+    BookingHolder:
+      title: Holder
+      required:
+      - name
+      - title
+      - email
+      - address
+      - zipCode
+      - mailing
+      - mailUpdDate
+      - country
+      - surname
+      - telephones
+      type: object
+      properties:
+        name:
+          type: string
+        title:
+          type: string
+        email:
+          type: string
+        address:
+          type: string
+        zipCode:
+          type: string
+        mailing:
+          type: boolean
+        mailUpdDate:
+          type: string
+        country:
+          type: string
+        surname:
+          type: string
+        telephones:
+          type: array
+          items:
+            type: string
+          description: ''
+    BookingActivity:
+      title: Activity
+      required:
+      - preferedLanguage
+      - serviceLanguage
+      - rateKey
+      - from
+      - to
+      - paxes
+      type: object
+      properties:
+        preferedLanguage:
+          type: string
+        serviceLanguage:
+          type: string
+        rateKey:
+          type: string
+        from:
+          type: string
+        to:
+          type: string
+        paxes:
+          type: array
+          items:
+            $ref: '#/components/schemas/BookingPax'
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/BookingAnswer'
+    BookingPax:
+      title: BookingPax
+      required:
+        - age
+        - name
+        - type
+        - surname
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+          default: ''
+        mailing:
+          title: Mailing
+          type: boolean
+        surname:
+          title: Surname
+          type: string
+          default: ''
+        customerId:
+          title: Customerid
+          type: string
+          default: ''
+        age:
+          title: Age
+          type: integer
+          default: 0
+        paxType:
+          title: Paxtype
+          type: string
+          default: ''
+        passport:
+          title: Passport
+          type: string
+          default: ''
+    BookingAnswer:
+      title: BookingAnswer
+      required:
+        - question
+        - answer
+      type: object
+      properties:
+        question:
+          title: Question
+          $ref: '#/components/schemas/BookingQuestion'
+        answer:
+          title: Answer
+          type: string
+          default: ''
+    BookingQuestion:
+      title: BookingQuestion
+      required:
+        - code
+      type: object
+      properties:
+        code:
+          title: Code
+          type: string
+          default: ''
+    BookingConfirmResponse:
+      properties:
+        operationId:
+          type: string
+          default: ''
+        auditData:
+          title: Auditdata
+          type: object
+          properties:
+            processTime:
+              title: Processtime
+              type: integer
+              default: 0
+            time:
+              title: Time
+              type: string
+              default: ''
+            serverId:
+              title: Serverid
+              type: string
+              default: ''
+            environment:
+              title: Environment
+              type: string
+              default: ''
+        booking:
+          title: Booking
+          type: object
+          properties:
+            reference:
+              title: Reference
+              type: string
+              default: ''
+            status:
+              title: Status
+              type: string
+              default: ''
+            currency:
+              title: Currency
+              type: string
+              default: ''
+            pendingAmount:
+              title: Pendingamount
+              type: number
+              default: 0
+            agency:
+              title: Agency
+              type: object
+              properties:
+                code:
+                  title: Code
+                  type: integer
+                  default: 0
+                branch:
+                  title: Branch
+                  type: integer
+                  default: 0
+                comments:
+                  title: Comments
+                  type: string
+                  default: ''
+                sucursal:
+                  title: Sucursal
+                  type: object
+                  properties:
+                    name:
+                      title: Name
+                      type: string
+                      default: ''
+                    street:
+                      title: Street
+                      type: string
+                      default: ''
+                    zip:
+                      title: Zip
+                      type: string
+                      default: ''
+                    city:
+                      title: City
+                      type: string
+                      default: ''
+                    email:
+                      title: Email
+                      type: string
+                      default: ''
+                    region:
+                      title: Region
+                      type: string
+                      default: ''
+            creationDate:
+              title: Creationdate
+              type: string
+              default: ''
+            paymentData:
+              title: Paymentdata
+              type: object
+              properties:
+                paymentType:
+                  title: Paymenttype
+                  type: object
+                  properties:
+                    code:
+                      title: Code
+                      type: string
+                      default: ''
+                invoicingCompany:
+                  title: Invoicingcompany
+                  type: object
+                  properties:
+                    code:
+                      title: Code
+                      type: string
+                      default: ''
+                    name:
+                      title: Name
+                      type: string
+                      default: ''
+                    registrationNumber:
+                      title: Registrationnumber
+                      type: string
+                      default: ''
+                description:
+                  title: Description
+                  type: string
+                  default: ''
+            clientReference:
+              title: Clientreference
+              type: string
+              default: ''
+            holder:
+              title: Holder
+              type: object
+              properties:
+                name:
+                  title: Name
+                  type: string
+                  default: ''
+                title:
+                  title: Title
+                  type: string
+                  default: ''
+                email:
+                  title: Email
+                  type: string
+                  default: ''
+                mailing:
+                  title: Mailing
+                  type: boolean
+                  default: false
+                surname:
+                  title: Surname
+                  type: string
+                  default: ''
+                telephones:
+                  title: Telephone
+                  type: array
+                  default: [ ]
+                  items:
+                    title: Items
+                    type: string
+                    default: ''
+            total:
+              title: Total
+              type: number
+              default: 0
+            totalNet:
+              title: Totalnet
+              type: number
+              default: 0
+            activities:
+              title: BookingActivity
+              type: array
+              default: [ ]
+              items:
+                title: Items
+                type: object
+                properties:
+                  status:
+                    title: Status
+                    type: string
+                    default: ''
+                  supplier:
+                    title: Supplier
+                    type: object
+                    properties:
+                      name:
+                        title: Name
+                        type: string
+                        default: ''
+                      vatNumber:
+                        title: Vatnumber
+                        type: string
+                        default: ''
+                  comments:
+                    title: Comment
+                    type: array
+                    default: [ ]
+                    items:
+                      title: Items
+                      type: object
+                      properties:
+                        type:
+                          title: Type
+                          type: string
+                          default: ''
+                        text:
+                          title: Text
+                          type: string
+                          default: ''
+                  type:
+                    title: Type
+                    type: string
+                    default: ''
+#                  vouchers:
+#                    title: Voucher
+#                    type: array
+#                    default: [ ]
+                  activityReference:
+                    title: Activityreference
+                    type: string
+                    default: ''
+                  code:
+                    title: Code
+                    type: string
+                    default: ''
+                  name:
+                    title: Name
+                    type: string
+                    default: ''
+                  modality:
+                    title: BookingModality
+                    type: object
+                    properties:
+                      code:
+                        title: Code
+                        type: string
+                        default: ''
+                      name:
+                        title: Name
+                        type: string
+                        default: ''
+                      rates:
+                        title: Rate
+                        type: array
+                        default: [ ]
+                        items:
+                          title: Items
+                          type: object
+                          properties:
+                            freeCancellation:
+                              type: boolean
+                              default: false
+                            #TODO
+                            # rateDetails:
+                            #   title: BookingRatedetail
+                            #   type: array
+                            #   default: []
+                            #   items:
+                            #     title: BookingRateDetailItems
+                            #     type: object
+                            #     properties:
+                            #       languages:
+                      amountUnitType:
+                        title: Amountunittype
+                        type: string
+                        default: ''
+                  dateFrom:
+                    type: string
+                    default: ''
+                  dateTo:
+                    type: string
+                    default: ''
+                  rateBreakdown:
+                    title: Ratebreakdown
+                    type: object
+                    properties:
+                      rateSupplements:
+                        title: Ratesupplement
+                        type: array
+                        default: [ ]
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              default: ''
+                            info:
+                              type: string
+                              default: ''
+                            amount:
+                              type: number
+                              default: 0
+                  cancellationPolicies:
+                    title: Cancellationpolicy
+                    type: array
+                    default: [ ]
+                    items:
+                      title: Items
+                      type: object
+                      properties:
+                        dateFrom:
+                          type: string
+                          default: ''
+                        amount:
+                          type: number
+                          default: 0
+                  paxes:
+                    title: Paxes
+                    type: array
+                    default: [ ]
+                    items:
+                      $ref: '#/components/schemas/BookingPax'
+                  questions:
+                    title: Question
+                    type: array
+                    default: [ ]
+                    items:
+                      title: Items
+                      type: object
+                      properties:
+                        question:
+                          type: object
+                          properties:
+                            code:
+                              type: string
+                              default: ''
+                            text:
+                              type: string
+                              default: ''
+                            required:
+                              type: boolean
+                              default: true
+                        answer:
+                          type: string
+                          default: ''
+                  id:
+                    type: string
+                    default: ''
+                  agencyCommission:
+                    type: object
+                    properties:
+                      percentage:
+                        type: integer
+                        default: 0
+                      amount:
+                        type: number
+                        default: 0
+                      vatAmount:
+                        type: integer
+                        default: 0
+                  contactInfo:
+                    type: object
+                    properties:
+                      country:
+                        type: object
+                        properties:
+                          destinations:
+                            title: Destination
+                            type: array
+                            default: [ ]
+                            items:
+                              type: object
+                              properties:
+                                code:
+                                  type: string
+                                  default: ''
+                                name:
+                                  type: string
+                                  default: ''
+                  amountDetail:
+                    title: BookingAmountdetail
+                    type: object
+                    properties:
+                      paxAmounts:
+                        title: Paxamounts
+                        type: array
+                        default: [ ]
+                        items:
+                          title: Items
+                          type: object
+                          properties:
+                            paxType:
+                              title: Paxtype
+                              type: string
+                              default: ''
+                            amount:
+                              type: number
+                              default: 0
+                      totalAmount:
+                        title: Totalamount
+                        type: object
+                        properties:
+                          amount:
+                            type: number
+                            default: 0
+                  extraData:
+                    title: Extradata
+                    type: array
+                    default: [ ]
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          default: ''
+                        value:
+                          type: string
+                          default: ''
+                  providerInformation:
+                    title: Providerinformation
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        default: ''
+                  content:
+                    //TODO
+
+
+
+
+
+

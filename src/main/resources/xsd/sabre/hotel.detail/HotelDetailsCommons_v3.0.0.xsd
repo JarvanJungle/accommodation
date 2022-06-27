@@ -1,0 +1,4057 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://services.sabre.com/hotel/details/v3_0_0"
+           targetNamespace="http://services.sabre.com/hotel/details/v3_0_0"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:simpleType name="NumericLengthwith3">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for an Alpha String, length exactly 5.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[1-5 ]{1}" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NumericLength10">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for an Numeric, length from 1 to 10.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9 ]{1,10}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringLength0to50">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character Strings, length 0 to 50.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0" />
+            <xs:maxLength value="50" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringLength0to5">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character Strings, length 0 to 5.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z0-9]{0,5}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringLength1To20WithNoSpace">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for numeric, length 1 to 20.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:whiteSpace value="preserve" />
+            <xs:minLength value="1" />
+            <xs:maxLength value="20" />
+            <xs:pattern value="[0-9]+" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringLength3to10">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character Strings, length 3 to 10.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="3" />
+            <xs:maxLength value="10" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringLength1to15">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character Strings, length 1 to 15.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="15" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringLength0to1000">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character Strings, length 0 to 50.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0" />
+            <xs:maxLength value="1000" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NumericStringLength1to2">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Numeric Strings, length 1 to 2.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{1,2}" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringLength0to20">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character Strings, length 0 to 20.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0" />
+            <xs:maxLength value="20" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringLength3WithNoSpace">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character String, length 1 to 3.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z]{3}" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringLength1to3">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character String, length 1 to 3.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="3" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringLength1to20">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character Strings, length 1 to 20.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="20" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AlphaLength1to2">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for an Alpha String, length 1 to 2.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-zA-Z]{1,2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringLength3to20">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character Strings, length 3 to 20.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="3" />
+            <xs:maxLength value="20" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringLength3to50">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character Strings, length 3 to 50.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="3" />
+            <xs:maxLength value="50" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringLength2to50">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character Strings, length 2 to 50.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="2" />
+            <xs:maxLength value="50" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AlphaLength3">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for an Alpha String, length exactly 3.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-zA-Z]{3}" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringLength0to10">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for boolean Strings, length 0 to 10.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0" />
+            <xs:maxLength value="10" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringLength0to3">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character String, length 0 to 3.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z0-9]{0,3}" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringLength0to2">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character String, length 0 to 2.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z0-9]{0,2}" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="UpperCaseAlphanumericStringLength1to8">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Upper Case Character Strings, length 1 to 8.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z0-9]{1,8}" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringLength0to255">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character Strings, length 0 to 255.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0" />
+            <xs:maxLength value="255" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringLength0to500">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character Strings, length 0 to 500.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0" />
+            <xs:maxLength value="500" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringLength0to100">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character Strings, length 0 to 100.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0" />
+            <xs:maxLength value="100" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="UpperCaseAlphaLength1to2">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for an Alpha String, length 1 to 2 (for letter codes).
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z]{1,2}" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AlphaLength2">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character String, length 0 to 3.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-zA-Z]{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="POS">
+        <xs:annotation>
+            <xs:documentation>Point of sales information</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Source">
+                <xs:annotation>
+                    <xs:documentation>Element to Hold PCC value</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="PseudoCityCode" type="AlphaNumericLength4" use="required">
+                        <xs:annotation>
+                            <xs:documentation>"PseudoCityCode" (required) Four-character pseudo city code (PCC)</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="HotelRefs">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used to give hotel info</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1" maxOccurs="1">
+            <xs:element name="HotelRef">
+                <xs:annotation>
+                    <xs:documentation>HotelRefs is Mandatory.
+                        Only one HotelRef can be given in a single request.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="HotelCode" type="StringLength1to20" use="required">
+                        <xs:annotation>
+                            <xs:documentation>Holds GlobalID or SabreID
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="CodeContext" type="CodeContextType" use="optional" default="SABRE">
+                        <xs:annotation>
+                            <xs:documentation>GLOBAL/SABRE Default will be SABRE</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="CodeContextType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">The code that signifies the GLOBAL as code context.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="GLOBAL">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">GLOBAL properties</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="SABRE">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">SABRE</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="RateInfoRef">
+        <xs:annotation>
+            <xs:documentation>Hotel Rates request Message to get details of available rates hotels.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="StayDateTimeRange" type="DateRangeTypeRef">
+                <xs:annotation>
+                    <xs:documentation>Specifies start date and end date of hotel stay duration</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RateRange" type="RateRange" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Indicates rate range which include min and max rate</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Rooms">
+                <xs:annotation>
+                    <xs:documentation>Collection of rooms</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="RoomSetTypes" type="RoomSetTypes" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>List of Attributes on which rooms are grouped</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="Room" type="Room" maxOccurs="unbounded">
+                            <xs:annotation>
+                                <xs:documentation>Room Info</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RatePlanCandidates" type="RatePlanCandidates" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Collection of RatePlanCandidates</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="LoyaltyIds" type="LoyaltyIds" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>"LoyaltyIds" is used to specify a Loyality number if applicable. Max of 10 LoyaltyID's</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FrequentFlyerNumber" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Customer frequent flyer number.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CorpDiscount" type="CorpDiscountCode" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Corporate discount ID/Number.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RateSource" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Used to specify the source of the data being exchanged as determined by trading partners. Used to specify the source of the data being exchanged.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="CurrencyCode" type="StringLength3WithNoSpace" use="optional">
+            <xs:annotation>
+                <xs:documentation>Requesting rates to be returned in particular currency .</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="PrepaidQualifier" type="PrepaidQualifierType" default="IncludePrepaid">
+            <xs:annotation>
+                <xs:documentation>'ExcludePrepaid' - Exclude prepaid rates from the response.
+                    'IncludePrepaid' -	Return prepaid and non-prepaid rates.
+                    'PrepaidOnly' -	Only return prepaid rates.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="RefundableOnly" type="xs:boolean" default="false">
+            <xs:annotation>
+                <xs:documentation>Optional 'true' or 'false'. 'true' returns refundable rates only. 'false' returns both refundable and non-refundable rates.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ConvertedRateInfoOnly" type="xs:boolean" default="true">
+            <xs:annotation>
+                <xs:documentation>Optional 'true' or 'false'. 'true' returns  rates in only requested currency. 'false' returns rates in both requested and supplier currency.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="TravellerCountry" type="AlphaLength2">
+            <xs:annotation>
+                <xs:documentation>
+                    Traveller Country Code
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ShowNegotiatedRatesFirst" type="xs:boolean" default="false">
+            <xs:annotation>
+                <xs:documentation>
+                    Flag to show negotiated rates first when true with rest of the rates sorted in ascending order of AmountBeforeTax. When false, all rates will be sorted in ascending order of AmountBeforeTax. Default value is false.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="RateKeyRef">
+        <xs:sequence>
+            <xs:element name="RateRange" type="RateRange" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        Indicates rate range which include min and max rate
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RoomSetTypes" type="RoomSetTypes" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>List of Attributes on which rooms are grouped</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RateSource" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        Used to specify the source of the data being exchanged as determined by trading partners.Used to specify the source of the data being exchanged.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="RateKey" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Requesting rates to be returned in particular currency .
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="PrepaidQualifier" type="PrepaidQualifierType" default="IncludePrepaid">
+            <xs:annotation>
+                <xs:documentation>
+                    'ExcludePrepaid' - Exclude prepaid rates from the response. 'IncludePrepaid' - Return prepaid and non-prepaid rates. 'PrepaidOnly' - Only return prepaid rates.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="RefundableOnly" type="xs:boolean" default="false">
+            <xs:annotation>
+                <xs:documentation>
+                    Optional 'true' or 'false'. 'true' returns refundable rates only. 'false' returns both refundable and non-refundable rates.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ConvertedRateInfoOnly" type="xs:boolean" default="true">
+            <xs:annotation>
+                <xs:documentation>
+                    Optional 'true' or 'false'. 'true' returns rates in only requested currency. 'false' returns rates in both requested and supplier currency.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ExactMatchOnly" type="xs:boolean" default="false">
+            <xs:annotation>
+                <xs:documentation>
+                    Flag to show negotiated rates first when true with rest of the rates sorted in ascending order of AmountBeforeTax. When false, all rates will be sorted in ascending order of AmountBeforeTax. Default value is false.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="TravellerCountry" type="AlphaLength2">
+            <xs:annotation>
+                <xs:documentation>
+                    Traveller Country Code
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ShowNegotiatedRatesFirst" type="xs:boolean" default="false">
+            <xs:annotation>
+                <xs:documentation>
+                    Flag to show negotiated rates first when true with rest of the rates sorted in ascending order of AmountBeforeTax. When false, all rates will be sorted in ascending order of AmountBeforeTax. Default value is false.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ShopKey" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation> ShopKey to retrieve next set of rates</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:simpleType name="CorpDiscountCode">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z]{1,20}" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="DateRangeTypeRef">
+        <xs:annotation>
+            <xs:documentation>Indicates stay date range which includes start date and end date
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="StartDate" type="xs:date" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Start Date</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="EndDate" type="xs:date" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">End Date</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="CheckInTime" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>Check in time</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="CheckOutTime" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>Check out time</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="DurationInHours" type="xs:positiveInteger">
+            <xs:annotation>
+                <xs:documentation>Stay duration in hours</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="RoomSetTypes">
+        <xs:annotation>
+            <xs:documentation>List of Attributes on which rooms are grouped</xs:documentation>
+        </xs:annotation>
+        <xs:sequence maxOccurs="10">
+            <xs:element name="RoomSet">
+                <xs:annotation>
+                    <xs:documentation>Each Attribute on which rooms are grouped</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="Type" type="xs:string" use="required">
+                        <xs:annotation>
+                            <xs:documentation>Type holds string value of attribute name</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RateRange">
+        <xs:annotation>
+            <xs:documentation>Indicates rate range which include min and max rate</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="Min" type="Amount">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Specifies Minimum amount, max 2 decimals.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Max" type="Amount">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Specifies Maximum amount, max 2 decimals.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="Room">
+        <xs:annotation>
+            <xs:documentation>Room Info</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ChildAges" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Age of Children</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Index" type="xs:positiveInteger" use="required">
+            <xs:annotation>
+                <xs:documentation>Room Index</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Adults" type="xs:positiveInteger" use="required">
+            <xs:annotation>
+                <xs:documentation>Number of Adults</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Children" type="xs:nonNegativeInteger">
+            <xs:annotation>
+                <xs:documentation>Number of Children</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:simpleType name="BestOnly">
+        <xs:annotation>
+            <xs:documentation>
+                Determine whether one lowest rate or multiple lowest rates are needed
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">LOWEST_RATE_ONLY</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">LOWEST_RATE_ALL_SOURCES</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="RatePlanCandidates">
+        <xs:annotation>
+            <xs:documentation>Allow max of 11 RatePlanCandidate tags for now, to match IRAC. This may change later</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="RatePlanCandidate" maxOccurs="11">
+                <xs:annotation>
+                    <xs:documentation>Allow max of 11 RatePlanCandidate tags for now, to match IRAC. This may change later</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="RatePlanType" type="RatePlanTypes" >
+                        <xs:annotation>
+                            <xs:documentation>An enumerated type that allows the query to specify a rate category type, and provides major categories for comparison across brands. Refer to
+                                OpenTravel Code List Rate Plan Type (RPT)</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="RatePlanCode" type="xs:string" >
+                        <xs:annotation>
+                            <xs:documentation>A string value may be used to request a particular code or an ID if the guest qualifies for a specific rate, such as AARP, AAA, a corporate rate, etc., or
+                                to specify a negotiated code as a result of a negotiated rate</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="ExactMatchOnly" type="xs:boolean" default="false">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">A boolean flag that indicates the response message should send back only those rates that are an exact match to the requested criteria.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:simpleType name="PrepaidQualifierType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">The 2 digit code that identifies the rate plan type.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="StringLength1to15">
+            <xs:enumeration value="IncludePrepaid">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Inclusion of prepaid.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PrepaidOnly">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Only prepaid is allowed.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ExcludePrepaid">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Exclusion of prepaid.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Amount">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Specifies an amount, max 2 decimals.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0" />
+            <xs:fractionDigits value="3" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="RatePlanTypes" final="restriction">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">The 2 digit code that identifies the rate plan type.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="NumericStringLength1to2">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Association</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Club/concierge</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Convention</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="4">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Corporate</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="5">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Day rate</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="6">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Distressed inventory</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="7">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Family plan</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="8">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Government</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="9">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Military</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="10">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Negotiated</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="11">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Package</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="12">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Promotional</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="13">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Regular/rack</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="14">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Senior citizen</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="15">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Tour/wholesale</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="16">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Travel industry</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="17">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Weekend</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="18">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Last room available</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="19">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Non-last room available</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="20">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Consortia</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="21">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Group</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="22">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Contract</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="23">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Promotional package/tour</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="24">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Published</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="25">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Net</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="26">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Multi-day package</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="27">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Weekly</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="28">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Monthly</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="29">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Standard redemption rate</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="30">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Discount redemption rate</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="31">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Cash and points redemption rate</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="32">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Point upgrade redemption rate</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="33">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Cash upgrade redemption rate</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="HotelContentRef">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used to give the information to filter of Hotel Content</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="DescriptiveInfoRef" type="DescriptiveInfoRef" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Property Descriptive Info Reference Tag</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MediaRef" type="MediaRef" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Used to give the information to filter of Hotel Images
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MediaRef">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used to give the information to filter of Hotel Images</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="MediaTypes" type="MediaTypes" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Media Types</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Categories" type="Categories" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Image Category</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RoomTypeCodes" type="RoomTypeCodes" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">List of Room Type Codes</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="AdditionalInfo" type="AdditionalInfoRef" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Additional Information related to the image</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Languages" type="Languages" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Languages</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="MaxItems" type="MaxImagesType" default="1">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Maximum images requested by the user. Valid values are "ALL" or 1 to 99
+                    images.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="RoomTypeCodes">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">List of Room Type Codes</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="22">
+            <xs:element name="RoomTypeCode">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">RoomTypeCode</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="Code" type="xs:string" use="required">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">Specific system room type code, ex: A1K, A1Q etc.
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MediaTypes">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Media Types</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="Images" type="Images" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Images</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PanoramicMedias" type="PanoramicMedias" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Panoramic Medias</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Videos" type="Videos" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">List Of Videos</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Categories">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Image Category</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1" maxOccurs="22">
+            <xs:element name="Category">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Image Category</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="Code" type="xs:positiveInteger" use="required">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">Image Category Code</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AdditionalInfoRef">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Image related additional information types</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1" maxOccurs="10">
+            <xs:element name="Info">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Image related information</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:boolean">
+                            <xs:attribute name="Type" type="AdditionalInfoType" use="required">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        Image related additional information types
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Languages">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Languages</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1" maxOccurs="10">
+            <xs:element name="Language">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Language</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="Code" type="LanguageCode">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">Two character Language Code</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="LanguageCode">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Two character Language Code.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([a-z][a-z][_][A-Z][A-Z])|([a-zA-Z]{2})" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="MaxImagesType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Maximum images requested by the user. Valid values are "ALL" or 1 to 99
+                images.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="(ALL|([1-9]{1})|([0-9]{2}))" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="PanoramicMedias">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Panoramic Medias</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="5">
+            <xs:element name="PanoramicMedia">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Panoramic Media</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="Type" type="PanoramaMediaTypes" use="required">
+                        <xs:annotation>
+                            <xs:documentation>
+                                Panorama Media types
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Videos">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">List Of Videos</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="5">
+            <xs:element name="Video">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Video Info</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="Type" type="VideoTypes" use="required">
+                        <xs:annotation>
+                            <xs:documentation>
+                                Video types
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="PanoramaMediaTypes">
+        <xs:annotation>
+            <xs:documentation>
+                Panorama Media types
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="HD360" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="VideoTypes">
+        <xs:annotation>
+            <xs:documentation>
+                Video types
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="VIDEO360" />
+            <xs:enumeration value="VIDEO720" />
+            <xs:enumeration value="VIDEOTHUMBNAIL" />
+            <xs:enumeration value="ALL" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ImageTypes">
+        <xs:annotation>
+            <xs:documentation>
+                Image types
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="ORIGINAL" />
+            <xs:enumeration value="THUMBNAIL" />
+            <xs:enumeration value="SMALL" />
+            <xs:enumeration value="MEDIUM" />
+            <xs:enumeration value="LARGE" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="DescriptiveInfoRef">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Property Descriptive Info Reference Tag</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="PropertyInfo" type="xs:boolean" default="false" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>A boolean flag indicating if Property information is expected in the response</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="LocationInfo" type="xs:boolean" default="false" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>A boolean flag indicating if Location information is expected in the response</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Amenities" type="xs:boolean" default="false" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>A boolean flag indicating if Amenities information is expected in the response</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Descriptions" type="DescriptionsRef" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Includes the supported types for which the Descriptions are expected in the response</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SecurityFeatures" type="xs:boolean" default="false" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>A boolean flag indicating if Security Features information is expected in the response</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DescriptionsRef">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Property Description Reference Tag</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1" maxOccurs="13">
+            <xs:element name="Description">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Property Description Tag</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="Type" type="DescriptionType" use="required">
+                        <xs:annotation>
+                            <xs:documentation>Indicates the supported types for which the Descriptions are expected
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="DescriptionType">
+        <xs:annotation>
+            <xs:documentation>
+                Description Types
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ShortDescription" />
+            <xs:enumeration value="Dining" />
+            <xs:enumeration value="Facilities" />
+            <xs:enumeration value="Recreation" />
+            <xs:enumeration value="Services" />
+            <xs:enumeration value="Attractions" />
+            <xs:enumeration value="CancellationPolicy" />
+            <xs:enumeration value="DepositPolicy" />
+            <xs:enumeration value="Directions" />
+            <xs:enumeration value="Policies" />
+            <xs:enumeration value="SafetyInfo" />
+            <xs:enumeration value="TransportationInfo" />
+            <xs:enumeration value="GuaranteePolicy" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="AlternateHotelInfos">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="AlternateHotelInfo" type="AlternateHotelInfo">
+                <xs:annotation>
+                    <xs:documentation>Details for Alternate Property.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AlternateHotelInfo">
+        <xs:attribute name="HotelCode" type="StringLength1to20"/>
+        <xs:attribute name="CodeContext" type="CodeContextType"/>
+        <xs:attribute name="SabreHotelCode" type="StringLength1to20"/>
+        <xs:attribute name="ChainCode" type="AlphaLength1to2"/>
+        <xs:attribute name="Distance" type="xs:double" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en"> Distance of Hotel from the search point. </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Direction" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">  Direction of Hotel from the search point. </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="UOM" type="UnitOfMeasureType" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    Used for specifing what unit will be used for search radius distance.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="HotelInfo">
+        <xs:annotation>
+            <xs:documentation>
+                Hotel summary information
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="TierLabels" type="TierLabels" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Agency or Corporate labels assigned for this property</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="HotelCode" type="StringLength0to20" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Holds GlobalID or SabreID</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="CodeContext" type="CodeContextType" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">GLOBAL/SABRE Default will be SABRE
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="HotelName" type="StringLength0to500" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Name of Hotel
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ChainCode" type="StringLength0to20" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Chain code
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ChainName" type="StringLength0to500" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Chain Name
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="BrandCode" type="StringLength0to50" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Brand Code
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="BrandName" type="StringLength0to500" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Brand Name
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Status" type="PropertyStatusType" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Status
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="SabreRating" type="StringLength0to10" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">SabreRating
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="SabreHotelCode" type="StringLength1to20">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Holds SabreID</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Logo" type="xs:anyURI">
+            <xs:annotation>
+                <xs:documentation>Logo</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:simpleType name="PropertyStatusType">
+        <xs:annotation>
+            <xs:documentation>
+                Hotel Status Types
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="Active" />
+            <xs:enumeration value="Inactive" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="HotelDescriptiveInfo">
+        <xs:annotation>
+            <xs:documentation>Hotel Information</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:sequence minOccurs="0" maxOccurs="1">
+                <xs:element name="PropertyInfo" type="PropertyInfo" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Property Information</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="LocationInfo" type="LocationInfo" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Location Information for a hotel</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Amenities" type="Amenities" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Ameneties for a hotel</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="SecurityFeatures" type="SecurityFeatureInfos" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>List of SecurityFeatures provided by the property</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Descriptions" type="Descriptions" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Description of a hotel</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TierLabels">
+        <xs:annotation>
+            <xs:documentation>Agency or Corporate labels assigned for this property</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="5">
+            <xs:element name="TierLabel">
+                <xs:annotation>
+                    <xs:documentation>Agency or Corporate labels assigned for this property</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="Type" type="StringLength0to500" use="optional">
+                        <xs:annotation>
+                            <xs:documentation>TierLabel type</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="Value" type="StringLength0to500" use="optional">
+                        <xs:annotation>
+                            <xs:documentation>TierLabel value</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="ProgramId" type="NumericLength10" use="optional">
+                        <xs:annotation>
+                            <xs:documentation>TierLabel programId</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PropertyInfo">
+        <xs:annotation>
+            <xs:documentation>Property Information</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="PropertyTypeInfo" type="PropertyTypeInfo" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>property Type Information</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Policies" type="Policies" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Policies</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PropertyQualityInfo" type="PropertyQualityInfo" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">PropertyQualityInfo</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Floors" type="StringLength0to3" use="optional">
+            <xs:annotation>
+                <xs:documentation>Number of floors of the Property Building</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Rooms" type="StringLength0to4" use="optional">
+            <xs:annotation>
+                <xs:documentation>Total Number of Rooms in the Property</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="LocationInfo">
+        <xs:annotation>
+            <xs:documentation>Property Location Information</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="Address" type="Address" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Address of a hotel</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Neighborhoods" type="Neighborhoods" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Optional. Maximum Neighborhood count in response is 10</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Contact" type="Contact" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Contact information for a hotel</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Latitude" type="xs:decimal" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Latitude</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Longitude" type="xs:decimal" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Longitude</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="Neighborhoods">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Neighborhoods</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="10">
+            <xs:element name="Neighborhood">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Neighborhood</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="Id" type="StringLength0to20" use="optional">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        polygon id of Neighborhood
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Address">
+        <xs:annotation>
+            <xs:documentation>Address of a hotel</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="AddressLine1" type="StringLength0to500">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Address Line1</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="AddressLine2" type="StringLength0to500" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Address Line2</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="AddressLine3" type="StringLength0to500" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Address Line3</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CityName">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">City Name</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="StringLength0to50">
+                            <xs:attribute name="CityCode" type="StringLength0to5" use="optional">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="en">City Code</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="StateProv" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">State/Province of the Hotel Property</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="StateCode" type="StringLength0to10" use="optional">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="en">State Code</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PostalCode" type="StringLength0to50">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Postal Code</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CountryName">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Country Name</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="Code" type="StringLength0to3" use="optional">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="en">Country Name</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Contact">
+        <xs:annotation>
+            <xs:documentation>Contact information for a hotel</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="Phone" type="StringLength0to20">
+            <xs:annotation>
+                <xs:documentation>Hotel phone number length 0 to 20</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Fax" type="StringLength0to20">
+            <xs:annotation>
+                <xs:documentation>Hotel fax number length 0 to 20</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="Amenities">
+        <xs:annotation>
+            <xs:documentation>Ameneties for a hotel</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="Amenity" type="Amenity">
+                <xs:annotation>
+                    <xs:documentation>Amenity information</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Amenity">
+        <xs:annotation>
+            <xs:documentation>Identifes the types of room amenities offered by the property.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="Code" type="OTACodeType">
+                    <xs:annotation>
+                        <xs:documentation>Code HAC OTA Code</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="Description" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>Description of Room Amenity Code</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="ComplimentaryInd" type="xs:boolean" use="optional">
+                    <xs:annotation>
+                        <xs:documentation>Indicate if the amenity is complimentary or charged</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="RoomAmenities">
+        <xs:annotation>
+            <xs:documentation>Ameneties for a hotel</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="Amenity" type="RoomAmenity">
+                <xs:annotation>
+                    <xs:documentation>Amenity information</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RoomAmenity">
+        <xs:annotation>
+            <xs:documentation>Identifes the types of room amenities offered by the property.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="Code" type="OTACodeType">
+                    <xs:annotation>
+                        <xs:documentation>Code HAC OTA Code</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="Description" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>Description of Room Amenity Code</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="ComplimentaryInd" type="xs:boolean" use="optional">
+                    <xs:annotation>
+                        <xs:documentation>Indicate if the amenity is complimentary or charged</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="AccessibleAmenity" type="xs:boolean">
+                    <xs:annotation>
+                        <xs:documentation>Indicates if the amenity is wheelchair accessible</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="SecurityFeatureInfos">
+        <xs:annotation>
+            <xs:documentation>List of SecurityFeatureInfos provided by the property</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="SecurityFeature" type="SecurityFeature">
+                <xs:annotation>
+                    <xs:documentation>Security Feature Information</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SecurityFeature">
+        <xs:annotation>
+            <xs:documentation>Security Feature Information</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="Code" type="OTACodeType">
+                    <xs:annotation>
+                        <xs:documentation>Numeric OTA code for the Security feature</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="Description" type="StringLength0to255">
+                    <xs:annotation>
+                        <xs:documentation>Security Description</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="Descriptions">
+        <xs:annotation>
+            <xs:documentation>Description of a hotel</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Description" type="DescriptionInfo">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Property Description Info</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DescriptionInfo">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Property Description Info</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="Text">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Property Description Info text</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="Type" type="DescriptionType" use="required">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="en">Property Description type</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PropertyTypeInfo">
+        <xs:annotation>
+            <xs:documentation>property Type Information</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="PropertyType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Type of property</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="Code" type="OTACodeType" use="optional" >
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">Numeric OTA code for the Property Class Type. Property Types of  Hotel are mapped to "PCT" OTA code
+                            </xs:documentation>
+                        </xs:annotation>
+
+                    </xs:attribute>
+                    <xs:attribute name="Description" type="StringLength0to255" use="optional">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">Property Class Type Description. Ex- Apartment, All Suites, Resort etc </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Policies">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Policies</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Policy" type="Policy" minOccurs="2" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Policy</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PropertyQualityInfo">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Property Quality Information</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="PropertyQuality">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Property Quality information</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="Code" type="OTACodeType" use="optional">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">Numeric OTA code for the Property Quality. Property Quality Type is mapped to &quot;PCT&quot; OTA code</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="Description" type="StringLength0to255" use="optional">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">Property Class Type Description. Ex- Economy, All Midscale, Luxury etc</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Policy">
+        <xs:annotation>
+            <xs:documentation>policy Information</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Text">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Indicates the type of policy. Ex- Check In, Check Out etc</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="Type" type="PolicyType" use="required">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="en">Policy type</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="PolicyType">
+        <xs:annotation>
+            <xs:documentation>
+                Policy Types
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="CheckIn" />
+            <xs:enumeration value="CheckOut" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="HotelRateInfoType">
+        <xs:annotation>
+            <xs:documentation>
+                RateInfos - Collection of Rate information for a request from all suppliers. TotalRates (not
+                room specific)
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="RateInfos" type="RateInfosType">
+                <xs:annotation>
+                    <xs:documentation>RateInfos - Collection of Rate information for a request from all suppliers. TotalRates (not room specific)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:choice>
+                <xs:annotation>
+                    <xs:documentation>
+                        Either Rooms or RoomSets will be present.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:element name="Rooms" type="Rooms" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Describes hotel rooms information for a hotel.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="RoomSets" type="RoomSetsType" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Room Sets is only present if request has room set type.If RoomSets is present Rooms tag is not returned.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RoomSetsType">
+        <xs:annotation>
+            <xs:documentation>Room Sets is only present if request has room set type.If RoomSets is present Rooms tag is not returned.</xs:documentation></xs:annotation>
+        <xs:sequence maxOccurs="unbounded">
+            <xs:annotation>
+                <xs:documentation>Describes roomsetstype information for a hotel.</xs:documentation>
+            </xs:annotation>
+            <xs:element name="RoomSet" type="RoomSet">
+                <xs:annotation>
+                    <xs:documentation>RoomSet represents a list of rooms with the same type.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RoomSet">
+        <xs:sequence>
+            <xs:annotation>
+                <xs:documentation>Describes roomsetstype information for a hotel.</xs:documentation>
+            </xs:annotation>
+            <xs:element name="RoomSetAttributes" type="RoomSetAttributes" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>List of attributes that match in Rooms within the RoomSet.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Room" type="RoomType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Describes hotel rooms information for a hotel.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RoomSetAttributes">
+        <xs:annotation>
+            <xs:documentation>List of attributes that match in Rooms within the RoomSet.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="RoomSetAttribute" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Individual attribute that match in Rooms within the RoomSet.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="Type" type="xs:string" use="required">
+                        <xs:annotation>
+                            <xs:documentation>Attribute Type.</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="Code" type="OTACodeType">
+                        <xs:annotation>
+                            <xs:documentation>OTA Codes.</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="Value" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>OTA Descriptions.</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RateInfosType">
+        <xs:annotation>
+            <xs:documentation>
+                Collection of Rate information for a request from all suppliers.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="RateInfo" type="RateInfoType" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Provides details of a product in the supplier provided currency.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ConvertedRateInfo" type="RateInfoType" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>
+                        Provides details of a product in the requested currency.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="ShopKey" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>Shop key for pagination - pass this back in the request to fetch more rates for the same property</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="RateInfoType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Rate information for the shop request. Total Rates (not room specific)
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+
+            <xs:element name="Commission" type="CommissionType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Commission information.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="StartDate" type="Date">
+            <xs:annotation>
+                <xs:documentation>start date</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="EndDate" type="Date">
+            <xs:annotation>
+                <xs:documentation>End date</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="AmountBeforeTax" type="Amount">
+            <xs:annotation>
+                <xs:documentation>Specifies an amount before tax</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="AmountAfterTax" type="Amount">
+            <xs:annotation>
+                <xs:documentation>specifies an amount after tax</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="MinSellingRate" type="Amount">
+            <xs:annotation>
+                <xs:documentation>specifies minimum selling rate</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="AverageNightlyRate" type="Amount">
+            <xs:annotation>
+                <xs:documentation>Average rate per night.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="AverageNightlyRateBeforeTax" type="Amount">
+            <xs:annotation>
+                <xs:documentation>Average rate per night.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="CurrencyCode" type="StringLength3WithNoSpace">
+            <xs:annotation>
+                <xs:documentation>Currency code in which the rate is represented.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="AdditionalFeesInclusive" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation>Boolean attribute which indicates whether additional fees are included in the total rate.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="TaxInclusive" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation>Boolean attribute which indicates whether taxes are included in the total rate.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="LocalFeesInclusive" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation>Boolean attribute which indicates whether local fees are included in the total rate.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="IncidentalsInclusive" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation>Boolean attribute which indicates whether incidentals are included in the total rate.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="RateSource" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>Numeric value representing aggregator that provided the rate.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="RateKey" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>Encrypted string that holds product details.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="TaxesType">
+        <xs:annotation>
+            <xs:documentation>Types of taxes</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Tax" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Tax information</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="TaxDescription" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>Tax description</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Text" type="xs:string">
+                                        <xs:annotation>
+                                            <xs:documentation>Tax description</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="Code" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>Code identifying the fee (e.g.,agency fee, municipality fee). Refer to OpenTravel Code List Fee Tax Type (FTT)</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="Amount" type="Amount">
+                        <xs:annotation>
+                            <xs:documentation>specifies an amount upto 2 decimal digits</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="CurrencyCode" type="StringLength3WithNoSpace" use="required">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">An ISO 4217 (3) alpha character code that specifies a
+                                monetary unit
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Amount" type="Amount">
+            <xs:annotation>
+                <xs:documentation>Specifies an amount upto 2 decimal digits</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="CurrencyCode" type="StringLength3WithNoSpace" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">An ISO 4217 (3) alpha character code that specifies a monetary unit
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="FeesType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Fees Type</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Fee" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>A collection of fees</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="FeeDescription" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>Fee description</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Text" type="xs:string" maxOccurs="unbounded">
+                                        <xs:annotation>
+                                            <xs:documentation>Fee description</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="Code" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>Fee code</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="Amount" type="Amount" use="optional">
+                        <xs:annotation>
+                            <xs:documentation>Specifies an amount upto 2 decimal digits</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="CurrencyCode" type="StringLength3WithNoSpace" use="required">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">An ISO 4217 (3) alpha character code that specifies a
+                                monetary unit
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Amount" type="Amount">
+            <xs:annotation>
+                <xs:documentation>Specifies an amount upto 2 decimal digits</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="CurrencyCode" type="StringLength3WithNoSpace" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">An ISO 4217 (3) alpha character code that specifies a monetary unit
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="RoomExtrasType">
+        <xs:annotation>
+            <xs:documentation>List of room extras available with chosen rate plan.</xs:documentation></xs:annotation>
+        <xs:sequence>
+            <xs:element name="RoomExtra" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>List of room extras available with chosen rate plan.</xs:documentation></xs:annotation>
+                <xs:complexType>
+                    <xs:annotation>
+                        <xs:documentation>List of room extras available with chosen rate plan.</xs:documentation></xs:annotation>
+                    <xs:sequence minOccurs="0">
+                        <xs:element name="Text" type="xs:string" >
+                            <xs:annotation>
+                                <xs:documentation>Description for Room Extra.</xs:documentation>
+                            </xs:annotation></xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="Code" type="OTACodeType" >
+                        <xs:annotation>
+                            <xs:documentation>Code applicable for tRoom Extra.</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="Description" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>OTA Code Description</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="Amount" type="Amount" >
+                        <xs:annotation>
+                            <xs:documentation>Amount For Room Extra.</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="CurrencyCode" type="StringLength3WithNoSpace" >
+                        <xs:annotation>
+                            <xs:documentation>Code applicable for the extra rooms</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CancelPenaltiesType">
+        <xs:annotation>
+            <xs:documentation>Type of Cancel Penalty of Hotel
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="CancelPenalty" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Cancel penalty of hotel</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:annotation>
+                        <xs:documentation>Type of Cancel Penalty of Hotel</xs:documentation></xs:annotation>
+                    <xs:sequence>
+                        <xs:element name="Deadline" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>Deadline Information
+                                </xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:annotation>
+                                    <xs:documentation>Deadline Information</xs:documentation></xs:annotation>
+                                <xs:attribute name="AbsoluteDeadline" type="xs:dateTime">
+                                    <xs:annotation>
+                                        <xs:documentation>Defines the absolute deadline. Either this or the offset attributes may be used.
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="OffsetTimeUnit" type="xs:string">
+                                    <xs:annotation>
+                                        <xs:documentation>Cancellation deadline, absolute or relative.
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="OffsetUnitMultiplier" type="xs:positiveInteger">
+                                    <xs:annotation>
+                                        <xs:documentation>The number of units of DeadlineTimeUnit.
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="OffsetDropTime" type="OffsetDropTimeType">
+                                    <xs:annotation>
+                                        <xs:documentation>ssssAn enumerated type indicating when the deadline drop time goes into effect.
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="AmountPercent" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>Cancellation fee expressed as a fixed amount, or percentage of/or room nights.Defines the percentage basis for calculating the fee amount or the amount.
+                                </xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:annotation>
+                                    <xs:documentation>Cancellation fee expressed as a fixed amount, or percentage of/or room nights.Defines the percentage basis for calculating the fee amount or the amount.</xs:documentation></xs:annotation>
+                                <xs:attribute name="TaxInclusive" type="xs:boolean">
+                                    <xs:annotation>
+                                        <xs:documentation>Indicates whether taxes are included when figuring the base amount.
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="FeesInclusive" type="xs:boolean">
+                                    <xs:annotation>
+                                        <xs:documentation>Indicates whether fees, such as those imposed by a travel agency or other booking agent, are included when figuring cancel penalties.
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="NmbrOfNights" type="xs:int">
+                                    <xs:annotation>
+                                        <xs:documentation>The number of nights of the hotel stay that are used to calculate the fee amount.
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="BasisType" type="xs:string">
+                                    <xs:annotation>
+                                        <xs:documentation>Provides the basis for how the amount of the guarantee is calculated.
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="Percent" type="Percentage">
+                                    <xs:annotation>
+                                        <xs:documentation>The percentage used to calculate the amount.
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="Amount" type="Amount">
+                                    <xs:annotation>
+                                        <xs:documentation>A monetary amount.
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="CurrencyCode" type="StringLength3WithNoSpace">
+                                    <xs:annotation>
+                                        <xs:documentation
+                                                xml:lang="en">An ISO 4217 (3) alpha character code that specifies a monetary unit
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="ApplyAs" type="xs:string">
+                                    <xs:annotation>
+                                        <xs:documentation>Used to specify how the amount needs to be applied with respect to the stay.
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="PenaltyDescription" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>Penalty Description
+                                </xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:annotation>
+                                    <xs:documentation>Penalty Description</xs:documentation>
+                                </xs:annotation>
+                                <xs:sequence>
+                                    <xs:element name="Text" type="xs:string">
+                                        <xs:annotation>
+                                            <xs:documentation>Penalty Description
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+
+                    <xs:attribute name="Refundable" type="xs:boolean" use="required">
+                        <xs:annotation>
+                            <xs:documentation>When true penalty can be refundable
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GuaranteeType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                An enumerated type defining the guarantee to be applied to this reservation.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="GuaranteesAccepted">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Acceptable Guaranteed for property</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:annotation>
+                        <xs:documentation>
+                            An enumerated type defining the guarantee to be applied to this reservation.
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:sequence>
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">
+                                Guarantee - Guarantee information that applies to the rate plan.Guarantee Retribution won't be supported.
+                            </xs:documentation>
+                        </xs:annotation>
+                        <xs:element name="GuaranteeAccepted" maxOccurs="unbounded">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">Guarantee Accepted</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="PaymentCards" minOccurs="0">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                The Card like Credit card or debit card which is used to pay
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="PaymentCard" maxOccurs="unbounded">
+                                                    <xs:annotation>
+                                                        <xs:documentation xml:lang="en">
+                                                            The Card like Credit card or debit card which is used to pay
+                                                        </xs:documentation>
+                                                    </xs:annotation>
+                                                    <xs:complexType>
+                                                        <xs:simpleContent>
+                                                            <xs:extension base="xs:string">
+                                                                <xs:attribute name="CardCode" type="xs:string" use="required">
+                                                                    <xs:annotation>
+                                                                        <xs:documentation xml:lang="en">Code identifying the card type</xs:documentation>
+                                                                    </xs:annotation>
+                                                                </xs:attribute>
+                                                            </xs:extension>
+                                                        </xs:simpleContent>
+                                                    </xs:complexType>
+                                                </xs:element>
+                                            </xs:sequence>
+                                            <xs:attribute name="CVVRequired" type="xs:boolean">
+                                                <xs:annotation>
+                                                    <xs:documentation>CVVRequired.</xs:documentation>
+                                                </xs:annotation>
+                                            </xs:attribute>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="GuaranteeTypeCode" type="OTACodeType">
+                                    <xs:annotation>
+                                        <xs:documentation xml:lang="en">
+                                            Used to specify the method of guarantee. Refer to OpenTravel Code List Payment Type (PMT).
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="GuaranteeTypeDescription" type="xs:string">
+                                    <xs:annotation>
+                                        <xs:documentation>OTA Code Description</xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DepositPolicies" type="DepositPolicies" minOccurs="0"/>
+            <xs:element name="GuaranteeDescription" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Guarantee Description.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Text" type="xs:string" maxOccurs="unbounded">
+                            <xs:annotation>
+                                <xs:documentation>Guarantee Description.</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="GuaranteeType" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>
+                    An enumerated type defining the guarantee to be applied to this reservation.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="CommissionType">
+        <xs:annotation>
+            <xs:documentation>Commission information.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="CommissionDescription" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Commission information.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Text" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation>Commission information.</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Percent" type="Percentage">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Specifies a percentage, max 2 decimals.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Amount" type="Amount">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Specifies an amount, max 2 decimals.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="CurrencyCode" type="StringLength3WithNoSpace">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">An ISO 4217 (3) alpha character code that specifies a monetary unit
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Type" type="xs:string">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Specifies type of commision .</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="AdditionalDetails">
+        <xs:annotation>
+            <xs:documentation>Additional details of room type.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="AdditionalDetail" type="AdditionalDetail" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AdditionalDetail">
+        <xs:annotation>
+            <xs:documentation>
+                Data related to additional detail associated with rate.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Text" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Text description.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Code" type="OTACodeType">
+            <xs:annotation>
+                <xs:documentation>Refer to OpenTravel Code List Additional Detail Type (ADT).</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Description" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>OTA Code Description</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Amount" type="Amount">
+            <xs:annotation>
+                <xs:documentation>Amount applicable for additional detail.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="CurrencyCode" type="StringLength3WithNoSpace">
+            <xs:annotation>
+                <xs:documentation>Currency code applicable for the rates.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:simpleType name="OffsetDropTimeType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Specifies the type of drop time.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="BeforeArrival" />
+            <xs:enumeration value="AfterBooking" />
+            <xs:enumeration value="AfterConfirmation" />
+            <xs:enumeration value="AfterArrival" />
+            <xs:enumeration value="AfterDeparture" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Percentage">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Specifies a percentage, max 2 decimals.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Money">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Specifies an amount, max 3 decimals.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="3" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="PaymentCardCodeType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">The 2 digit code that identifies the credit card.</xs:documentation>
+        </xs:annotation>
+        <xs:union>
+            <xs:simpleType>
+                <xs:restriction base="UpperCaseAlphaLength1to2">
+                    <xs:enumeration value="AX">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">American Express</xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="BC">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">Bank Card</xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="BL">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">Carte Bleu</xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="CB">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">Carte Blanche</xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="DN">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">Diners Club</xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="DS">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">Discover Card</xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="EC">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">Eurocard</xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="JC">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">Japanese Credit Bureau Credit Card</xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="MA">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">Maestro</xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="MC">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">Master Card</xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="TP">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">Universal Air Travel Card</xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="VI">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">Visa</xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">This is intended to be used when the above enumeration list does not
+                        meet your needs.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:restriction base="UpperCaseAlphaLength1to2" />
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+    <xs:complexType name="Rooms">
+        <xs:annotation>
+            <xs:documentation>Describes hotel rooms information for a hotel.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="Room" type="RoomType">
+                <xs:annotation>
+                    <xs:documentation>Describes hotel rooms information for a hotel.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RoomType">
+        <xs:sequence>
+            <xs:element name="BedTypeOptions" type="BedTypeOptions" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Indicates the type of bed(s) found in the room. Typical values would be Double, Twin, Queen, or King. Refer to OpenTravel Code List Bed Type Code (BED).List of OpenTravel Codes</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RoomDescription" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Description of the room.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Text" minOccurs="0" type="xs:string" maxOccurs="unbounded">
+                            <xs:annotation>
+                                <xs:documentation>Text for room description.</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="Name" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>Name of room type.</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AdditionalDetails" type="AdditionalDetails" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Additional details of room type.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Amenities" type="RoomAmenities" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Amenties for a hotel</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Occupancy" type="Occupancy" minOccurs="0" >
+                <xs:annotation>
+                    <xs:documentation>Pax limit per room.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RatePlans" type="RatePlansRef">
+                <xs:annotation>
+                    <xs:documentation>A collection of Rate Plans associated with a particular Room Stay.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="RoomIndex" type="xs:positiveInteger" use="required">
+            <xs:annotation>
+                <xs:documentation>Sequence number of the room.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="RoomType" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>Type of room.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="RoomTypeCode" type="OTACodeType">
+            <xs:annotation>
+                <xs:documentation>OTA Code for GRI</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="RoomCategory" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>Category to which room belongs.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="RoomID" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>A string value representing the unique identification of a room if the request is looking for a specific room.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Floor" type="xs:int">
+            <xs:annotation>
+                <xs:documentation>Floor on which room is located.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="RoomViewCode" type="OTACodeType">
+            <xs:annotation>
+                <xs:documentation>
+                    Indicates the view of the room. Typical values would be Ocean view, Pool view or Garden View.
+                    Refer to OpenTravel Code List Room View Type RVT.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="RoomViewDescription" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>RoomViewCode OTA Description</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="NonSmoking" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation>Specifies if room is marked as non smoking.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="SharedRoomInd" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation>If TRUE, the room requires or has sharing available.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="AccessibleRoom" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation>
+                    Indicates if a room is wheelchair accessible.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="RoomSize" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>
+                    Explains Size of the room.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="NumberOfBedRooms" type="xs:integer">
+            <xs:annotation>
+                <xs:documentation>
+                    Holds number of Bed rooms.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:simpleType name="OTACodeType">
+        <xs:annotation>
+            <xs:documentation>
+                Positive Integer to denote OTA Codes
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="1" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="RatePlansRef">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Describes the rate plan</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="RatePlan" type="RatePlanRef" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">information about rate plan</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RatePlanRef">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">information about rate plan</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="RatePlanDescription" type="RatePlanDescriptionType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Describes the rate plan type.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RatePlanInclusions" type="RatePlanInclusionsType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Defines charges that are included in this rate plan.This element
+                        allows for future extension should there be a need.Defines charges that are included in this
+                        rate plan.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MealsIncluded" type="MealsIncluded" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Gives the options to get Meal Information</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RateInfo" type="RateInfoTypeForRoom" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Rate information for the shop request. Total Rates (not room specific)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ConvertedRateInfo" type="RateInfoTypeForRoom" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Rate information for the shop request. Total Rates (not room specific)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="RatePlanName" type="xs:string">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Provides the name of the rate plan or group. Typically used with
+                    RatePlanType to further describe the rate plan
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="RatePlanCode" type="xs:string">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Rate code, only for GDS.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="RatePlanType" type="RatePlanTypes">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">An enumerated type that allows the query to specify a rate category type, and provides major categories for comparison across brands.
+                    Refer to OpenTravel Code List Rate Plan Type (RPT).
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="PrepaidIndicator" type="xs:boolean" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">When true, indicates if the rate is a prepaid rate.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="AvailableQuantity" type="xs:int">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Provides the number of rooms available within this rate plan.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="LimitedAvailability" type="xs:string">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Only for GDS rates, this flag is passed in the HOD response.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="RateSource" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Code identifying the rates supplier.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="RateKey" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Sabre generated rate key</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ClientId" type="xs:string">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Client Id</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ProductCode" type="xs:string">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Inventory Block Code</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="LoyaltyMemberRate" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">LoyaltyMemberRate</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="LoyaltyId" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>Holds the Loyalty id.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="LoyaltyPoints" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation>Indicates if rate adds loyalty points.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="LoyaltyProgramName" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>Holds the Loyalty Program name.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="MealsIncluded">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Gives the options to get Meal Information</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="Breakfast" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">When true, indicates breakfast is included</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Lunch" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">When true, indicates lunch is included.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Dinner" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">When true, indicates dinner is included.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="MealPlanIndicator" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">When true, a meal plan is included in this rate plan. When false, a meal
+                    plan is not included in this rate plan.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="MealPlanCode" type="OTACodeType">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Used to identify the types of meals included with a rate plan. Refer to OpenTravel Code List Meal Plan Type (MPT).List of OpenTravel Codes.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="GuestCount" type="xs:nonNegativeInteger">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Number of guests</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="MealPlanDescription" type="xs:string">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">MealPlanCode OTA Description</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="Occupancy">
+        <xs:annotation>
+            <xs:documentation>Pax limit per room.</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="Min" type="xs:int">
+            <xs:annotation>
+                <xs:documentation>Defines minimum occupants for a room.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Max" type="xs:int">
+            <xs:annotation>
+                <xs:documentation>Defines maximum occupants for a room.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="RatePlanType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">An enumerated type that allows the query to specify a rate category type,
+                and provides major categories for comparison across brands.
+                Refer to OpenTravel Code List Rate Plan Type (RPT).
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="RatePlanDescription" type="RatePlanDescriptionType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Describes the rate plan type.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RatePlanInclusions" type="RatePlanInclusionsType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Defines charges that are included in this rate plan.This element
+                        allows for future extension should there be a need.Defines charges that are included in this
+                        rate plan.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MealsIncluded" type="MealsIncludedType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Gives the options to get Meal Information</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RateInfo" type="RateInfoTypeForRoom" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Rate information for the shop request. Total Rates (not room specific)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="RatePlanName" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Provides the name of the rate plan or group. Typically used with
+                    RatePlanType to further describe the rate plan
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="RatePlanCode" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Rate code, only for GDS.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="RatePlanType" type="RatePlanTypes">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">An enumerated type that allows the query to specify a rate category
+                    type, and provides major categories for comparison across brands.
+                    Refer to OpenTravel Code List Rate Plan Type (RPT).
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="PrepaidIndicator" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">When true, indicates if the rate is a prepaid rate.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="AvailableQuantity" type="xs:int">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Provides the number of rooms available within this rate plan.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="LimitedAvailability" type="xs:string">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Only for GDS rates, this flag is passed in the HOD response.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="RateAssured" type="xs:string">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Only for GDS rates, this is stored in eHotels database.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="RateSource" type="xs:string">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Code identifying the rates supplier.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="RateKey" type="xs:string">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Sabre generated rate key</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="RatePlanDescriptionType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Describes the rate plan type.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Text" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Describes the rate plan type.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RatePlanInclusionsType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Defines charges that are included in this rate plan.This element allows for future extension should there be a need.Defines charges that are included in this rate plan.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="RatePlanInclusion" type="RatePlanInclusionType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Defines charges that are included in this rate plan.This element allows for future extension should there be a need.Defines charges that are included in this rate plan.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RatePlanInclusionType">
+        <xs:annotation>
+            <xs:documentation>
+                Contains actual description of the charges included in the rate plan.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Text" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Textual description of the charges.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Description" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>OTA Code Description</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Code" type="OTACodeType">
+            <xs:annotation>
+                <xs:documentation>Mapped to HAC OTA table.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="MealsIncludedType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Defines which meals are included with this rate program</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="Breakfast" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">When true, indicates breakfast is included</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Lunch" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">When true, indicates dinner is included</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Dinner" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">When true, indicates lunch is included</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="MealPlanIndicator" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Used to identify the types of meals included with a rate plan. Refer to
+                    OpenTravel Code List Meal Plan Type (MPT).List of OpenTravel Codes
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="MealPlanCodes" type="xs:string">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">When true, a meal plan is included in this rate plan. When false, a meal
+                    plan is not included in this rate plan.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="RateInfoTypeForRoom">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Rate Info associated with a particular Room Stay</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Rates" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">A collection of nightly rates.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:annotation>
+                        <xs:documentation>Provides details of rates break-up.</xs:documentation></xs:annotation>
+                    <xs:sequence maxOccurs="unbounded">
+                        <xs:element name="Rate">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">Rate Info</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:attribute name="StartDate" type="Date">
+                                    <xs:annotation>
+                                        <xs:documentation xml:lang="en">Start Date</xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="EndDate" type="Date">
+                                    <xs:annotation>
+                                        <xs:documentation xml:lang="en">End Date</xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="AmountBeforeTax" type="Amount">
+                                    <xs:annotation>
+                                        <xs:documentation
+                                                xml:lang="en">The total amount not including any associated tax (e.g., sales tax, VAT, GST or any associated tax).
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="AmountAfterTax" type="Amount">
+                                    <xs:annotation>
+                                        <xs:documentation
+                                                xml:lang="en">The total amount including all associated taxes (e.g., sales tax, VAT, GST or any associated tax)
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="CurrencyCode" type="StringLength3WithNoSpace">
+                                    <xs:annotation>
+                                        <xs:documentation
+                                                xml:lang="en">An ISO 4217 (3) alpha character code that specifies a monetary unit
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Taxes" type="RateTaxesType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Rate Tax Type</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Fees" type="RateFeesType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">RateFeesType</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RoomExtras" type="RoomExtrasType" minOccurs="0" >
+                <xs:annotation>
+                    <xs:documentation>Collection of RoomExtra.</xs:documentation></xs:annotation></xs:element>
+            <xs:element name="CancelPenalties" type="CancelPenaltiesType">
+                <xs:annotation>
+                    <xs:documentation>Type of Cancel Penalty of Hotel
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Guarantee" type="GuaranteeType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">An enumerated type defining the guarantee to be applied to this reservation.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="AdditionalDetails" type="AdditionalDetails" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation> A collection of additional details.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="StartDate" type="Date">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Start Date</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="EndDate" type="Date">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">End Date</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="AmountBeforeTax" type="Amount">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">The total amount not including any associated tax (e.g., sales tax, VAT,
+                    GST or any associated tax).
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="AmountAfterTax" type="Amount">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">The total amount including all associated taxes (e.g., sales tax, VAT,
+                    GST or any associated tax)
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="MinSellingRate" type="Amount">
+            <xs:annotation>
+                <xs:documentation>specifies minimum selling rate</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="AverageNightlyRate" type="Amount">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Average nightly rate</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="AverageNightlyRateBeforeTax" type="Amount">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Average nightly rate</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="CurrencyCode" type="StringLength3WithNoSpace">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">An ISO 4217 (3) alpha character code that specifies a monetary unit.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="AdditionalFeesInclusive" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation>Boolean attribute which indicates whether additional fees are included in the total
+                    rate.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="TaxInclusive" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation>Boolean attribute which indicates whether taxes are included in the total rate.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="LocalFeesInclusive" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation>Boolean attribute which indicates whether local fees are included in the total rate.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="IncidentalsInclusive" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation>Boolean attribute which indicates whether incidentals are included in the total rate.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="RateTaxesType">
+        <xs:sequence>
+            <xs:element name="Tax" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Represents a tax type applicable.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:annotation>
+                        <xs:documentation>Represents a tax type applicable.</xs:documentation>
+                    </xs:annotation>
+                    <xs:attribute name="StartDate" type="Date">
+                        <xs:annotation>
+                            <xs:documentation>Start date.</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="EndDate" type="Date">
+                        <xs:annotation>
+                            <xs:documentation>End date.</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="Amount" type="Amount" use="required">
+                        <xs:annotation>
+                            <xs:documentation>Chargeable rate for room extra</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="CurrencyCode" type="StringLength3WithNoSpace" use="required">
+                        <xs:annotation>
+                            <xs:documentation>Currency code applicable for the rates.</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="TaxGroups" type="TaxGroupsType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Represents a tax type applicable.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Amount" type="Amount">
+            <xs:annotation>
+                <xs:documentation>Tax Amount.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="CurrencyCode" type="StringLength3WithNoSpace">
+            <xs:annotation>
+                <xs:documentation>Currency code applicable for the rates.</xs:documentation></xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="TaxGroupsType">
+        <xs:sequence>
+            <xs:element name="TaxGroup" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Represents a tax type applicable.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:annotation>
+                        <xs:documentation>Represents a tax type applicable.</xs:documentation>
+                    </xs:annotation>
+                    <xs:sequence>
+                        <xs:element name="TaxDescription" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>Description of tax.</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:annotation>
+                                    <xs:documentation>Description of tax.</xs:documentation>
+                                </xs:annotation>
+                                <xs:sequence>
+                                    <xs:element name="Text" type="xs:string" maxOccurs="unbounded"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="Code" type="OTACodeType" use="required">
+                        <xs:annotation>
+                            <xs:documentation>Refer to OpenTravel Code List Fee Tax Type (FTT).</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="Description" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>OTA Code Description</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="Amount" type="Amount" use="required">
+                        <xs:annotation>
+                            <xs:documentation>Chargeable rate for room extra</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="CurrencyCode" type="StringLength3WithNoSpace" use="required">
+                        <xs:annotation>
+                            <xs:documentation>Currency code applicable for the rates.</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RateFeesType">
+        <xs:annotation>
+            <xs:documentation>Provides information of the different types of fees.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Fee" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Provides information of the different types of fees.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:annotation>
+                        <xs:documentation>Provides information of the different types of fees.</xs:documentation>
+                    </xs:annotation>
+                    <xs:attribute name="StartDate" type="Date">
+                        <xs:annotation>
+                            <xs:documentation>Start date.</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="EndDate" type="Date">
+                        <xs:annotation>
+                            <xs:documentation>End date.</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="Amount" type="Amount" use="required">
+                        <xs:annotation>
+                            <xs:documentation>Chargeable rate for room extra</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="CurrencyCode" type="StringLength3WithNoSpace" use="required">
+                        <xs:annotation>
+                            <xs:documentation>Currency code applicable for the rates.</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="FeeGroups" type="FeeGroupsType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Provides information of the different types of fees.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Amount" type="Amount">
+            <xs:annotation>
+                <xs:documentation>Fees Amount.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="CurrencyCode" type="StringLength3WithNoSpace">
+            <xs:annotation>
+                <xs:documentation>Currency Code of Fees.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="FeeGroupsType">
+        <xs:annotation>
+            <xs:documentation>Provides information of the different types of fees.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="FeeGroup" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Provides information of the different types of fees.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:annotation>
+                        <xs:documentation>Provides information of the different types of fees.</xs:documentation>
+                    </xs:annotation>
+                    <xs:sequence>
+                        <xs:element name="FeeDescription" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>Description of fee type.</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:annotation>
+                                    <xs:documentation>Description of fee type.</xs:documentation>
+                                </xs:annotation>
+                                <xs:sequence>
+                                    <xs:element name="Text" type="xs:string" maxOccurs="unbounded"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="Code" type="OTACodeType" use="required">
+                        <xs:annotation>
+                            <xs:documentation>Mapped to FTT OTA table.</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="Description" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>OTA Code Description</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="Amount" type="Amount" use="required">
+                        <xs:annotation>
+                            <xs:documentation>Chargeable rate for room extra</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="CurrencyCode" type="StringLength3WithNoSpace" use="required">
+                        <xs:annotation>
+                            <xs:documentation>Currency code applicable for the rates.</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="HotelInfoRef">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used to give the information to filter of Hotel Content</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="HotelCode" type="StringLength1to20" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Holds GlobalID or SabreID</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="CodeContext" type="StringLength3to10" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">GLOBAL/SABRE Default will be SABRE
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="DepositPolicies">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="DepositPolicy" type="DepositPolicy"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DepositPolicy">
+        <xs:sequence>
+            <xs:element name="Deadline" type="DeadlineType" minOccurs="0"/>
+            <xs:element name="AmountPercent" type="AmountPercentType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DeadlineType">
+        <xs:attribute name="AbsoluteDeadline" type="xs:dateTime">
+            <xs:annotation>
+                <xs:documentation>
+                    Defines the absolute deadline. Either this or the offset attributes may be used.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="OffsetTimeUnit" type="xs:string">
+            <xs:annotation>
+                <xs:documentation> Cancellation deadline, absolute or relative. </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="OffsetUnitMultiplier" type="xs:positiveInteger">
+            <xs:annotation>
+                <xs:documentation> The number of units of DeadlineTimeUnit. </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="OffsetDropTime" type="OffsetDropTimeType">
+            <xs:annotation>
+                <xs:documentation>
+                    An enumerated type indicating when the deadline drop time goes into effect.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="AmountPercentType">
+        <xs:attribute name="TaxInclusive" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation>
+                    Indicates whether taxes are included when figuring the base amount.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="FeesInclusive" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation>
+                    Indicates whether fees, such as those imposed by a travel agency or other booking agent, are included when figuring cancel penalties.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="NmbrOfNights" type="xs:int">
+            <xs:annotation>
+                <xs:documentation>
+                    The number of nights of the hotel stay that are used to calculate the fee amount.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="BasisType" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>
+                    Provides the basis for how the amount of the guarantee is calculated.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Percent" type="Percentage">
+            <xs:annotation>
+                <xs:documentation> The percentage used to calculate the amount. </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Amount" type="Amount">
+            <xs:annotation>
+                <xs:documentation> A monetary amount. </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="CurrencyCode" type="StringLength3WithNoSpace">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">
+                    An ISO 4217 (3) alpha character code that specifies a monetary unit
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ApplyAs" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>
+                    Used to specify how the amount needs to be applied with respect to the stay.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:simpleType name="Date">
+        <xs:restriction base="xs:date">
+            <xs:pattern value="[1-2][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="HotelMediaInfo">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used to give the information to filter of Hotel Media</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="MediaItems" type="MediaItems">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Media Items</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MediaItems">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Media Items</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="MediaItem" type="MediaItem">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Media Item</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MediaItem">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">MediaItem</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ImageItems" type="ImageItems" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Image Items</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PanoramicMediasItems" type="PanoramicMediasItems" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Panoramic Medias Items</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="VideosItems" type="VideosItems" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Video Items</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Category" type="Category" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Image category description</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="RoomTypeCode" type="RoomTypeCode">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">Specific system room type code, ex: A1K, A1Q etc.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+            <xs:element name="AdditionalInfo" type="AdditionalInfo" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Additional Information related to the image</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Id" type="StringLength0to255" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Media Item Id</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Ordinal" type="xs:nonNegativeInteger" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Original</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="LastModifedDate" type="xs:date" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Modified Date</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Format" type="Formats" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Format</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="PanoramicMediasItems">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Panoramic Medias Items</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="PanoramicMedia" type="PanoramicMedia">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Panoramic Media</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="VideosItems">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Video Items</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Video" type="Video">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Video Info</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RoomTypeCode">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Specific system room type code, ex: A1K, A1Q etc.</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="Code" type="xs:string">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">RoomTypeCode</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="PanoramicMedia">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Panoramic Media</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="Url" type="xs:anyURI" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Url of Panoramic Media</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Type" type="PanoramaMediaTypes" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">PanoramaMedia Types</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Height" type="xs:nonNegativeInteger" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Height of Panoramic Media</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Width" type="xs:nonNegativeInteger" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Width of Panoramic Media</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="Video">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Video Info</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="Url" type="xs:anyURI" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Url of Video</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Type" type="VideoTypes" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">VideoTypes</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Height" type="xs:nonNegativeInteger" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Height of Video</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Width" type="xs:nonNegativeInteger" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Width of Video</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:simpleType name="Formats">
+        <xs:annotation>
+            <xs:documentation>
+                Image formats
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="BMP" />
+            <xs:enumeration value="GIF" />
+            <xs:enumeration value="ICO" />
+            <xs:enumeration value="JPG" />
+            <xs:enumeration value="PNG" />
+            <xs:enumeration value="TIFF" />
+            <xs:enumeration value="WEBP" />
+            <xs:enumeration value="ASPX" />
+            <xs:enumeration value="MP4" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="ImageItems">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Image Items</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Image" type="Image">
+                <xs:annotation>
+                    <xs:documentation>image attributes description</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Category">
+        <xs:annotation>
+            <xs:documentation>Image category description</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Description" type="ImageContentDescription">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Image Content Description</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="CategoryCode" type="xs:positiveInteger" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Image Category Code</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="ImageContentDescription">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Image Content Description</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Text">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Image Content Description</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="Language" type="LanguageCode" use="optional">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="en">Two character Language Code.</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ImageItem">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">ImageItem</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Images" type="Images">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Images</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Category" type="Category">
+                <xs:annotation>
+                    <xs:documentation>Image category description</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="AdditionalInfo" type="AdditionalInfo">
+                <xs:annotation>
+                    <xs:documentation>Additional Information related to the image</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Id" type="StringLength0to255" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Image Id
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Ordinal" type="xs:nonNegativeInteger" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Ordinal
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Format" type="ImageFormats" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Image format
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="LastModifedDate" type="xs:date" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Latest Modified Date
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="AdditionalInfo">
+        <xs:annotation>
+            <xs:documentation>Additional Information related to the image</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="10">
+            <xs:element name="Info" type="Info">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Image Info</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="ImageFormats">
+        <xs:annotation>
+            <xs:documentation>
+                Image formats
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="BMP" />
+            <xs:enumeration value="GIF" />
+            <xs:enumeration value="ICO" />
+            <xs:enumeration value="JPG" />
+            <xs:enumeration value="PNG" />
+            <xs:enumeration value="TIFF" />
+            <xs:enumeration value="WEBP" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="Info">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Image Info</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Description" type="Description">
+                <xs:annotation>
+                    <xs:documentation>
+                        Image Description
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Type" type="AdditionalInfoType" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Image related additional information types
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="Description">
+        <xs:annotation>
+            <xs:documentation>
+                Image Description
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Text">
+                <xs:annotation>
+                    <xs:documentation>
+                        Image Description
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="Language" type="LanguageCode" use="optional">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="en">Two character Language Code.</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="AdditionalInfoType">
+        <xs:annotation>
+            <xs:documentation>
+                Image related additional information types
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="CAPTION" />
+            <xs:enumeration value="ROOM_TYPE_CODE" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="Images">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Images</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="5">
+            <xs:element name="Image">
+                <xs:annotation>
+                    <xs:documentation>image attributes description</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="Type" type="ImageTypes" use="required">
+                        <xs:annotation>
+                            <xs:documentation>
+                                Image types
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Image">
+        <xs:annotation>
+            <xs:documentation>image attributes description</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="Url" type="xs:anyURI" use="required">
+            <xs:annotation>
+                <xs:documentation>Url of Image</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Type" type="ImageTypes" use="required">
+            <xs:annotation>
+                <xs:documentation>Image Type</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Height" type="xs:nonNegativeInteger" use="required">
+            <xs:annotation>
+                <xs:documentation>Image Height</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Width" type="xs:nonNegativeInteger" use="required">
+            <xs:annotation>
+                <xs:documentation>Image Width</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="LoyaltyIds">
+        <xs:annotation>
+            <xs:documentation>"LoyaltyIds" is used to specify a Loyality number if applicable..Max of 10 LoyaltyID's</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="10">
+            <xs:element name="LoyaltyId" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>"LoyaltyIds" is used to specify a Loyality number if applicable. Max of 10 LoyaltyID's</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="BedTypeOptions">
+        <xs:annotation>
+            <xs:documentation>Indicates the type of bed(s) found in the room. Typical values would be Double, Twin,
+                Queen, or King. Refer to OpenTravel Code List Bed Type Code (BED).List of OpenTravel Codes.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="BedTypes" type="BedTypes"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="BedTypes">
+        <xs:annotation>
+            <xs:documentation>Indicates the type of bed(s) found in the room. Typical values would be Double, Twin,
+                Queen, or King. Refer to OpenTravel Code List Bed Type Code (BED).List of OpenTravel Codes.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="BedType" type="BedType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="BedType">
+        <xs:annotation>
+            <xs:documentation>Indicates the type of bed(s) found in the room. Typical values would be Double, Twin, Queen, or King. Refer to OpenTravel Code List Bed Type Code (BED).List of OpenTravel Codes.</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="Code" type="OTACodeType">
+            <xs:annotation>
+                <xs:documentation>OTA Code for BedType</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Description" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>OTA Code Description</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Count" type="xs:nonNegativeInteger">
+            <xs:annotation>
+                <xs:documentation>Count of number of rooms with given BedTypeCode</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:simpleType name="UnitOfMeasureType">
+        <xs:annotation>
+            <xs:documentation>
+                Used for specifying what unit will be used for search radius distance.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="MI" />
+            <xs:enumeration value="KM" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="StringLength0to4">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character String, length 0 to 4.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z0-9]{0,4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="StringLength2">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character String, length  2.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z0-9]{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="StringLength3">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character String, length 3.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z0-9]{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="AlphaNumericLength4">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for an Alpha String, length from 1 to 4.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-zA-Z0-9]{4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

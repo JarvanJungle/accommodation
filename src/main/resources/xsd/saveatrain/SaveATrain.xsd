@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<xs:schema
+        targetNamespace="http://satvendors.saveatrain.com/schemas/messages"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:s1="http://satvendors.saveatrain.com/schemas/messages">
+
+    <xs:complexType name="signInRQ">
+        <xs:sequence>
+            <xs:element name="email" type="xs:string" />
+            <xs:element name="password" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="signInRS">
+        <xs:sequence>
+            <xs:element name="email" type="xs:string" />
+            <xs:element name="access_token" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property resource="application.properties" />
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <encoder>
+            <pattern>%highlight([%level]) - [%date] - [%thread] - [%logger]
+                %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- custom logging levels -->
+    <logger name="tech.adventium" level="DEBUG" />
+    <logger name="com.torkirion" level="INFO" />
+    <logger name="org.hibernate" level="INFO" />
+
+    <root level="DEBUG">
+        <appender-ref ref="CONSOLE" />
+    </root>
+</configuration>

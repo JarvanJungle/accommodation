@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:stlp="http://services.sabre.com/STL_Payload/v02_02" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" jaxb:extensionBindingPrefixes="xjc" xmlns="http://services.sabre.com/hotel/details/v3_0_0" targetNamespace="http://services.sabre.com/hotel/details/v3_0_0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:annotation>
+        <xs:appinfo>
+            <jaxb:globalBindings>
+                <xjc:simple />
+            </jaxb:globalBindings>
+        </xs:appinfo>
+    </xs:annotation>
+    <xs:import namespace="http://services.sabre.com/STL_Payload/v02_02" schemaLocation="../STL2_Payload_v02_02.xsd" />
+    <xs:include schemaLocation="HotelDetailsCommons_v3.0.0.xsd" />
+    <xs:element name="GetHotelDetailsRQ">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Hotel Detail Request Tag </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:annotation>
+                <xs:documentation>Hotel Detail Request</xs:documentation>
+            </xs:annotation>
+            <xs:complexContent>
+                <xs:extension base="stlp:STL_Request_Payload">
+                    <xs:sequence>
+                        <xs:element name="POS" type="POS" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">
+                                    Point of sale
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="SearchCriteria" type="SearchCriteria">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">Used to request the Hotel Detail in a specific way</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="SearchCriteria">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used to request the Hotel Detail in a specific way</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:choice>
+                <xs:group ref="HotelRefsAndRateInfoRefGroup"/>
+                <xs:group ref="RateKeyGroup"/>
+            </xs:choice>
+            <xs:element name="HotelContentRef" type="HotelContentRef" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Used to give the information to filter of Hotel Content </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="ShopKey" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>Shop key for pagination</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:group name="HotelRefsAndRateInfoRefGroup">
+        <xs:sequence>
+            <xs:element name="HotelRefs" type="HotelRefs">
+                <xs:annotation>
+                    <xs:documentation>Used to select a particular the Hotel</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RateInfoRef" type="RateInfoRef">
+                <xs:annotation>
+                    <xs:documentation>
+                        Hotel Rates request Message to get details of available rates hotels.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+
+    <xs:group name="RateKeyGroup">
+        <xs:sequence>
+            <xs:element name="RateKeyRef" type="RateKeyRef"/>
+        </xs:sequence>
+    </xs:group>
+</xs:schema>

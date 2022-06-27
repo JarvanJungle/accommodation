@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:stlp="http://services.sabre.com/STL_Payload/v02_02"
+           xmlns="http://services.sabre.com/hotel/pricecheck/v4_0_0"
+           targetNamespace="http://services.sabre.com/hotel/pricecheck/v4_0_0" elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+
+    <xs:import namespace="http://services.sabre.com/STL_Payload/v02_02"
+               schemaLocation="../STL2_Payload_v02_02.xsd"/>
+
+    <xs:include schemaLocation="HotelPriceCheckCommons_v4.0.0.xsd"/>
+
+    <xs:element name="HotelPriceCheckRS">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                HotelPriceCheck response message returns the latest applicable rate for the chosen product.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="stlp:STL_Response_Payload">
+                    <xs:sequence>
+                        <xs:element name="PriceCheckInfo" type="PriceCheckInfo" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    Describes latest information for chosen product along with any observed changes in rates.
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="PriceCheckInfo">
+        <xs:annotation>
+            <xs:documentation>
+                Describes latest information for chosen product along with any observed changes in rates.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="HotelInfo" type="HotelInfo">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Details for the Hotel Property.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="HotelRateInfo" type="HotelRateInfo" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Returns rate specific information for a hotel.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="BookingKey" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Uniquely generated key needed to make a hotel reservation.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="PriceChange" type="xs:boolean" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Boolean attribute that indicates whether price has changed in supplier returned currency.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="PriceDifference" type="PriceDifferenceAmount" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Returns the amount by which the rate was increased or decreased in the supplier returned currency.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="CurrencyCode" type="StringLength3WithNoSpace" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Returns the supplier returned currency code.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ConvertedPriceChange" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    Boolean attribute that indicates whether price has changed in user requested currency.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ConvertedPriceDifference" type="PriceDifferenceAmount" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    Returns the amount by which the rate was increased or decreased in the user requested currency.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ConvertedCurrencyCode" type="StringLength3WithNoSpace" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    Returns the user requested currency code.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="HotelInfo">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Details for the Hotel Property.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="LocationInfo" type="LocationInfo" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Location and Address details for the Hotel Property.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="HotelCode" type="StringLength1to20" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en"> Unique code which identifies the Hotel Property</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="CodeContext" type="CodeContextType" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en"> ENUM type. Values -SABRE or GLOBAL in capital. It identifies whether the given HotelCode is Sabre property ID or Global property ID,CodeContext  Optional. Defaults to SABRE if not given</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="HotelName" type="StringLength0to500" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en"> Optional. if given then, atleast 3 characters should be specified. Return Hotels matching the search term </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ChainCode" type="UpperCaseAlphaNumericLength2" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en"> Hotel Chain Code. </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ChainName" type="StringLength0to500" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en"> Hotel Chain Name. </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="BrandCode" type="StringLength0to50" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en"> Hotel BrandCode. </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="BrandName" type="StringLength0to500" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en"> Hotel BrandName. </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="SabreRating" type="StringLength0to10" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    Optional. Sabre rating currently uses NTM rating in GDS. Min or Max  between 1 to 5. i.e 1,2,3,4,5.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="SabreHotelCode" type="StringLength1to20">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Holds SabreID</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="HotelRateInfo">
+        <xs:annotation>
+            <xs:documentation>
+                RateInfos - Collection of Rate information for a request from all suppliers. TotalRates (not room specific).
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="RateInfos" type="RateInfos">
+                <xs:annotation>
+                    <xs:documentation>RateInfos - Collection of Rate information for a request from all suppliers. TotalRates (not room specific)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Rooms" type="Rooms">
+                <xs:annotation>
+                    <xs:documentation>Describes hotel rooms information for a hotel.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

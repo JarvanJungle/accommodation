@@ -1,0 +1,1614 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://services.sabre.com/hotel/content/v4_0_0"
+           targetNamespace="http://services.sabre.com/hotel/content/v4_0_0"
+           elementFormDefault="qualified">
+
+    <xs:simpleType name="NumericLengthwith3">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for an Alpha String, length exactly 5.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[1-5 ]{1}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="OTACodeType">
+        <xs:annotation>
+            <xs:documentation>Positive Integer to denote OTA Codes</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="1" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="StringLength0to50">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character Strings, length 0 to 50.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0"/>
+            <xs:maxLength value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="StringLength1to3">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character String, length 1 to 3.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <!--<xs:pattern value="[A-Z0-9]{3}"/>-->
+            <xs:minLength value="1"/>
+            <xs:maxLength value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="StringLength0to20">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character Strings, length 0 to 20.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0"/>
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="AlphaNumericLength4">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for an Alpha String, length is 4.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-zA-Z0-9]{4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="StringLength3to10">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character Strings, length 3 to 10.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="3"/>
+            <xs:maxLength value="10"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="StringLength3to50">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character Strings, length 3 to 50.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="3"/>
+            <xs:maxLength value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="StringLength2to50">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character Strings, length 2 to 50.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="2"/>
+            <xs:maxLength value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="StringLength1to20">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character Strings, length 1 to 20.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringLength3to20">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character Strings, length 3 to 20.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="3"/>
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="StringLength0to10">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for boolean Strings, length 0 to 10.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0"/>
+            <xs:maxLength value="10"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="StringLength3WithNoSpace">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character String, length 1 to 3.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z]{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="StringLength0to3">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character String, length 0 to 3.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z0-9]{0,3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="StringLength0to2">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character String, length 0 to 2.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z0-9]{0,2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="StringLength2">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character String, length  2.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z0-9]{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="StringLength3">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character String, length 3.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z0-9]{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="StringLength0to4">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character String, length 0 to 4.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z0-9]{0,4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="StringLength0to5">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character String, length 0 to 5.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z0-9]{0,5}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="UpperCaseAlphanumericStringLength1to8">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Upper Case Character Strings, length 1 to 8.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z0-9]{1,8}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="StringLength0to255">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character Strings, length 0 to 255.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0"/>
+            <xs:maxLength value="255"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="StringLength0to500">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for Character Strings, length 0 to 500.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0"/>
+            <xs:maxLength value="500"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="NumericLength10">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Used for an Numeric, length from 1 to 10.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9 ]{1,10}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+
+    <xs:simpleType name="ImageTypes">
+        <xs:annotation>
+            <xs:documentation>
+                Image types
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="ORIGINAL"/>
+            <xs:enumeration value="THUMBNAIL"/>
+            <xs:enumeration value="SMALL"/>
+            <xs:enumeration value="MEDIUM"/>
+            <xs:enumeration value="LARGE"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+
+    <!-- Hotel Content V2.0.0 Request Elements -->
+
+    <xs:complexType name="HotelRef">
+        <xs:annotation>
+            <xs:documentation>Describes the reference to a Hotel by its code. This includes an attribute for Hotel Code</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="HotelCode" type="StringLength1to20" use="required">
+            <xs:annotation>
+                <xs:documentation>Refers to hotel code by which a hotel is identified</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="CodeContext" type="CodeContextType" use="optional" default="SABRE">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Indicates code context type.Default code context is SABRE.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:simpleType name="CodeContextType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Indicates code context type.Default code context is SABRE.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="GLOBAL">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Code context type is GLOBAL</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="SABRE">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Code context type is SABRE</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="DescriptiveInfoRef">
+        <xs:annotation>
+            <xs:documentation>Descriptions about the property and facilities</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="PropertyInfo" type="xs:boolean" minOccurs="0" default="false">
+                <xs:annotation>
+                    <xs:documentation>A boolean flag indicating if Property information is expected in the response</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="LocationInfo" type="xs:boolean" minOccurs="0" default="false">
+                <xs:annotation>
+                    <xs:documentation>A boolean flag indicating if Location information is expected in the response</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Amenities" type="xs:boolean" minOccurs="0" default="false">
+                <xs:annotation>
+                    <xs:documentation>A boolean flag indicating if Amenities information is expected in the response</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Descriptions" type="DescriptionsRef" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Includes the supported types for which the Descriptions are expected in the response</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SecurityFeatures" type="xs:boolean" minOccurs="0"  default="false"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="DescriptionsRef">
+        <xs:annotation>
+            <xs:documentation>Includes the supported types for which the Descriptions are expected in the response</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1" maxOccurs="13">
+            <xs:element name="Description">
+                <xs:annotation>
+                    <xs:documentation>Indicates the supported types for which the Descriptions are expected</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="Type" type="DescriptionType" use="required">
+                        <xs:annotation>
+                            <xs:documentation>Indicates the supported types for which the Descriptions are expected</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:simpleType name="DescriptionType">
+        <xs:annotation>
+            <xs:documentation>
+                Description Types
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ShortDescription"/>
+            <xs:enumeration value="Dining"/>
+            <xs:enumeration value="Facilities"/>
+            <xs:enumeration value="Recreation"/>
+            <xs:enumeration value="Services"/>
+            <xs:enumeration value="Attractions"/>
+            <xs:enumeration value="CancellationPolicy"/>
+            <xs:enumeration value="DepositPolicy"/>
+            <xs:enumeration value="Directions"/>
+            <xs:enumeration value="Policies"/>
+            <xs:enumeration value="SafetyInfo"/>
+            <xs:enumeration value="TransportationInfo"/>
+            <xs:enumeration value="GuaranteePolicy"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:complexType name="MediaRef">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Specify the media types and other parameters of MediaItems to be returned.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="MediaTypes" type="MediaTypes" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Media Types</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Categories" type="Categories" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Image Category</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RoomTypeCodes" type="RoomTypeCodes" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">List of Room Type Codes</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="AdditionalInfo" type="AdditionalInfoRef" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Additional Information related to the image</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Languages" type="Languages" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Languages</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="MaxItems" type="MaxImagesType" default="1">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Maximum images requested by the user. Valid values are "ALL" or 1 to 99
+                    images.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="MediaTypes">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Media Types</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="Images" type="Images" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Images</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PanoramicMedias" type="PanoramicMedias" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Panoramic Medias</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Videos" type="Videos" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">List Of Videos</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Categories">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Image Category</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1" maxOccurs="22">
+            <xs:element name="Category">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Image Category</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="Code" type="xs:positiveInteger" use="required">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">Image Category Code</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="RoomTypeCodes">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">List of Room Type Codes</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="22">
+            <xs:element name="RoomTypeCode">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">RoomTypeCode</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="Code" type="xs:string" use="required">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">Specific system room type code, ex: A1K, A1Q etc.
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AdditionalInfoRef">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Image related additional information types</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1" maxOccurs="10">
+            <xs:element name="Info">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Image  information</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:boolean">
+                            <xs:attribute name="Type" type="AdditionalInfoType" use="required">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        Image  additional information types
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Languages">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Specify the Languages</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="1" maxOccurs="10">
+            <xs:element name="Language">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Specify the Language</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="Code" type="LanguageCode">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">Two character Language Code</xs:documentation>
+                        </xs:annotation>
+
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="MaxImagesType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Maximum images requested by the user. Valid values are "ALL" or 1 to 99
+                images.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="(ALL|([1-9]{1})|([0-9]{2}))"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:complexType name="Images">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Images</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="5">
+            <xs:element name="Image">
+                <xs:annotation>
+                    <xs:documentation>image attributes description</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="Type" type="ImageTypes" use="required">
+                        <xs:annotation>
+                            <xs:documentation>
+                                Image types
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PanoramicMedias">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Panoramic Medias</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="5">
+            <xs:element name="PanoramicMedia">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Panoramic Media</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="Type" type="PanoramaMediaTypes" use="required">
+                        <xs:annotation>
+                            <xs:documentation>
+                                Panorama Media types
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="Videos">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">List Of Videos</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="5">
+            <xs:element name="Video">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Video Info</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="Type" type="VideoTypes" use="required">
+                        <xs:annotation>
+                            <xs:documentation>
+                                Video types
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="PanoramaMediaTypes">
+        <xs:annotation>
+            <xs:documentation>
+                Panorama Media types
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="HD360"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="VideoTypes">
+        <xs:annotation>
+            <xs:documentation>
+                Video types
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="VIDEO360"/>
+            <xs:enumeration value="VIDEO720"/>
+            <xs:enumeration value="VIDEOTHUMBNAIL"/>
+            <xs:enumeration value="ALL"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <!-- Request elements End -->
+
+    <xs:complexType name="HotelInfo">
+        <xs:annotation>
+            <xs:documentation>
+                Hotel summary information
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="TierLabels" type="TierLabels" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Agency or Corporate labels assigned for this property</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="HotelCode" type="StringLength0to20" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Property Code/ID</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="CodeContext" type="CodeContextType" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Indicates whether the given HotelCode is Sabre property ID or Global property ID.
+                </xs:documentation>
+            </xs:annotation>
+
+        </xs:attribute>
+        <xs:attribute name="HotelName" type="StringLength0to500" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Hotel Property Name
+                </xs:documentation>
+            </xs:annotation>
+
+        </xs:attribute>
+        <xs:attribute name="ChainCode" type="StringLength0to20" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Hotel Chain code
+                </xs:documentation>
+            </xs:annotation>
+
+        </xs:attribute>
+        <xs:attribute name="ChainName" type="StringLength0to500" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Hotel Chain Name
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="BrandCode" type="StringLength0to50" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Hotel Brand Code
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="BrandName" type="StringLength0to500" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Hotel Brand Name
+                </xs:documentation>
+            </xs:annotation>
+
+        </xs:attribute>
+        <xs:attribute name="Status" type="PropertyStatusType" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Hotel Status Types
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="SabreRating" type="StringLength0to10" use="optional">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Sabre property rating
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="SabreHotelCode" type="StringLength1to20">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Holds SabreID</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Logo" type="xs:anyURI">
+            <xs:annotation>
+                <xs:documentation>Logo</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="TierLabels">
+        <xs:annotation>
+            <xs:documentation>Agency or Corporate labels assigned for this property</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="5">
+            <xs:element name="TierLabel" type="TierLabel">
+                <xs:annotation>
+                    <xs:documentation>Agency or Corporate labels assigned for this property</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TierLabel">
+        <xs:annotation>
+            <xs:documentation>Agency or Corporate labels assigned for this property</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="Type" type="StringLength0to500" use="optional">
+            <xs:annotation>
+                <xs:documentation>TierLabel type</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Value" type="StringLength0to500" use="optional">
+            <xs:annotation>
+                <xs:documentation>TierLabel value</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ProgramId" type="NumericLength10" use="optional">
+            <xs:annotation>
+                <xs:documentation>TierLabel programId</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="PropertyTypes">
+        <xs:annotation>
+            <xs:documentation>
+                Collection of Property types
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="PropertyType" type="PropertyType">
+                <xs:annotation>
+                    <xs:documentation>OTA mapped to PCT</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PropertyType">
+        <xs:annotation>
+            <xs:documentation>OTA mapped to PCT</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="code" type="OTACodeType">
+            <xs:annotation>
+                <xs:documentation>Numeric OTA code for the Property Class Type</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Description" type="StringLength0to255">
+            <xs:annotation>
+                <xs:documentation>Property class type description </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:simpleType name="PropertyStatusType">
+        <xs:annotation>
+            <xs:documentation>
+                Hotel Status Types
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="Active"/>
+            <xs:enumeration value="Inactive"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:complexType name="HotelDescriptiveInfo">
+        <xs:annotation>
+            <xs:documentation>Hotel Descriptive Information</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="PropertyInfo" type="PropertyInfo" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Property specific Information</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="LocationInfo" type="LocationInfo" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Property location information</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Amenities" type="Amenities" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>List of amenities provided by the property</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SecurityFeatures" type="SecurityFeatureInfos" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>List of SecurityFeatures provided by the property</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Descriptions" type="Descriptions" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Provides list of descriptive information for property</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PropertyInfo">
+        <xs:annotation>
+            <xs:documentation>Property information</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="PropertyTypeInfo" type="PropertyTypeInfo" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Property information</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Policies" type="Policies" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Property policies such as check-in and check-out time</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PropertyQualityInfo" type="PropertyQualityInfo" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Property quality information</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Floors" type="StringLength0to3" use="optional">
+            <xs:annotation>
+                <xs:documentation>Number of floor in the Property Building</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Rooms" type="StringLength0to4" use="optional">
+            <xs:annotation>
+                <xs:documentation>Number of rooms present in the property</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="Policies">
+        <xs:annotation>
+            <xs:documentation>Property policies such as check-in and check-out time</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Policy" type="Policy" minOccurs="2" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Property policies such as check-in and check-out time</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PropertyQualityInfo">
+        <xs:annotation>
+            <xs:documentation>Property quality information</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="PropertyQuality">
+                <xs:annotation>
+                    <xs:documentation>OTA mapped to PCT</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="Code" type="OTACodeType" use="optional">
+                        <xs:annotation>
+                            <xs:documentation> Numeric OTA code for the Property Quality</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="Description" type="StringLength0to255" use="optional">
+                        <xs:annotation>
+                            <xs:documentation> Property Class Type Description. Ex- Economy, All Midscale, Luxury etc </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Policy">
+        <xs:annotation>
+            <xs:documentation>Property policies such as check-in and check-out time</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Text">
+                <xs:annotation>
+                    <xs:documentation>Property policies information</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="Type" type="PolicyType" use="required">
+                                <xs:annotation>
+                                    <xs:documentation>Indicates the type of policy. Ex- Check In, Check Out etc</xs:documentation>
+                                </xs:annotation>
+
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="PolicyType">
+        <xs:annotation>
+            <xs:documentation>
+                Policy Types
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="CheckIn"/>
+            <xs:enumeration value="CheckOut"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="AmountType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Specifies an amount, max 2 decimals.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0" />
+            <xs:fractionDigits value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="PropertyTypeInfo">
+        <xs:annotation>
+            <xs:documentation>Property type information</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="PropertyType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Type of property</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="Code" type="OTACodeType" use="optional">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">Property code</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="Description" type="StringLength0to255" use="optional">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">Property description</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="LocationInfo">
+        <xs:annotation>
+            <xs:documentation>Property location information</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="Address" type="Address" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Property location information</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Neighborhoods" type="Neighborhoods" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>List of Neighborhood Information</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Contact" type="Contact" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Contact details for property</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Latitude" type="xs:decimal" use="optional">
+            <xs:annotation>
+                <xs:documentation>Latitude GEO code of the property</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Longitude" type="xs:decimal" use="optional">
+            <xs:annotation>
+                <xs:documentation>Longitude GEO code of the property</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="Address">
+        <xs:annotation>
+            <xs:documentation>Property location information</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="AddressLine1" type="StringLength0to500">
+                <xs:annotation>
+                    <xs:documentation>
+                        Property location information
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="AddressLine2" type="StringLength0to500" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        Property location information
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="AddressLine3" type="StringLength0to500" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        Property location information
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CityName">
+                <xs:annotation>
+                    <xs:documentation>Property city name information</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="StringLength0to50">
+                            <xs:attribute name="CityCode" type="StringLength0to5" use="optional">
+                                <xs:annotation>
+                                    <xs:documentation>Property city code</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="StateProv" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Property State or Province information</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="StateCode" type="StringLength0to10" use="optional">
+                                <xs:annotation>
+                                    <xs:documentation>Property State or Province code</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PostalCode" type="StringLength0to50">
+                <xs:annotation>
+                    <xs:documentation>Property postal code information</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CountryName">
+                <xs:annotation>
+                    <xs:documentation>Property country name information</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="Code" type="StringLength0to3" use="optional">
+                                <xs:annotation>
+                                    <xs:documentation>Property Two letter country code</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Contact">
+        <xs:annotation>
+            <xs:documentation>Contact information for a hotel</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="Phone" type="StringLength0to20">
+            <xs:annotation>
+                <xs:documentation>Hotel phone number length 0 to 20</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Fax" type="StringLength0to20">
+            <xs:annotation>
+                <xs:documentation>Hotel fax number length 0 to 20</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+
+
+    <xs:complexType name="Neighborhoods">
+        <xs:annotation>
+            <xs:documentation xml:lang="en"> List of Neighborhood Information</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="10">
+            <xs:element name="Neighborhood">
+                <xs:annotation>
+                    <xs:documentation>Provides information about Neighborhood Polygons such as MSA/Area/Hood under which the property location falls</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="Id" type="StringLength0to20" use="optional">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        polygon id of Neighborhood
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+
+
+    <xs:complexType name="Amenities">
+        <xs:annotation>
+            <xs:documentation>List of Property Amenity Information</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Amenity" type="Amenity">
+                <xs:annotation>
+                    <xs:documentation>Property Amenity Information</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Amenity">
+        <xs:annotation>
+            <xs:documentation>Property Amenity Information</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="Code" type="OTACodeType">
+                    <xs:annotation>
+                        <xs:documentation>Numeric OTA code for the Amenity</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="Description" type="StringLength0to255">
+                    <xs:annotation>
+                        <xs:documentation>Amenity Description</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="ComplimentaryInd" type="xs:boolean"  use="optional">
+                    <xs:annotation>
+                        <xs:documentation>Indicates if the corresponding Amenity is complimentary or charged extra.
+                            When True the ComplimentaryInd attribute is not displayed in response. It is displayed in API
+                            response only if it is False
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+
+
+    <xs:complexType name="Descriptions">
+        <xs:annotation>
+            <xs:documentation>
+                List of specific type of Descriptive Information
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Description" type="DescriptionInfo">
+                <xs:annotation>
+                    <xs:documentation>
+                        Specific type of Descriptive Information
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="DescriptionInfo">
+        <xs:annotation>
+            <xs:documentation>
+                Descriptive Information returned in response
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="Text">
+                <xs:annotation>
+                    <xs:documentation>
+                        Descriptive Information returned in response
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="Type" type="DescriptionType" use="required">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        specific type of Descriptive Information returned in response
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Info">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Contains additional Information like caption in response .</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Description" type="Description">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Contains the description details.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Type" type="AdditionalInfoType" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Contains the additional info.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+
+    <xs:complexType  name="Description">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Contains the description details.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Text">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Contains the description details.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="Language" type="LanguageCode" use="optional">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="en">Contains the Language details.</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+
+
+
+    <xs:complexType name="AdditionalInfo">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Specify the additional information like caption, room type etc in request.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="10">
+            <xs:element name="Info" type="Info">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Contains additional Information like caption in response .</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Category">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Contains the category of the media Item.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Description" type="ImageContentDescription">
+                <xs:annotation>
+                    <xs:documentation>Image Description</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="CategoryCode" type="xs:positiveInteger" use="optional">
+            <xs:annotation>
+                <xs:documentation>Image Category Code</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="ImageContentDescription">
+        <xs:annotation>
+            <xs:documentation>Image Description</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Text">
+                <xs:annotation>
+                    <xs:documentation>Image Description</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="Language" type="LanguageCode" use="optional">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="en">Two character Language Code.</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="LanguageCode">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Two character Language Code.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([a-z][a-z][_][A-Z][A-Z])|([a-zA-Z]{2})"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="AdditionalInfoType">
+        <xs:annotation>
+            <xs:documentation>
+                Image related additional information types
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="CAPTION"/>
+            <xs:enumeration value="ROOM_TYPE_CODE"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+
+
+    <!--XSD change for mediacontent for hotel content  responce v2 -->
+    <xs:complexType name="HotelMediaInfo">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Contains infroamtion about various media types available for a particular hotel code.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="MediaItems" type="MediaItems">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Contains the MediaItems(Images, PanoramicMedias and videos) returned in response.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="MediaItems">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Contains the MediaItems(Images, PanoramicMedias and videos) returned in response.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="MediaItem" type="MediaItem">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Media Item</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="MediaItem">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Media Info for property</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ImageItems" type="ImageItems" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Image Items for property</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PanoramicMediasItems" type="PanoramicMediasItems" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Panoramic Medias Items for property</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="VideosItems" type="VideosItems" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Video Items for property</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Category" type="Category" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Indicates the category of the media item</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="RoomTypeCode" type="RoomTypeCode">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">Specific system room type code, ex: A1K, A1Q etc.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+            <xs:element name="AdditionalInfo" type="AdditionalInfo" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Additional Information related to the image</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Id" type="StringLength0to255" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Unique ID for the media item</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Ordinal" type="xs:nonNegativeInteger" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Positive integer indicates the priority of media item(lower the number, higher the priority)</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="LastModifedDate" type="xs:date" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Date when the media item was last updated/changed</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Format" type="Formats" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Format of the media returned</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="PanoramicMediasItems">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Panoramic Medias Items</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="PanoramicMedia" type="PanoramicMedia">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Panoramic Media</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="VideosItems">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Video Items</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Video" type="Video">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Video Info</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="RoomTypeCode">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Specific system room type code, ex: A1K, A1Q etc.</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="Code" type="xs:string">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Indicates room type code.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="PanoramicMedia">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Panoramic Media</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="Url" type="xs:anyURI" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Url of Panoramic Media</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Type" type="PanoramaMediaTypes" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">PanoramaMedia Types</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Height" type="xs:nonNegativeInteger" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Height of Panoramic Media</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Width" type="xs:nonNegativeInteger" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Width of Panoramic Media</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="Video">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Video Info</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="Url" type="xs:anyURI" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Url of Video</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Type" type="VideoTypes" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Video Types</xs:documentation>
+            </xs:annotation>
+
+        </xs:attribute>
+        <xs:attribute name="Height" type="xs:nonNegativeInteger" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Height of Video</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Width" type="xs:nonNegativeInteger" use="required">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">Width of Video</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:simpleType name="Formats">
+        <xs:annotation>
+            <xs:documentation>
+                Image formats
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="BMP"/>
+            <xs:enumeration value="GIF"/>
+            <xs:enumeration value="ICO"/>
+            <xs:enumeration value="JPG"/>
+            <xs:enumeration value="PNG"/>
+            <xs:enumeration value="TIFF"/>
+            <xs:enumeration value="WEBP"/>
+            <xs:enumeration value="ASPX"/>
+            <xs:enumeration value="MP4"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="ImageItems">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Image Items</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Image" type="Image">
+                <xs:annotation>
+                    <xs:documentation>image attributes description</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Image">
+        <xs:annotation>
+            <xs:documentation>image attributes description </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="Url" type="xs:anyURI" use="required">
+            <xs:annotation>
+                <xs:documentation>Url of Image</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Type" type="ImageTypes" use="required">
+            <xs:annotation>
+                <xs:documentation>Image Type</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Height" type="xs:nonNegativeInteger" use="required">
+            <xs:annotation>
+                <xs:documentation>Image Height</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Width" type="xs:nonNegativeInteger" use="required">
+            <xs:annotation>
+                <xs:documentation>Image Width</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+
+    <xs:complexType name="SecurityFeatureInfos">
+        <xs:annotation>
+            <xs:documentation>List of SecurityFeatureInfos provided by the property</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="SecurityFeature" type="SecurityFeature">
+                <xs:annotation>
+                    <xs:documentation>Security Feature Information</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SecurityFeature">
+        <xs:annotation>
+            <xs:documentation>Security Feature Information</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="Code" type="OTACodeType">
+                    <xs:annotation>
+                        <xs:documentation>Numeric OTA code for the Security feature</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="Description" type="StringLength0to255">
+                    <xs:annotation>
+                        <xs:documentation>Security Description</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="POS">
+        <xs:annotation>
+            <xs:documentation>Point of sales information</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Source">
+                <xs:annotation>
+                    <xs:documentation>Element to Hold PCC value</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="PseudoCityCode" type="AlphaNumericLength4" use="required">
+                        <xs:annotation>
+                            <xs:documentation>"PseudoCityCode" (required) Four-character pseudo city code (PCC)</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
